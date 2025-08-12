@@ -253,6 +253,12 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+  .line-clamp-4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
   .\!inline-flex {
     display: inline-flex !important;
   }
@@ -302,9 +308,6 @@
   }
   .\!w-fit {
     width: fit-content !important;
-  }
-  .\!w-max {
-    width: max-content !important;
   }
   .w-20 {
     width: calc(var(--spacing) * 20);
@@ -774,6 +777,14 @@
   .lg\:mb-17\.5 {
     @media (width >= 64rem) {
       margin-bottom: calc(var(--spacing) * 17.5);
+    }
+  }
+  .lg\:line-clamp-3 {
+    @media (width >= 64rem) {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
     }
   }
   .lg\:size-5 {
