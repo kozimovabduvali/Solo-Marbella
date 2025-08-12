@@ -16,3 +16,35 @@ let swiperMainHero = new Swiper(".swiper-main__hero", {
     }
   },
 });
+
+// swiper reviews-slider
+let swiperReview = new Swiper(".reviews-slider", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  grabCursor: true,
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 2.5,
+      spaceBetween: 26,
+    },
+    1280: {
+      slidesPerView: 3,
+      spaceBetween: 26,
+    }
+  },
+  navigation: {
+    nextEl: ".swiper-button-next-reviews",
+    prevEl: ".swiper-button-prev-reviews",
+  },
+  pagination: {
+    el: ".swiper-pagination-reviews",
+  },
+});
