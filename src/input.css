@@ -1,1 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Oswald:wght@200..700&display=swap');
+
 @import "tailwindcss";
+
+
+@theme {
+  --color-primary: #333130;
+  --color-secondary: #5C5C5C;
+  --color-brand-gray-100: #E0DFDB;
+  --color-solo-body: #ECEBE7;
+  /* Fonts */
+  --font-oswald: 'Oswald';
+  --font-manrope: 'Manrope';
+  /* Font Size */
+  --text-solo-26: 26px;
+  --text-solo-28: 1.75rem;
+  --text-solo-70: 1.75rem;
+  /* Breakpoints */
+  --breakpoint-xs: 536px;
+  --breakpoint-2xl: 1600px; 
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth
+  }
+
+  body {
+    @apply bg-solo-body font-manrope text-secondary
+  }
+
+  button {
+    @apply cursor-pointer
+  }
+}
+
+@utility container-base {
+  @apply max-w-454 mx-auto px-5 md:px-7
+}
+
+@utility text-hover-primary {
+  @apply text-secondary transition duration-300 hover:text-primary
+}
+
+@utility text-hover-secondary {
+  @apply text-primary transition duration-300 hover:text-secondary
+}
+
+@utility text-hover-underline {
+  @apply decoration-transparent underline underline-offset-4 transition duration-200 hover:decoration-current
+}
+
+@utility bg-hover-primary {
+  @apply bg-secondary transition duration-300 hover:bg-secondary
+}
+
+@utility bg-hover-secondary {
+  @apply bg-primary transition duration-300 hover:bg-secondary
+}
