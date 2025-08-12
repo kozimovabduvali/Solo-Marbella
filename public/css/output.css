@@ -300,6 +300,12 @@
   .h-max {
     height: max-content;
   }
+  .\!w-fit {
+    width: fit-content !important;
+  }
+  .\!w-max {
+    width: max-content !important;
+  }
   .w-20 {
     width: calc(var(--spacing) * 20);
   }
