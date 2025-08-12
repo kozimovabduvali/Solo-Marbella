@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solo Marbella</title>
   <link rel="stylesheet" href="./css/output.css">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
   <!-- Header -->
-  <header class="py-3">
+  <header class="pt-3">
     <nav class="container-base">
       <!-- Top -->
       <div class="flex items-center justify-between gap-6 mb-2.5">
@@ -121,29 +123,29 @@
       <!-- Bottom -->
       <div class="max-xl:hidden flex items-center justify-between gap-6">
         <div class="inline-flex items-center gap-x-8 2xl:gap-x-16.5">
-          <a class="text-xl leading-none text-hover-underline" href="#">
+          <a class="text-xl text-hover-underline" href="#">
             Продажа
           </a>
-          <a class="text-xl leading-none text-hover-underline" href="#">
+          <a class="text-xl text-hover-underline" href="#">
             Аренда
           </a>
-          <a class="text-xl leading-none text-hover-underline" href="#">
+          <a class="text-xl text-hover-underline" href="#">
             Только новые комплексы
           </a>
-          <a class="text-xl leading-none text-hover-underline" href="#">
+          <a class="text-xl text-hover-underline" href="#">
             Коммерческая
           </a>
-          <a class="text-xl leading-none text-hover-underline" href="#">
+          <a class="text-xl text-hover-underline" href="#">
             Пентхаус
           </a>
-          <a class="text-xl leading-none text-hover-underline" href="#">
+          <a class="text-xl text-hover-underline" href="#">
             Таунхаус
           </a>
-          <a class="text-xl leading-none text-hover-underline" href="#">
+          <a class="text-xl text-hover-underline" href="#">
             Участок
           </a>
         </div>
-        <a class="inline-flex items-center gap-x-2.5 text-xl leading-none text-hover-secondary" href="#">
+        <a class="inline-flex items-center gap-x-2.5 text-xl text-hover-secondary" href="#">
           Продать с Нами
           <svg width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -155,6 +157,63 @@
       </div>
     </nav>
   </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Hero -->
+    <section class="overflow-x-hidden pt-13.75 md:pt-20 xl:pt-37.5 mb-7.5 lg:mb-13.75">
+      <div class="container-base flex max-lg:flex-col items-center gap-3.75 lg:gap-7 mb-5.5 lg:mb-10">
+        <h1 class="min-lg:max-w-190 font-oswald text-solo-32 lg:text-5xl xl:text-solo-70">
+          Недвижимость премиум-класса на Коста-дель-Соль
+        </h1>
+
+        <div class="max-w-147.5 w-full">
+          <p class="text-solo-13/[110%] lg:text-lg mb-3.75 lg:mb-5">
+            Покупка, аренда, инвестиции и сопровождение — под ключ. Только проверенные объекты в лучших локациях
+            Коста-дель-Соль
+          </p>
+          <button
+            class="w-full lg:hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary max-lg:bg-hover-primary py-2 lg:py-4 px-7">
+            Подобрать объект
+          </button>
+        </div>
+      </div>
+      <!-- Slide Images -->
+      <div class="swiper swiper-main__hero">
+        <div class="swiper-wrapper">
+          <!-- 1 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-1.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-2.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-1.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-2.png" alt="Slide Img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- JS -->
+  <script src="./js/app.js"></script>
 </body>
 
 </html>
