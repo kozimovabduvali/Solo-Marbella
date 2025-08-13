@@ -586,6 +586,9 @@
   .gap-x-2\.5 {
     column-gap: calc(var(--spacing) * 2.5);
   }
+  .gap-x-7 {
+    column-gap: calc(var(--spacing) * 7);
+  }
   .gap-x-8 {
     column-gap: calc(var(--spacing) * 8);
   }
@@ -597,6 +600,12 @@
   }
   .gap-y-2\.5 {
     row-gap: calc(var(--spacing) * 2.5);
+  }
+  .gap-y-3 {
+    row-gap: calc(var(--spacing) * 3);
+  }
+  .gap-y-3\.75 {
+    row-gap: calc(var(--spacing) * 3.75);
   }
   .gap-y-7 {
     row-gap: calc(var(--spacing) * 7);
@@ -1033,9 +1042,33 @@
       width: 100%;
     }
   }
+  .max-md\:flex-col {
+    @media (width < 48rem) {
+      flex-direction: column;
+    }
+  }
   .max-md\:justify-between {
     @media (width < 48rem) {
       justify-content: space-between;
+    }
+  }
+  .max-md\:bg-hover-primary {
+    @media (width < 48rem) {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+      transition-duration: var(--tw-duration, var(--default-transition-duration));
+      --tw-duration: 300ms;
+      transition-duration: 300ms;
+      &:hover {
+        @media (hover: hover) {
+          background-color: color-mix(in srgb, #333130 75%, transparent);
+          @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, var(--color-primary) 75%, transparent);
+          }
+        }
+      }
     }
   }
   .max-md\:\!px-3 {
@@ -1058,6 +1091,25 @@
       flex-direction: column;
     }
   }
+  .max-sm\:bg-hover-primary {
+    @media (width < 40rem) {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+      transition-duration: var(--tw-duration, var(--default-transition-duration));
+      --tw-duration: 300ms;
+      transition-duration: 300ms;
+      &:hover {
+        @media (hover: hover) {
+          background-color: color-mix(in srgb, #333130 75%, transparent);
+          @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, var(--color-primary) 75%, transparent);
+          }
+        }
+      }
+    }
+  }
   .xs\:h-65 {
     @media (width >= 33.5rem) {
       height: calc(var(--spacing) * 65);
@@ -1068,9 +1120,33 @@
       height: calc(var(--spacing) * 50);
     }
   }
+  .sm\:w-fit {
+    @media (width >= 40rem) {
+      width: fit-content;
+    }
+  }
   .sm\:max-w-61\.5 {
     @media (width >= 40rem) {
       max-width: calc(var(--spacing) * 61.5);
+    }
+  }
+  .sm\:items-end {
+    @media (width >= 40rem) {
+      align-items: flex-end;
+    }
+  }
+  .sm\:hover-opacity-75 {
+    @media (width >= 40rem) {
+      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+      transition-duration: var(--tw-duration, var(--default-transition-duration));
+      --tw-duration: 300ms;
+      transition-duration: 300ms;
+      &:hover {
+        @media (hover: hover) {
+          opacity: 75%;
+        }
+      }
     }
   }
   .md\:mb-2\.5 {
@@ -1113,6 +1189,11 @@
       height: calc(var(--spacing) * 75);
     }
   }
+  .md\:w-fit {
+    @media (width >= 48rem) {
+      width: fit-content;
+    }
+  }
   .md\:max-w-83\.75 {
     @media (width >= 48rem) {
       max-width: calc(var(--spacing) * 83.75);
@@ -1126,6 +1207,11 @@
   .md\:grid-cols-4 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .md\:items-end {
+    @media (width >= 48rem) {
+      align-items: flex-end;
     }
   }
   .md\:gap-4 {
@@ -1214,6 +1300,20 @@
   .md\:text-solo-26 {
     @media (width >= 48rem) {
       font-size: var(--text-solo-26);
+    }
+  }
+  .md\:hover-opacity-75 {
+    @media (width >= 48rem) {
+      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+      transition-duration: var(--tw-duration, var(--default-transition-duration));
+      --tw-duration: 300ms;
+      transition-duration: 300ms;
+      &:hover {
+        @media (hover: hover) {
+          opacity: 75%;
+        }
+      }
     }
   }
   .lg\:col-span-1 {
@@ -1324,6 +1424,11 @@
   .lg\:h-170 {
     @media (width >= 64rem) {
       height: calc(var(--spacing) * 170);
+    }
+  }
+  .lg\:w-fit {
+    @media (width >= 64rem) {
+      width: fit-content;
     }
   }
   .lg\:max-w-57\.5 {
