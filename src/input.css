@@ -14,6 +14,7 @@
   --font-manrope: 'Manrope';
   /* Font Size */
   --text-solo-13: 0.8125rem;
+  --text-solo-22: 1.375rem;
   --text-solo-26: 1.625rem;
   --text-solo-28: 1.75rem;
   --text-solo-32: 2rem;
@@ -61,20 +62,44 @@
   @apply text-white bg-primary transition duration-300 hover:bg-primary/75
 }
 
+@utility border-hover-secondary {
+  @apply border border-transparent transition duration-300 hover:border-secondary
+}
+
 @utility hover-opacity-75 {
   @apply transition duration-300 hover:opacity-75
 }
 
+@utility hover-scale-105 {
+  @apply size-full object-cover transition duration-300 group-hover:scale-105
+} 
 
-
-.reviews-slider-section .swiper-pagination-bullet {
+.reviews-slider-section .swiper-pagination-bullet, 
+.current-slider .swiper-pagination-bullet 
+{
   @apply !w-3.75 !h-0.5 lg:!w-5 lg:!h-0.75 !rounded-none !bg-brand-gray-200
 }
 
-.reviews-slider-section .swiper-pagination-reviews .swiper-pagination-bullet-active {
+.reviews-slider-section .swiper-pagination-reviews .swiper-pagination-bullet-active,
+.current-slider .swiper-pagination-current .swiper-pagination-bullet-active
+ {
   @apply !bg-secondary
 }
 
-.reviews-slider-section .swiper-button-disabled {
+.reviews-slider-section .swiper-button-disabled,
+.current-slider .swiper-button-disabled {
   @apply !text-brand-gray-200 !cursor-default
+}
+
+
+.current-img-slider .swiper-pagination-bullet {
+  @apply !bg-white !w-3 !h-0.75 !opacity-100
+}
+
+.current-img-slider .swiper-pagination-bullet-active {
+  @apply !bg-primary
+}
+
+.no-scroll::-webkit-scrollbar {
+  @apply !size-0;
 }

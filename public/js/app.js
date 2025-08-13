@@ -48,3 +48,63 @@ let swiperReview = new Swiper(".reviews-slider", {
     el: ".swiper-pagination-reviews",
   },
 });
+
+
+// swiper current-slider
+let swiperCurrent = new Swiper(".current-slider-slider", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+      allowTouchMove: false,
+    },
+    640: {
+      slidesPerView: 1.4,
+      spaceBetween: 12,
+      allowTouchMove: false,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+      allowTouchMove: false,
+    },
+    1024: {
+      slidesPerView: 2.5,
+      spaceBetween: 26,
+      allowTouchMove: true,
+      grabCursor: true,
+    },
+    1280: {
+      slidesPerView: 3,
+      spaceBetween: 26,
+      allowTouchMove: true,
+      grabCursor: true,
+    }
+  },
+  navigation: {
+    nextEl: ".swiper-button-next-current",
+    prevEl: ".swiper-button-prev-current",
+  },
+  pagination: {
+    el: ".swiper-pagination-current",
+  },
+});
+
+
+
+
+// swiper current-slider
+let swiperCurrentImg = new Swiper(".current-img-slider", {
+  slidesPerView: 'auto',
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  spaceBetween: 20,
+  grabCursor: false,
+  pagination: {
+    el: ".swiper-pagination-current-image",
+  },
+});
