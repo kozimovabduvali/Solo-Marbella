@@ -98,10 +98,6 @@ let swiperCurrent = new Swiper(".current-slider-slider", {
 // swiper current-slider
 let swiperCurrentImg = new Swiper(".current-img-slider", {
   slidesPerView: 'auto',
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
   spaceBetween: 20,
   grabCursor: false,
   pagination: {
