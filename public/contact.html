@@ -115,7 +115,8 @@
 
             <!-- Menu -->
             <div class="max-md:w-20">
-              <button @click="openMenu = !openMenu; document.body.classList.toggle('overflow-hidden', openMenu)" class="text-hover-secondary max-md:block max-md:ml-auto">
+              <button @click="openMenu = !openMenu; document.body.classList.toggle('overflow-hidden', openMenu)"
+                class="text-hover-secondary max-md:block max-md:ml-auto">
                 <svg width="35" height="10" viewBox="0 0 35 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <line x1="35" y1="0.750004" x2="-6.55671e-08" y2="0.750001" stroke="currentColor"
                     stroke-width="1.5" />
@@ -166,7 +167,8 @@
       class="translate-x-full transition duration-300 ease-in-out fixed top-0 right-0 z-50 max-w-70 w-full xl:hidden bg-brand-gray-100 px-5 lg:px-7 pb-10 pt-5"
       :class="openMenu ? '!translate-x-0' : 'translate-x-full'">
       <!-- Close BTN -->
-      <button @click="openMenu = false; document.body.classList.remove('overflow-hidden')" class="w-fit block ml-auto mb-5">
+      <button @click="openMenu = false; document.body.classList.remove('overflow-hidden')"
+        class="w-fit block ml-auto mb-5">
         <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line y1="-0.75" x2="28.1425" y2="-0.75" transform="matrix(0.710669 -0.703526 0.710669 0.703526 2 22)"
             stroke="#333130" stroke-width="1.5" />
@@ -268,25 +270,15 @@
     </div>
   </header>
 
+
   <!-- Main -->
   <main>
     <!-- Hero -->
     <section class="overflow-x-hidden pt-13.75 md:pt-20 xl:pt-37.5 mb-7.5 lg:mb-13.75">
-      <div class="container-base flex max-lg:flex-col items-center gap-3.75 lg:gap-7 mb-5.5 lg:mb-10">
+      <div class="container-base mb-5.5 lg:mb-10">
         <h1 class="min-lg:max-w-190 font-oswald text-solo-32 lg:text-5xl xl:text-solo-70">
-          Недвижимость премиум-класса на Коста-дель-Соль
+          Контакты SOLO Marbella — эксперты Золотого треугольника
         </h1>
-
-        <div class="max-w-147.5 w-full">
-          <p class="text-solo-13/[110%] lg:text-lg mb-3.75 lg:mb-5">
-            Покупка, аренда, инвестиции и сопровождение — под ключ. Только проверенные объекты в лучших локациях
-            Коста-дель-Соль
-          </p>
-          <button
-            class="w-full lg:hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary max-lg:bg-hover-primary py-2 lg:py-4 px-7">
-            Подобрать объект
-          </button>
-        </div>
       </div>
       <!-- Slide Images -->
       <div class="swiper swiper-main__hero">
