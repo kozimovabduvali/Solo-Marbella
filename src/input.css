@@ -44,7 +44,7 @@
 }
 
 @utility container-base {
-  @apply max-w-454 mx-auto px-3 md:px-5 lg:px-7
+  @apply w-full max-w-454 mx-auto px-3 md:px-5 lg:px-7
 }
 
 @utility text-hover-primary {

@@ -17,6 +17,30 @@ let swiperMainHero = new Swiper(".swiper-main__hero", {
   },
 });
 
+let swiperAboutHero = new Swiper(".swiper-about__hero", {
+  spaceBetween: 20,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+    },
+    768: {
+      slidesPerView: 1.5,
+      spaceBetween: 20,
+      // slidesOffsetBefore: -((window.innerWidth / 1.5) / 2),
+    },
+    1024: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+      // slidesOffsetBefore: -((window.innerWidth / 1.5) / 2),
+    }
+  },
+});
+
 // swiper reviews-slider
 let swiperReview = new Swiper(".reviews-slider", {
   slidesPerView: 'auto',
