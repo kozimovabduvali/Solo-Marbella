@@ -77,6 +77,7 @@
 
 .reviews-slider-section .swiper-pagination-bullet, 
 .current-slider .swiper-pagination-bullet,
+.article-slider-section .swiper-pagination-bullet,
 .exclusive-slider-swiper .swiper-pagination-bullet
 {
   @apply !w-3.75 !h-0.5 lg:!w-5 lg:!h-0.75 !rounded-none !bg-brand-gray-200
@@ -86,13 +87,15 @@
 
 .reviews-slider-section .swiper-pagination-reviews .swiper-pagination-bullet-active,
 .current-slider .swiper-pagination-current .swiper-pagination-bullet-active,
+.article-slider-section .swiper-pagination-current .swiper-pagination-bullet-active,
 .exclusive-slider-swiper .swiper-pagination-bullet-active
  {
-  @apply !bg-secondary
+  @apply !bg-secondary !opacity-100
 }
 
 .reviews-slider-section .swiper-button-disabled,
 .current-slider .swiper-button-disabled,
+.article-slider-section .swiper-button-disabled,
 .exclusive-slider-swiper .swiper-button-disabled 
 {
   @apply !text-brand-gray-200 !cursor-default
@@ -115,6 +118,6 @@
 }
 
 
- .custom-map {
-      filter: grayscale(100%) brightness(95%);
-    }
+.custom-map {
+  filter: grayscale(100%) brightness(95%);
+}

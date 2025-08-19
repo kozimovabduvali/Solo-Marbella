@@ -17,6 +17,25 @@ let swiperMainHero = new Swiper(".swiper-main__hero", {
   },
 });
 
+let swiperArticleHero = new Swiper(".swiper-article__hero", {
+  spaceBetween: 20,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+    },
+    768: {
+      slidesPerView: 1.5,
+      spaceBetween: 20,
+      slidesOffsetBefore: -((window.innerWidth / 1.5) / 2),
+    }
+  },
+});
+
 let swiperAboutHero = new Swiper(".swiper-about__hero", {
   spaceBetween: 20,
   autoplay: {
@@ -70,6 +89,30 @@ let swiperReview = new Swiper(".reviews-slider", {
   },
   pagination: {
     el: ".swiper-pagination-reviews",
+  },
+});
+
+// swiper Article-slider
+let swiperArticle = new Swiper(".artice-slider", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  grabCursor: true,
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    }
+  },
+  navigation: {
+    nextEl: ".swiper-button-next-article",
+    prevEl: ".swiper-button-prev-article",
+  },
+  pagination: {
+    el: ".swiper-pagination-article",
   },
 });
 
