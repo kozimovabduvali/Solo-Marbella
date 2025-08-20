@@ -92,6 +92,37 @@ let swiperReview = new Swiper(".reviews-slider", {
   },
 });
 
+// swiper About-slider
+let swiperAbout = new Swiper(".about-slider", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+    },
+    768: {
+      slidesPerView: 2.6,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 3.3,
+      spaceBetween: 26,
+    },
+    1280: {
+      slidesPerView: 4,
+      spaceBetween: 26,
+    }
+  },
+  navigation: {
+    nextEl: ".swiper-button-next-about",
+    prevEl: ".swiper-button-prev-about",
+  },
+  pagination: {
+    el: ".swiper-pagination-about",
+  },
+});
+
 // swiper Article-slider
 let swiperArticle = new Swiper(".artice-slider", {
   slidesPerView: 'auto',
