@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solo Marbella</title>
+  <link rel="stylesheet" href="./css/output.css">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script defer src="https://api-maps.yandex.ru/2.1/?lang=en"></script>
+</head>
+
+<body>
+  <!-- Main -->
+  <main>
+    <!-- Hero -->
+    <section class="overflow-x-clip pt-13.75 md:pt-20 xl:pt-37.5 mb-7.5 lg:mb-13.75">
+      <div class="container-base mb-5.5 lg:mb-10">
+        <!-- Page List -->
+        <div class="flex items-center gap-2.5 mb-7.5 lg:mb-2.5">
+          <a class="text-xs md:text-sm text-hover-secondary" href="#">
+            Главная
+          </a>
+          <span class="shrink-0 block size-1 md:size-1.5 bg-primary rounded-full"></span>
+
+          <p class="text-xs md:text-sm text-secondary">
+            Новости
+          </p>
+        </div>
+        <div class="flex max-md:flex-col md:items-end gap-2.5 md:gap-10">
+          <h1 class="min-lg:max-w-240 font-oswald text-solo-32 lg:text-5xl xl:text-solo-70">
+            Блог SOLO Marbella — <br> гид по недвижимости
+          </h1>
+          <p class="max-w-105 text-sm md:text-base lg:text-lg leading-none">
+            Актуальные статьи, практические советы, аналитика и экспертные мнения
+          </p>
+        </div>
+      </div>
+      <!-- Slide Images -->
+      <div class="swiper swiper-article__hero">
+        <div class="swiper-wrapper">
+          <!-- 1 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-contact-slide-1.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-contact-slide-2.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-1.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-2.png" alt="Slide Img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-base pt-10 md:pt-15 lg:pt-19">
+        <!-- Taps & Slider -->
+        <div x-data="{ activeTab: 'discounts' }">
+          <!-- Top -->
+          <div class="flex max-lg:flex-col-reverse justify-between gap-5">
+            <div class="flex whitespace-nowrap overflow-x-auto no-scroll max-md:-mx-3 max-md:pl-3">
+              <!-- Скидки и спецпредложения -->
+              <button @click="activeTab = 'discounts'"
+                :class="activeTab === 'discounts' ? 'text-primary border-primary cursor-default' : 'hover-opacity-75 text-brand-gray-200 border-brand-gray-200'"
+                class="text-solo-22 border-b py-1 px-4 lg:py-3 md:px-7 lg:px-11 xxl:px-12.5">
+                Все новости
+              </button>
+
+              <!-- Новые объекты -->
+              <button @click="activeTab = 'new'"
+                :class="activeTab === 'new' ? 'text-primary border-primary cursor-default' : 'hover-opacity-75 text-brand-gray-200 border-brand-gray-200'"
+                class="text-solo-22 border-b py-1 px-4 lg:py-3 md:px-7 lg:px-11 xxl:px-12.5">
+                Покупка недвижимости
+              </button>
+
+              <!-- Аренда и управление -->
+              <button @click="activeTab = 'rental'"
+                :class="activeTab === 'rental' ? 'text-primary border-primary cursor-default' : 'hover-opacity-75 text-brand-gray-200 border-brand-gray-200'"
+                class="text-solo-22 border-b py-1 px-4 lg:py-3 md:px-7 lg:px-11 xxl:px-12.5">
+                Аренда и управление
+              </button>
+              
+              <!-- Инвестиции -->
+              <button @click="activeTab = 'investments'"
+                :class="activeTab === 'investments' ? 'text-primary border-primary cursor-default' : 'hover-opacity-75 text-brand-gray-200 border-brand-gray-200'"
+                class="text-solo-22 border-b py-1 px-4 lg:py-3 md:px-7 lg:px-11 xxl:px-12.5">
+                Инвестиции
+              </button>
+
+              <!-- Юридические аспекты -->
+              <button @click="activeTab = 'aspects'"
+                :class="activeTab === 'aspects' ? 'text-primary border-primary cursor-default' : 'hover-opacity-75 text-brand-gray-200 border-brand-gray-200'"
+                class="text-solo-22 border-b py-1 px-4 lg:py-3 md:px-7 lg:px-11 xxl:px-12.5">
+                Покупка недвижимости
+              </button>
+
+              <!-- Районы и локации -->
+              <button @click="activeTab = 'locations'"
+                :class="activeTab === 'locations' ? 'text-primary border-primary cursor-default' : 'hover-opacity-75 text-brand-gray-200 border-brand-gray-200'"
+                class="text-solo-22 border-b py-1 px-4 lg:py-3 md:px-7 lg:px-11 xxl:px-12.5">
+                Районы и локации
+              </button>
+            </div>
+          </div>
+
+          <!-- Tap Content -->
+          <div class="pt-5 md:pt-7.5 xl:pt-10">
+            <button class="bg-brand-gray-100 hover-opacity-75 max-lg:hidden flex items-center gap-2.5 px-5 py-2.5 mb-4 ml-auto">
+              <svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.1778 3.96454L11.3383 2.125V17H9.92163V2.125L8.10192 3.94471L7.10033 2.94313L9.62838 0.415083C10.1802 -0.136708 11.0798 -0.136708 11.6315 0.415083L14.1794 2.96296L13.1778 3.96454ZM4.25496 14.875V0H2.83829V14.875L1.00158 13.0383L0 14.0399L2.54504 16.5849C2.82129 16.8612 3.18396 16.9993 3.54663 16.9993C3.90929 16.9993 4.27196 16.8612 4.54821 16.5849L7.07979 14.054L6.07821 13.0525L4.25496 14.875Z"
+                  fill="#333130" />
+              </svg>
+              <span class="text-xl leading-none">
+                По дате
+              </span>
+            </button>
+            <!-- Скидки и спецпредложения -->
+            <div x-show="activeTab === 'discounts'">
+              <div x-data="showMore(8)">
+                <div class="grid grid-cols-4 gap-x-7.5 gap-y-15 mb-7.5 md:mb-16 lg:mb-25">
+                  <!-- Item 1 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 2 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 3 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 4 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 5 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 6 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 7 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 8 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 7 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                  <!-- Item 8 -->
+                  <a href="#" class="block group">
+                    <div class="relative overflow-hidden w-full h-75.25 mb-5">
+                      <div class="relative z-10 bg-brand-gray-100 w-full max-w-52.5 px-3.75 py-3">
+                        <p class="leading-none">
+                          Районы и локации
+                        </p>
+                      </div>
+                      <img
+                        class="absolute top-0 left-0 z-0 size-full object-cover transition duration-300 group-hover:scale-105"
+                        src="./assets/images/article-section-image-1.jpg" alt="Img">
+                    </div>
+                    <div>
+                      <span class="text-sm leading-none">
+                        29 декабря 2024
+                      </span>
+                      <h4 class="text-xl md:text-2xl xl:text-solo-32 mt-2.5 leading-[90%] lg:leading-none line-clamp-2">
+                        Плюсы и минусы недвижимости с видом на море на юге Испании
+                      </h4>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Show More -->
+                <button @click="toggle()" x-text="buttonText"
+                  class="w-full max-w-149.5 block mx-auto lg:hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary max-lg:bg-hover-primary py-2 lg:py-4 px-7">
+                </button>
+              </div>
+            </div>
+            <!-- Новые объекты -->
+            <div x-show="activeTab === 'new'">
+              Новые объекты
+            </div>
+            <!-- Аренда и управление -->
+            <div x-show="activeTab === 'rental'">
+              Аренда и управление
+            </div>
+            <!-- Инвестиции -->
+            <div x-show="activeTab === 'investments'">
+              Инвестиции
+            </div>
+            <!-- Юридические аспекты -->
+            <div x-show="activeTab === 'aspects'">
+              Юридические аспекты
+            </div>
+            <!-- Районы и локации --> 
+            <div x-show="activeTab === 'locations'">
+              Районы и локации
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- JS -->
+  <script src="./js/app.js"></script>
+  <script>
+    function showMore(step = 8) {
+      return {
+        step,
+        visible: step,
+        items: [],
+        buttonText: "Показать еще новости",
+
+        init() {
+          // faqat shu komponent ichidagi grid elementlarini olamiz
+          this.items = this.$el.querySelectorAll(".grid > a");
+          this.update();
+        },
+
+        update() {
+          this.items.forEach((el, i) => {
+            el.style.display = i < this.visible ? "block" : "none";
+          });
+
+          if (this.visible < this.items.length) {
+            this.buttonText = "Показать еще новости";
+          } else {
+            this.buttonText = "Скрыть новости";
+          }
+        },
+
+        toggle() {
+          if (this.visible < this.items.length) {
+            this.visible += this.step;
+          } else {
+            this.visible = this.step;
+          }
+          this.update();
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
