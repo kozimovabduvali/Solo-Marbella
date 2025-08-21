@@ -471,6 +471,9 @@
   .h-41\.25 {
     height: calc(var(--spacing) * 41.25);
   }
+  .h-45 {
+    height: calc(var(--spacing) * 45);
+  }
   .h-50 {
     height: calc(var(--spacing) * 50);
   }
@@ -491,6 +494,12 @@
   }
   .h-63\.75 {
     height: calc(var(--spacing) * 63.75);
+  }
+  .h-72 {
+    height: calc(var(--spacing) * 72);
+  }
+  .h-72\.5 {
+    height: calc(var(--spacing) * 72.5);
   }
   .h-75 {
     height: calc(var(--spacing) * 75);
@@ -669,6 +678,14 @@
   .\!translate-x-0 {
     --tw-translate-x: calc(var(--spacing) * 0) !important;
     translate: var(--tw-translate-x) var(--tw-translate-y) !important;
+  }
+  .-translate-x-7 {
+    --tw-translate-x: calc(var(--spacing) * -7);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-7 {
+    --tw-translate-x: calc(var(--spacing) * 7);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-x-full {
     --tw-translate-x: 100%;
@@ -1742,6 +1759,11 @@
       height: calc(var(--spacing) * 37);
     }
   }
+  .md\:h-54 {
+    @media (width >= 48rem) {
+      height: calc(var(--spacing) * 54);
+    }
+  }
   .md\:h-60 {
     @media (width >= 48rem) {
       height: calc(var(--spacing) * 60);
@@ -2111,6 +2133,11 @@
       margin-bottom: calc(var(--spacing) * 13.75);
     }
   }
+  .lg\:mb-15 {
+    @media (width >= 64rem) {
+      margin-bottom: calc(var(--spacing) * 15);
+    }
+  }
   .lg\:mb-16 {
     @media (width >= 64rem) {
       margin-bottom: calc(var(--spacing) * 16);
@@ -2144,6 +2171,11 @@
   .lg\:mb-28 {
     @media (width >= 64rem) {
       margin-bottom: calc(var(--spacing) * 28);
+    }
+  }
+  .lg\:mb-29 {
+    @media (width >= 64rem) {
+      margin-bottom: calc(var(--spacing) * 29);
     }
   }
   .lg\:mb-30 {
@@ -2194,6 +2226,11 @@
     @media (width >= 64rem) {
       width: calc(var(--spacing) * 12.5);
       height: calc(var(--spacing) * 12.5);
+    }
+  }
+  .lg\:h-72\.5 {
+    @media (width >= 64rem) {
+      height: calc(var(--spacing) * 72.5);
     }
   }
   .lg\:h-80 {
@@ -2304,6 +2341,11 @@
   .lg\:items-end {
     @media (width >= 64rem) {
       align-items: flex-end;
+    }
+  }
+  .lg\:gap-3 {
+    @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 3);
     }
   }
   .lg\:gap-7 {
