@@ -260,6 +260,35 @@ let swiperExclusiveImg = new Swiper(".exclusive-img-slider", {
 
 
 
+// Object Image slider
+let swiperObject = new Swiper(".object-image__slider-pagination", {
+  spaceBetween: 10,
+  slidesPerView: 'auto',
+  freeMode: true,
+  watchSlidesProgress: true,
+  breakpoints: {
+    320: {
+      spaceBetween: 15,
+    },
+    768: {
+      spaceBetween: 20,
+    },
+    1024: {
+      spaceBetween: 30,
+    }
+  },
+});
+let swiperObjectImagePagination = new Swiper(".object-image__slider", {
+  spaceBetween: 10,
+  navigation: {
+    nextEl: ".swiper-button-next-object",
+    prevEl: ".swiper-button-prev-object",
+  },
+  thumbs: {
+    swiper: swiperObject,
+  },
+});
+
 
 // Map initialization
 function initMap() {

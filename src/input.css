@@ -6,6 +6,7 @@
 @theme {
   --color-primary: #333130;
   --color-secondary: #5C5C5C;
+  --color-brand-gray-50: #D9D9D9;
   --color-brand-gray-100: #E0DFDB;
   --color-brand-gray-200: #B0B0B0;
   --color-solo-body: #ECEBE7;
@@ -75,6 +76,16 @@
   @apply size-full object-cover transition duration-300 group-hover:scale-105
 } 
 
+.swiper-button-next,
+.swiper-button-prev {
+  content: '';
+  @apply !hidden
+}
+
+
+.object-image__slider-pagination .swiper-slide {
+  @apply !cursor-pointer
+}
 .reviews-slider-section .swiper-pagination-bullet, 
 .current-slider .swiper-pagination-bullet,
 .article-slider-section .swiper-pagination-bullet,

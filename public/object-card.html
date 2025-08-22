@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solo Marbella</title>
+  <link rel="stylesheet" href="./css/output.css">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script defer src="https://api-maps.yandex.ru/2.1/?lang=en"></script>
+  <style>
+    .custom-map {
+      filter: grayscale(100%) brightness(95%);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header x-data="{ openMenu: false }" class="pt-3">
+    <nav class="container-base">
+      <!-- Top -->
+      <div class="flex items-center justify-between gap-6 mb-2.5">
+        <a class="max-md:hidden" href="#">
+          <img class="h-13 xl:h-16.5" src="./assets/svgs/logo.svg" alt="Logo">
+        </a>
+        <div class="max-md:w-full flex gap-x-15">
+          <!-- link -->
+          <div class="max-lg:hidden inline-flex items-center gap-3.75">
+            <!-- Telegram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                  fill="currentColor" />
+                <path
+                  d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                  fill="currentColor" />
+                <path
+                  d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- FC -->
+            <a class="text-hover-primary" href="#">
+              <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- You tube -->
+            <a class="text-hover-primary" href="#">
+              <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Tel -->
+          <a class="max-xl:hidden text-solo-28 text-hover-secondary" href="+34951777100">
+            +34 951 777 100
+          </a>
+
+          <div class="max-md:w-full flex items-center max-md:justify-between gap-9">
+            <div class="inline-flex items-center gap-6">
+              <!-- Love -->
+              <a class="text-hover-secondary" href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.5 0.916992C16.3739 0.934507 15.2724 1.24885 14.3067 1.82826C13.341 2.40768 12.5453 3.23166 12 4.21699C11.4546 3.23166 10.6589 2.40768 9.6932 1.82826C8.7275 1.24885 7.62601 0.934507 6.49996 0.916992C4.7049 0.994983 3.01366 1.78025 1.79574 3.10122C0.577818 4.4222 -0.0677923 6.17152 -4.17088e-05 7.96699C-4.17088e-05 14.742 10.956 22.567 11.422 22.899L12 23.308L12.578 22.899C13.044 22.569 24 14.742 24 7.96699C24.0677 6.17152 23.4221 4.4222 22.2042 3.10122C20.9863 1.78025 19.295 0.994983 17.5 0.916992ZM12 20.846C8.74696 18.416 1.99996 12.446 1.99996 7.96699C1.9316 6.70171 2.36632 5.46072 3.20932 4.51469C4.05232 3.56866 5.23519 2.99434 6.49996 2.91699C7.76473 2.99434 8.9476 3.56866 9.7906 4.51469C10.6336 5.46072 11.0683 6.70171 11 7.96699H13C12.9316 6.70171 13.3663 5.46072 14.2093 4.51469C15.0523 3.56866 16.2352 2.99434 17.5 2.91699C18.7647 2.99434 19.9476 3.56866 20.7906 4.51469C21.6336 5.46072 22.0683 6.70171 22 7.96699C22 12.448 15.253 18.416 12 20.846Z"
+                    fill="currentColor" />
+                </svg>
+              </a>
+
+              <!-- Lang -->
+              <div class="relative group">
+                <button class="text-hover-secondary inline-flex items-center gap-1.5">
+                  <span class="font-medium text-sm md:text-xl">
+                    RU
+                  </span>
+                  <svg class="transition duration-300 group-hover:rotate-180" width="8" height="5" viewBox="0 0 8 5"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4.5L7.89711 0H0.102886L4 4.5Z" fill="currentColor" />
+                  </svg>
+                </button>
+
+                <!-- DrobDown -->
+                <div class="absolute z-20 hidden group-hover:block bg-brand-gray-100 rounded w-20 p-2.5 space-y-1.5">
+                  <button class="w-full text-hover-primary block text-left">
+                    RU
+                  </button>
+                  <button class="w-full text-hover-primary block text-left">
+                    EN
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Logo Mobile -->
+            <a class="min-md:hidden" href="#">
+              <img src="./assets/svgs/logo-mobile.svg" alt="Logo Mobile">
+            </a>
+
+            <!-- Menu -->
+            <div class="max-md:w-20">
+              <button @click="openMenu = !openMenu; document.body.classList.toggle('overflow-hidden', openMenu)"
+                class="text-hover-secondary max-md:block max-md:ml-auto">
+                <svg width="35" height="10" viewBox="0 0 35 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="35" y1="0.750004" x2="-6.55671e-08" y2="0.750001" stroke="currentColor"
+                    stroke-width="1.5" />
+                  <line x1="35" y1="8.75001" x2="15" y2="8.75001" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom -->
+      <div class="max-xl:hidden flex items-center justify-between gap-6">
+        <div class="inline-flex items-center gap-x-8 2xl:gap-x-16.5">
+          <a class="text-xl text-hover-underline" href="#">
+            Продажа
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Аренда
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Коммерческая
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Пентхаус
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Таунхаус
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Участок
+          </a>
+        </div>
+        <a class="inline-flex items-center gap-x-2.5 text-xl text-hover-secondary" href="#">
+          Продать с Нами
+          <svg width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M23.3536 4.35355C23.5488 4.15829 23.5488 3.84171 23.3536 3.64645L20.1716 0.464466C19.9763 0.269204 19.6597 0.269204 19.4645 0.464466C19.2692 0.659728 19.2692 0.976311 19.4645 1.17157L22.2929 4L19.4645 6.82843C19.2692 7.02369 19.2692 7.34027 19.4645 7.53553C19.6597 7.7308 19.9763 7.7308 20.1716 7.53553L23.3536 4.35355ZM0 4V4.5H23V4V3.5H0V4Z"
+              fill="currentColor" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div
+      class="translate-x-full transition duration-300 ease-in-out fixed top-0 right-0 z-50 max-w-70 w-full xl:hidden bg-brand-gray-100 px-5 lg:px-7 pb-10 pt-5"
+      :class="openMenu ? '!translate-x-0' : 'translate-x-full'">
+      <!-- Close BTN -->
+      <button @click="openMenu = false; document.body.classList.remove('overflow-hidden')"
+        class="w-fit block ml-auto mb-5">
+        <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line y1="-0.75" x2="28.1425" y2="-0.75" transform="matrix(0.710669 -0.703526 0.710669 0.703526 2 22)"
+            stroke="#333130" stroke-width="1.5" />
+          <line y1="-0.75" x2="28.1425" y2="-0.75" transform="matrix(0.710669 0.703526 -0.710669 0.703526 2 2)"
+            stroke="#333130" stroke-width="1.5" />
+        </svg>
+      </button>
+      <div class="text-primary">
+        <div class="flex flex-col gap-y-2.5 pb-3.75 border-b border-brand-gray-200 mb-3.75">
+          <a class="text-lg text-hover-underline" href="#">
+            Продажа
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Аренда
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Коммерческая
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Пентхаус
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Таунхаус
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Участок
+          </a>
+        </div>
+        <div class="inline-flex flex-col gap-y-2.5 mb-9">
+          <a class="text-lg text-hover-underline" href="#">
+            Услуги
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            О компании
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Контакты
+          </a>
+        </div>
+
+        <div>
+          <a class="text-solo-28 text-hover-primary" href="+34951777100">
+            +34 951 777 100
+          </a>
+
+          <!-- link -->
+          <div class="inline-flex items-center gap-3.75 mt-2.5 mb-9">
+            <!-- Telegram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="31" height="31" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="31" height="31" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                  fill="currentColor" />
+                <path
+                  d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                  fill="currentColor" />
+                <path
+                  d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- FC -->
+            <a class="text-hover-primary" href="#">
+              <svg width="20" height="31" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- You tube -->
+            <a class="text-hover-primary" href="#">
+              <svg width="40" height="28" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+          <a href="#" class="bg-hover-primary block text-center leading-none w-full py-3 px-4">
+            Продать с Нами
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Hero -->
+    <section class="pt-13.75 md:pt-20 xl:pt-37.5 mb-7.5 lg:mb-13.75">
+      <div class="container-base">
+        <!-- Page List -->
+        <div class="flex items-center gap-2.5 mb-7.5 lg:mb-2.5">
+          <a class="text-xs md:text-sm text-hover-secondary" href="#">
+            Главная
+          </a>
+          <span class="shrink-0 block size-1 md:size-1.5 bg-primary rounded-full"></span>
+          <a class="text-xs md:text-sm text-hover-secondary" href="#">
+            Каталог
+          </a>
+          <span class="shrink-0 block size-1 md:size-1.5 bg-primary rounded-full"></span>
+
+          <p class="text-xs md:text-sm text-secondary">
+            Продажа квартиры в Марбелье (район: Золотая миля)
+          </p>
+        </div>
+        <div class="mb-7.5 lg:mb-10">
+          <h1 class="text-solo-32 lg:text-5xl xl:text-solo-70 leading-none">
+            Продажа квартиры в Марбелье (район: Золотая миля)
+          </h1>
+        </div>
+
+        <!-- Images & Accourdion & Cost -->
+        <div class="lg:grid lg:grid-cols-9 justify-between gap-6">
+          <!-- Left -->
+          <div class="lg:col-span-6 w-full">
+            <!-- Image slide -->
+            <div class="mb-7.5 md:mb-10 lg:mb-17.5">
+              <!-- Swiper -->
+              <div class="!relative swiper object-image__slider !mb-2.5 md:!mb-5 lg:!mb-10">
+                <div class="!relative !z-0 swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="h-75 sm:h-100 md:h-120 lg:h-147.5 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-1.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="h-75 sm:h-100 md:h-120 lg:h-147.5 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-2.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="h-75 sm:h-100 md:h-120 lg:h-147.5 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-3.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="h-75 sm:h-100 md:h-120 lg:h-147.5 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-4.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="h-75 sm:h-100 md:h-120 lg:h-147.5 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-3.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="h-75 sm:h-100 md:h-120 lg:h-147.5 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-4.jpg" />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  class="max-md:!hidden !absolute !z-10 top-1/2 -translate-y-1/2 translate-x-7.5 left-0 !bg-primary !size-12.5 !rounded-full flex items-center justify-center swiper-button-prev-object">
+                  <svg class="rotate-180" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.376 9L9.87598 1.5" stroke="#F5F5F3" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M17.376 9L0.62396 9" stroke="#F5F5F3" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M17.376 9L9.87598 16.5" stroke="#F5F5F3" stroke-width="1.2" stroke-linecap="round" />
+                  </svg>
+                </button>
+                <button
+                  class="max-md:!hidden !absolute !z-10 top-1/2 -translate-y-1/2 -translate-x-7.5 right-0 !bg-primary !size-12.5 !rounded-full flex items-center justify-center swiper-button-next-object">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.376 9L9.87598 1.5" stroke="#F5F5F3" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M17.376 9L0.62396 9" stroke="#F5F5F3" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M17.376 9L9.87598 16.5" stroke="#F5F5F3" stroke-width="1.2" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+              <div thumbsSlider="" class="swiper object-image__slider-pagination">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide !w-fit !shrink-0">
+                    <div class="max-md:size-12.5 h-27 lg:h-45 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-1.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide !w-fit !shrink-0">
+                    <div class="max-md:size-12.5 md:h-27 lg:h-45 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-2.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide !w-fit !shrink-0">
+                    <div class="max-md:size-12.5 h-27 lg:h-45 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-3.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide !w-fit !shrink-0">
+                    <div class="max-md:size-12.5 md:h-27 lg:h-45 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-2.jpg" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide !w-fit !shrink-0">
+                    <div class="max-md:size-12.5 h-27 lg:h-45 overflow-hidden">
+                      <img class="size-full object-cover" src="./assets/images/object-mebel-3.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accoudrion -->
+            <div x-data="{ active: 1 }" class="space-y-10 md:space-y-12.5 lg:space-y-15">
+              <!-- 1 -->
+              <div>
+                <div
+                  class="cursor-pointer flex items-center justify-between gap-5 border-b border-secondary pb-2.5 md:pb-5 lg:pb-7.5"
+                  @click="active = active === 1 ? null : 1">
+                  <h4 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                    Описание
+                  </h4>
+                  <svg :class="{'!rotate-180': active === 1}" class="transition-transform duration-300" width="22"
+                    height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 0.5L11 10.5L21 0.5" stroke="#333130" stroke-linecap="round" />
+                  </svg>
+                </div>
+
+                <!-- Accoudion Content -->
+                <div class="pt-6.25" class="pt-6.25" x-show="active === 1">
+                  <div class="size-15 lg:size-25 bg-brand-gray-50 rounded-full overflow-hidden mb-4 md:mb-7.5">
+                    <img class="size-full object-cover object-top" src="./assets/images/natalia-levinson.png" alt="Img">
+                  </div>
+
+                  <div class="space-y-2.5 md:space-y-5 lg:space-y-7.5 text-sm md:text-base lg:text-lg">
+                    <p>
+                      Эта великолепная недвижимость, расположенная между Марбельей, Рондой и Сотогранде, всего в 15
+                      минутах езды от Гошена, сочетает в себе андалузский шарм с невероятным потенциалом для инвестиций.
+                      Идеально подходит в качестве необходимого дома или для создания B&B, бутика-отеля или ресторана,
+                      цена непревзойдена!
+                    </p>
+                    <p>
+                      Главный этаж встречает вас просторным холлом, который ведет в огненную гостиную с баром, гостиную
+                      с камином и столовую с выходом на крытую террасу с захватывающим видом. К услугам гостей кабинет
+                      для гостей, большая, полностью оборудованная профессиональная кухня, помещение
+                      с телевизором/библиотекой и частный солярий вокруг бассейна.
+                    </p>
+                    <p>
+                      На верхнем этаже вы найдете 5 спален с сводчатыми потолками, четыре из которых с видом на реку,
+                      и выход на террасу-солярий, который непосредственно связан с бассейном.
+                    </p>
+                    <p>
+                      Кроме того, в нем есть отдельный люкс на первом этаже с отдельным входом и 3 дополнительные
+                      спальни с ванными комнатами, окруженными безмятежностью реки, загородной местностью и горой. Всего
+                      в 40 минутах езды от пляжа Коста-дель-Соль и в 2 минутах ходьбы от железнодорожного вокзала
+                      Альхесирас-Ронда, расположенного в 2 минутах ходьбы.
+                    </p>
+                    <p>
+                      Этот объект, лицензированный под названием «Casa Rural», предлагает бесконечные возможности отдыха
+                      на выходные, праздники или в качестве постоянного места жительства. Настоящее сокровище
+                      в Андалусии!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2 -->
+              <div>
+                <div
+                  class="cursor-pointer flex items-center justify-between gap-5 border-b border-secondary pb-2.5 md:pb-5 lg:pb-7.5"
+                  @click="active = active === 2 ? null : 2">
+                  <h4 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                    Участок и инфраструктура
+                  </h4>
+                  <svg :class="{'!rotate-180': active === 2}" class="transition-transform duration-300" width="22"
+                    height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 0.5L11 10.5L21 0.5" stroke="#333130" stroke-linecap="round" />
+                  </svg>
+                </div>
+
+                <!-- Accoudion Content -->
+                <div class="pt-6.25" class="pt-6.25" x-show="active === 2">
+                  <div class="size-15 lg:size-25 bg-brand-gray-50 rounded-full overflow-hidden mb-4 md:mb-7.5">
+                    <img class="size-full object-cover object-top" src="./assets/images/natalia-levinson.png" alt="Img">
+                  </div>
+
+                  <div class="space-y-2.5 md:space-y-5 lg:space-y-7.5 text-sm md:text-base lg:text-lg">
+                    <p>
+                      Главный этаж встречает вас просторным холлом, который ведет в огненную гостиную с баром, гостиную
+                      с камином и столовую с выходом на крытую террасу с захватывающим видом. К услугам гостей кабинет
+                      для гостей, большая, полностью оборудованная профессиональная кухня, помещение
+                      с телевизором/библиотекой и частный солярий вокруг бассейна.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3 -->
+              <div>
+                <div
+                  class="cursor-pointer flex items-center justify-between gap-5 border-b border-secondary pb-2.5 md:pb-5 lg:pb-7.5"
+                  @click="active = active === 3 ? null : 3">
+                  <h4 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                    Интерьер и удобства
+                  </h4>
+                  <svg :class="{'!rotate-180': active === 3}" class="transition-transform duration-300" width="22"
+                    height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 0.5L11 10.5L21 0.5" stroke="#333130" stroke-linecap="round" />
+                  </svg>
+                </div>
+
+                <!-- Accoudion Content -->
+                <div class="pt-6.25" class="pt-6.25" x-show="active === 3">
+                  <div class="size-15 lg:size-25 bg-brand-gray-50 rounded-full overflow-hidden mb-4 md:mb-7.5">
+                    <img class="size-full object-cover object-top" src="./assets/images/natalia-levinson.png" alt="Img">
+                  </div>
+
+                  <div class="space-y-2.5 md:space-y-5 lg:space-y-7.5 text-sm md:text-base lg:text-lg">
+                    <p>
+                      Главный этаж встречает вас просторным холлом, который ведет в огненную гостиную с баром, гостиную
+                      с камином и столовую с выходом на крытую террасу с захватывающим видом. К услугам гостей кабинет
+                      для гостей, большая, полностью оборудованная профессиональная кухня, помещение
+                      с телевизором/библиотекой и частный солярий вокруг бассейна.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4 -->
+              <div>
+                <div
+                  class="cursor-pointer flex items-center justify-between gap-5 border-b border-secondary pb-2.5 md:pb-5 lg:pb-7.5"
+                  @click="active = active === 4 ? null : 4">
+                  <h4 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                    Особенности объекта
+                  </h4>
+                  <svg :class="{'!rotate-180': active === 4}" class="transition-transform duration-300" width="22"
+                    height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 0.5L11 10.5L21 0.5" stroke="#333130" stroke-linecap="round" />
+                  </svg>
+                </div>
+
+                <!-- Accoudion Content -->
+                <div class="pt-6.25" class="pt-6.25" x-show="active === 4">
+                  <div class="size-15 lg:size-25 bg-brand-gray-50 rounded-full overflow-hidden mb-4 md:mb-7.5">
+                    <img class="size-full object-cover object-top" src="./assets/images/natalia-levinson.png" alt="Img">
+                  </div>
+
+                  <div class="space-y-2.5 md:space-y-5 lg:space-y-7.5 text-sm md:text-base lg:text-lg">
+                    <p>
+                      Главный этаж встречает вас просторным холлом, который ведет в огненную гостиную с баром, гостиную
+                      с камином и столовую с выходом на крытую террасу с захватывающим видом. К услугам гостей кабинет
+                      для гостей, большая, полностью оборудованная профессиональная кухня, помещение
+                      с телевизором/библиотекой и частный солярий вокруг бассейна.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="lg:col-span-3 w-full max-lg:pt-7.5">
+            <!-- Top -->
+            <div class="mb-8 lg:mb-10">
+              <div class="max-xxl:flex justify-between gap-5">
+                <div>
+                  <h3 class="text-[34px] md:text-[45px] leading-none mb-5 lg:mb-7.5">
+                    €4.100.000
+                  </h3>
+                  <div class="flex max-xxl:flex-col xxl:items-center gap-x-5 gap-y-2.5 md:mb-5 lg:mb-7.5">
+                    <!-- 1 -->
+                    <div class="flex items-center gap-1">
+                      <div class="size-9 flex items-center justify-center border border-secondary rounded-full">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_6106_1993)">
+                            <path
+                              d="M13 2.66667H4V1.66667C4 0.748 3.25267 0 2.33333 0H2C0.897333 0 0 0.897333 0 2V14.0513C0 15.1793 0.884667 16 2.09533 16H13C14.654 16 16 14.654 16 13V5.66667C16 4.01267 14.654 2.66667 13 2.66667ZM0.666667 2C0.666667 1.26467 1.26467 0.666667 2 0.666667H2.33333C2.88467 0.666667 3.33333 1.11533 3.33333 1.66667V11C3.33333 11.5513 2.88467 12 2.33333 12H2C1.50667 12 1.03133 12.1833 0.666667 12.5093V2ZM15.3333 13C15.3333 14.2887 14.2887 15.3333 13 15.3333H2C1.26333 15.3333 0.666667 14.7367 0.666667 14C0.666667 13.2633 1.26333 12.6667 2 12.6667H2.33333C3.254 12.6667 4 11.9207 4 11V3.33333H13C14.2887 3.33333 15.3333 4.378 15.3333 5.66667V13Z"
+                              fill="currentColor" />
+                            <path
+                              d="M14.0007 5.66699V13.0003C14.0007 13.5517 13.552 14.0003 13.0007 14.0003H6.33398C5.78265 14.0003 5.33398 13.5517 5.33398 13.0003V5.66699C5.33398 5.11566 5.78265 4.66699 6.33398 4.66699H7.00065C7.18465 4.66699 7.33398 4.81633 7.33398 5.00033C7.33398 5.18433 7.18465 5.33366 7.00065 5.33366H6.33398C6.15065 5.33366 6.00065 5.48299 6.00065 5.66699V7.33366H7.00065C7.18465 7.33366 7.33398 7.48299 7.33398 7.66699C7.33398 7.85099 7.18465 8.00033 7.00065 8.00033H6.00065V13.0003C6.00065 13.1843 6.15065 13.3337 6.33398 13.3337H9.33398V10.0003H8.33398C8.14998 10.0003 8.00065 9.85099 8.00065 9.66699C8.00065 9.48299 8.14998 9.33366 8.33398 9.33366H11.0007C11.1847 9.33366 11.334 9.48299 11.334 9.66699C11.334 9.85099 11.1847 10.0003 11.0007 10.0003H10.0007V13.3337H13.0007C13.184 13.3337 13.334 13.1843 13.334 13.0003V5.66699C13.334 5.48299 13.184 5.33366 13.0007 5.33366H10.334C10.1507 5.33366 10.0007 5.48299 10.0007 5.66699V7.00033C10.0007 7.18433 9.85132 7.33366 9.66732 7.33366C9.48332 7.33366 9.33398 7.18433 9.33398 7.00033V5.66699C9.33398 5.11566 9.78265 4.66699 10.334 4.66699H13.0007C13.552 4.66699 14.0007 5.11566 14.0007 5.66699Z"
+                              fill="currentColor" />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_6106_1993">
+                              <rect width="16" height="16" fill="currentColor" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <span class="text-sm leading-none">
+                        141 m²
+                      </span>
+                    </div>
+                    <!-- 2 -->
+                    <div class="flex items-center gap-1">
+                      <div class="size-9 flex items-center justify-center border border-secondary rounded-full">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M13 1.33301H3C1.346 1.33301 0 2.67901 0 4.33301V14.333C0 14.517 0.149333 14.6663 0.333333 14.6663C0.517333 14.6663 0.666667 14.517 0.666667 14.333V12.6663H15.3333V14.333C15.3333 14.517 15.4827 14.6663 15.6667 14.6663C15.8507 14.6663 16 14.517 16 14.333V4.33301C16 2.67901 14.654 1.33301 13 1.33301ZM3 1.99967H13C14.2867 1.99967 15.3333 3.04634 15.3333 4.33301V9.33301H14V8.33301C14 7.04634 12.9533 5.99967 11.6667 5.99967H10C9.152 5.99967 8.40867 6.45434 8 7.13234C7.59133 6.45434 6.848 5.99967 6 5.99967H4.33333C3.04667 5.99967 2 7.04634 2 8.33301V9.33301H0.666667V4.33301C0.666667 3.04634 1.71333 1.99967 3 1.99967ZM8.33333 9.33301V8.33301C8.33333 7.41434 9.08067 6.66634 10 6.66634H11.6667C12.586 6.66634 13.3333 7.41434 13.3333 8.33301V9.33301H8.33333ZM2.66667 9.33301V8.33301C2.66667 7.41434 3.41467 6.66634 4.33333 6.66634H6C6.91867 6.66634 7.66667 7.41434 7.66667 8.33301V9.33301H2.66667ZM0.666667 11.9997V9.99967H15.3333V11.9997H0.666667Z"
+                            fill="currentColor" />
+                        </svg>
+                      </div>
+                      <span class="text-sm leading-none">
+                        2 комнаты
+                      </span>
+                    </div>
+                    <!-- 3 -->
+                    <div class="flex items-center gap-1">
+                      <div class="size-9 flex items-center justify-center border border-secondary rounded-full">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_6106_2004)">
+                            <path
+                              d="M0.666667 7.99969V2.55502C0.666667 1.51369 1.514 0.666357 2.55533 0.666357C3.07667 0.666357 3.578 0.886357 3.93267 1.26302L3.32467 4.38702L4.234 5.62702L8.60933 2.34569L7.77067 1.10969L4.556 0.966357C4.07333 0.35969 3.33067 -0.000976562 2.554 -0.000976562C1.14667 -0.000309896 0 1.14636 0 2.55502V7.99969L0.301333 10.411C0.494 11.951 1.30267 13.2824 2.46067 14.171L1.96067 15.9997H2.64733L3.04333 14.5637C3.87933 15.0537 4.84933 15.333 5.87667 15.333H10.128C11.1527 15.333 12.1213 15.055 12.956 14.567L13.3507 15.9997H14.0373L13.5387 14.175C14.6993 13.2864 15.5107 11.953 15.7033 10.411L16.0047 7.99969H0.666667ZM4.54 1.63302L7.40867 1.76102L7.70133 2.19302L4.374 4.68902L4.03467 4.22769L4.54 1.63236V1.63302ZM15.0433 10.3277C14.734 12.801 12.6213 14.6664 10.1293 14.6664H5.878C3.386 14.6664 1.27333 12.801 0.964 10.3277L0.756 8.66636H15.2507L15.0427 10.3277H15.0433Z"
+                              fill="currentColor" />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_6106_2004">
+                              <rect width="16" height="16" fill="currentColor" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <span class="text-sm leading-none">
+                        2 ванны
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex max-xxl:flex-col xxl:items-center gap-1.5 xxl:gap-7.5">
+                  <!-- Like -->
+                  <button
+                    class="max-xxl:size-10 bg-brand-gray-100 text-primary flex items-center justify-center gap-2.5 px-3.5 xxl:px-6.5 py-3 hover-opacity-75">
+                    <svg class="shrink-0" width="25" height="23" viewBox="0 0 25 23" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M18 0.304504C16.8739 0.322019 15.7724 0.636358 14.8067 1.21578C13.841 1.79519 13.0453 2.61917 12.5 3.6045C11.9546 2.61917 11.1589 1.79519 10.1932 1.21578C9.2275 0.636358 8.12601 0.322019 6.99996 0.304504C5.2049 0.382495 3.51366 1.16776 2.29574 2.48874C1.07782 3.80971 0.432208 5.55903 0.499958 7.3545C0.499958 14.1295 11.456 21.9545 11.922 22.2865L12.5 22.6955L13.078 22.2865C13.544 21.9565 24.5 14.1295 24.5 7.3545C24.5677 5.55903 23.9221 3.80971 22.7042 2.48874C21.4863 1.16776 19.795 0.382495 18 0.304504ZM12.5 20.2335C9.24696 17.8035 2.49996 11.8335 2.49996 7.3545C2.4316 6.08922 2.86632 4.84823 3.70932 3.9022C4.55232 2.95617 5.73519 2.38185 6.99996 2.3045C8.26473 2.38185 9.4476 2.95617 10.2906 3.9022C11.1336 4.84823 11.5683 6.08922 11.5 7.3545H13.5C13.4316 6.08922 13.8663 4.84823 14.7093 3.9022C15.5523 2.95617 16.7352 2.38185 18 2.3045C19.2647 2.38185 20.4476 2.95617 21.2906 3.9022C22.1336 4.84823 22.5683 6.08922 22.5 7.3545C22.5 11.8355 15.753 17.8035 12.5 20.2335Z"
+                        fill="#333130" />
+                    </svg>
+                    <span class="text-xl leading-none max-xxl:hidden">
+                      Добавить в избранное
+                    </span>
+                  </button>
+
+                  <!-- share -->
+                  <div class="relative group">
+                    <button
+                      class="max-xxl:size-10 bg-brand-gray-100 text-primary flex items-center justify-center gap-2.5 xxl:px-11 px-3.5 py-3 hover-opacity-75">
+                      <svg class="shrink-0" width="21" height="21" viewBox="0 0 21 21" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_560_13506)">
+                          <path
+                            d="M14.87 3.83335C14.6369 3.60033 14.34 3.44165 14.0167 3.37737C13.6935 3.31309 13.3584 3.3461 13.0539 3.47222C12.7494 3.59833 12.4891 3.8119 12.306 4.08591C12.1229 4.35993 12.0251 4.6821 12.025 5.01168V6.33335H8C6.01155 6.33555 4.10518 7.12644 2.69914 8.53248C1.29309 9.93853 0.502206 11.8449 0.5 13.8333L0.5 19.6667C0.5 19.8877 0.587797 20.0997 0.744078 20.2559C0.900358 20.4122 1.11232 20.5 1.33333 20.5C1.55435 20.5 1.76631 20.4122 1.92259 20.2559C2.07887 20.0997 2.16667 19.8877 2.16667 19.6667C2.16799 18.341 2.6952 17.07 3.6326 16.1326C4.56999 15.1952 5.84099 14.668 7.16667 14.6667H12.025V15.9883C12.0251 16.3179 12.1229 16.6401 12.306 16.9141C12.4891 17.1881 12.7494 17.4017 13.0539 17.5278C13.3584 17.6539 13.6935 17.6869 14.0167 17.6227C14.34 17.5584 14.6369 17.3997 14.87 17.1667L19.7692 12.2675C20.2378 11.7987 20.5011 11.1629 20.5011 10.5C20.5011 9.8371 20.2378 9.20133 19.7692 8.73251L14.87 3.83335Z"
+                            fill="#5C5C5C" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_560_13506">
+                            <rect width="20" height="20" fill="white" transform="translate(0.5 0.5)" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      <span class="text-xl leading-none max-xxl:hidden">
+                        Поделиться
+                      </span>
+                    </button>
+
+                    <div class="absolute z-10 right-0 bg-white w-75 hidden group-hover:block">
+                      <div class="size-full relative space-y-2.5  px-5.5 py-7.5">
+                        <div class="absolute top-0 -translate-y-full -translate-x-2 right-0 text-white">
+                          <svg width="26" height="20" viewBox="0 0 26 20" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="13,0 26,20 0,20" fill="currentColor" />
+                          </svg>
+                        </div>
+                        <!-- Скопировать ссылку -->
+                        <button
+                          class="hover-opacity-75 flex items-center gap-2.5 border-b border-brand-gray-100 pb-1.5">
+                          <div class="flex items-center justify-center size-7.5 bg-primary rounded-full">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M7.33333 10.6667H3.33333C1.49333 10.6667 0 9.17333 0 7.33333V3.33333C0 1.49333 1.49333 0 3.33333 0H7.33333C9.17333 0 10.6667 1.49333 10.6667 3.33333V7.33333C10.6667 9.17333 9.17333 10.6667 7.33333 10.6667ZM12.6667 16H8.66667C6.82667 16 5.33333 14.5067 5.33333 12.6667C5.33333 12.3 5.63333 12 6 12H7.33333C9.90667 12 12 9.90667 12 7.33333V6C12 5.63333 12.3 5.33333 12.6667 5.33333C14.5067 5.33333 16 6.82667 16 8.66667V12.6667C16 14.5067 14.5067 16 12.6667 16Z"
+                                fill="#F5F5F3" />
+                            </svg>
+                          </div>
+                          <span class="lg:text-xl leading-none">
+                            Скопировать ссылку
+                          </span>
+                        </button>
+                        <!-- WhatsApp -->
+                        <a href="#"
+                          class="hover-opacity-75 flex items-center gap-2.5 border-b border-brand-gray-100 pb-1.5">
+                          <div class="flex items-center justify-center size-7.5 bg-primary rounded-full">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M13.9451 3.04687C12.4634 1.57031 10.4878 0.75 8.40244 0.75C4.06707 0.75 0.554877 4.25 0.554877 8.57031C0.554877 9.9375 0.939024 11.3047 1.59756 12.4531L0.5 16.5L4.67073 15.4062C5.82317 16.0078 7.08536 16.3359 8.40244 16.3359C12.7378 16.3359 16.25 12.8359 16.25 8.51563C16.1951 6.49219 15.4268 4.52344 13.9451 3.04687ZM12.189 11.3594C12.0244 11.7969 11.2561 12.2344 10.872 12.2891C10.5427 12.3437 10.1037 12.3438 9.66463 12.2344C9.39024 12.125 9.0061 12.0156 8.56707 11.7969C6.59146 10.9766 5.32927 9.00781 5.21951 8.84375C5.10976 8.73437 4.39634 7.80469 4.39634 6.82031C4.39634 5.83594 4.89024 5.39844 5.05488 5.17969C5.21951 4.96094 5.43902 4.96094 5.60366 4.96094C5.71341 4.96094 5.87805 4.96094 5.9878 4.96094C6.09756 4.96094 6.26219 4.90625 6.42683 5.28906C6.59146 5.67187 6.97561 6.65625 7.03049 6.71094C7.08536 6.82031 7.08536 6.92969 7.03049 7.03906C6.97561 7.14844 6.92073 7.25781 6.81097 7.36719C6.70122 7.47656 6.59146 7.64062 6.53658 7.69531C6.42683 7.80469 6.31707 7.91406 6.42683 8.07812C6.53659 8.29687 6.92073 8.89844 7.52439 9.44531C8.29268 10.1016 8.89634 10.3203 9.11585 10.4297C9.33537 10.5391 9.44512 10.4844 9.55488 10.375C9.66463 10.2656 10.0488 9.82812 10.1585 9.60938C10.2683 9.39062 10.4329 9.44531 10.5976 9.5C10.7622 9.55469 11.75 10.0469 11.9146 10.1562C12.1341 10.2656 12.2439 10.3203 12.2988 10.375C12.3537 10.5391 12.3537 10.9219 12.189 11.3594Z"
+                                fill="#F5F5F3" />
+                            </svg>
+                          </div>
+                          <span class="lg:text-xl leading-none">
+                            WhatsApp
+                          </span>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="#"
+                          class="hover-opacity-75 flex items-center gap-2.5 border-b border-brand-gray-100 pb-1.5">
+                          <div class="flex items-center justify-center size-7.5 bg-primary rounded-full">
+                            <svg width="10" height="18" viewBox="0 0 10 18" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M6.24281 9.27361H9.03444L9.47275 6.42041H6.24224V4.86101C6.24224 3.67574 6.62718 2.62471 7.72918 2.62471H9.5V0.134806C9.18887 0.0925362 8.53085 0 7.28747 0C4.69114 0 3.169 1.37947 3.169 4.52228V6.42041H0.5V9.27361H3.169V17.1158C3.69758 17.1957 4.23297 17.25 4.78255 17.25C5.27933 17.25 5.76419 17.2043 6.24281 17.1392V9.27361Z"
+                                fill="#F5F5F3" />
+                            </svg>
+                          </div>
+                          <span class="lg:text-xl leading-none">
+                            Facebook
+                          </span>
+                        </a>
+                        <!-- Telegram -->
+                        <a href="#"
+                          class="hover-opacity-75 flex items-center gap-2.5 border-b border-brand-gray-100 pb-1.5">
+                          <div class="flex items-center justify-center size-7.5 bg-primary rounded-full">
+                            <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M15 0.451669L12.7459 12.2192C12.7459 12.2192 12.4306 13.0351 11.5642 12.6438L6.36343 8.51443L6.33931 8.50226C7.04182 7.84905 12.4893 2.777 12.7274 2.54709C13.0959 2.19102 12.8671 1.97905 12.4392 2.24802L4.39259 7.53973L1.28823 6.45807C1.28823 6.45807 0.799693 6.27812 0.752695 5.88683C0.705078 5.4949 1.30431 5.28292 1.30431 5.28292L13.9599 0.141711C13.9599 0.141711 15 -0.331553 15 0.451669Z"
+                                fill="#F5F5F3" />
+                            </svg>
+                          </div>
+                          <span class="lg:text-xl leading-none">
+                            Telegram
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- center -->
+            <div class="space-y-2.5 lg:space-y-5 mb-15">
+              <!-- 1 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  SV2159
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Артикул
+                </span>
+              </div>
+              <!-- 2 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  Квартира
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Тип
+                </span>
+              </div>
+              <!-- 3 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  район: Золотая миля
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Локация
+                </span>
+              </div>
+              <!-- 4 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  136 м²
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Площадь
+                </span>
+              </div>
+              <!-- 5 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  0 м²
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Площадь участка
+                </span>
+              </div>
+              <!-- 6 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  3
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Спальни
+                </span>
+              </div>
+              <!-- 7 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  3
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Ванные
+                </span>
+              </div>
+              <!-- 8 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  Нет
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Мебель
+                </span>
+              </div>
+              <!-- 9 -->
+              <div class="flex items-end justify-between gap-5 border-b border-brand-gray-200 pb-1 md:pb-2.5">
+                <h3 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                  Отличное
+                </h3>
+                <span class="text-sm lg:text-lg">
+                  Состояние
+                </span>
+              </div>
+            </div>
+            <!-- Bottom -->
+            <div class="bg-brand-gray-100 space-y-7.5 md:space-y-10 lg:space-y-15 max-md:px-3.75 md:p-5 lg:p-7.5">
+              <div>
+                <ul class="text-primary text-xs md:text-base lg:text-lg list-disc list-inside mb-2.5">
+                  <li>
+                    Агент
+                  </li>
+                </ul>
+                <h3 class="text-xl md:text-2xl xl:text-6xl leading-none mb-5">
+                  Ваш персональный агент
+                </h3>
+                <p class="text-sm lg:text-lg mt-2.5 lg:mt-5">
+                  Консультации по всем вопросам покупки, аренды, инвестиций, юридического сопровождения и осмотра
+                  объектов.
+                  <span class="lg:mt-5 block">
+                    Работаем напрямую — без посредников
+                  </span>
+                </p>
+              </div>
+
+              <div class="flex max-2xl:flex-col gap-10">
+                <div class="bg-white shrink-0 max-w-67.5 max-2xl:mx-auto w-full 2xl:w-37.5 h-63 2xl:h-55 overflow-hidden">
+                  <img src="./assets/images/natalia-levinson.png" alt="Img" class="size-full object-cover object-top">
+                </div>
+
+                <div class="space-y-2.5 lg:space-y-5">
+                  <h4 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                    Natalia Levinson
+                  </h4>
+                  <p class="text-sm md:text-base lg:text-lg leading-none">
+                    Исполнительный директор SOLO Marbella
+                  </p>
+                  <p class="text-sm md:text-base lg:text-lg leading-none xxl:pr-10">
+                    Консультант по недвижимости на южном побережье Коста-дель-Соль
+                  </p>
+                  <h4 class="text-xl md:text-solo-26 lg:text-4xl leading-none">
+                    natalia@sologroup.net
+                  </h4>
+                </div>
+              </div>
+              <div class="space-y-2.5 lg:space-y-5">
+                <a href="#"
+                  class="bg-hover-primary block w-full font-semibold text-sm md:text-lg lg:text-2xl text-center py-3.5 px-7">
+                  Написать WhatsApp
+                </a>
+                <a href="#"
+                  class="bg-hover-primary block w-full font-semibold text-sm md:text-lg lg:text-2xl text-center py-3.5 px-7">
+                  Позвонить
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section class=" mb-12.5 md:mb-20 lg:mb-25">
+      <div class="container-base">
+        <div class="grid lg:grid-cols-5 gap-2.5 md:gap-5 lg:gap-7.5 lg:mb-22.5">
+          <!-- Left -->
+          <div class="lg:col-span-2 text-primary lg:pr-7 lg:py-12.5">
+            <div class="mb-5 lg:mb-9.5">
+              <ul class="text-primary text-xs md:text-base lg:text-lg list-disc list-inside mb-2.5">
+                <li>
+                  Свяжитесь с нами
+                </li>
+              </ul>
+              <h2 class="text-solo-28 md:text-4xl xl:text-6xl">
+                Контакты
+              </h2>
+            </div>
+
+            <p class="font-semibold text-primary text-lg lg:text-solo-26 leading-none mb-2.5 md:mb-5 lg:mb-9.5">
+              Solo Marbella
+            </p>
+
+            <div class="space-y-2.5 md:space-y-5 lg:space-y-7 xxl:space-y-12.5">
+              <div
+                class="flex max-sm:flex-col justify-between gap-x-5 gap-y-2.5 border-t border-brand-gray-200 pt-2.5 lg:pt-5 pb-5">
+                <p class="text-lg leading-none">
+                  Телефон
+                </p>
+
+                <h4 class="text-xl xl:text-4xl leading-none sm:text-right">
+                  +34 951 777 100
+                </h4>
+              </div>
+
+              <div
+                class="flex max-sm:flex-col justify-between gap-x-5 gap-y-2.5 border-t border-brand-gray-200 pt-2.5 lg:pt-5 pb-5">
+                <p class="text-lg leading-none shrink-0">
+                  Наш офис
+                </p>
+
+                <h4 class="max-w-135 text-xl xl:text-4xl leading-none sm:text-right">
+                  Pol. Ind. Nueva Campana, Nave, 80⁠ Nueva Andalucia 29660 Marbella Málaga, Spain
+                </h4>
+              </div>
+
+              <div
+                class="flex max-sm:flex-col justify-between gap-x-5 gap-y-2.5 border-t border-brand-gray-200 pt-2.5 lg:pt-5 pb-5">
+                <p class="text-lg leading-none">
+                  Почта
+                </p>
+
+                <h4 class="text-xl xl:text-4xl leading-none sm:text-right">
+                  re@sologroup.net
+                </h4>
+              </div>
+
+              <div
+                class="flex max-sm:flex-col justify-between gap-x-5 gap-y-2.5 border-t border-brand-gray-200 pt-2.5 lg:pt-5 pb-5">
+                <p class="text-lg leading-none">
+                  Мессенджеры
+                </p>
+
+                <!-- link -->
+                <div class="inline-flex items-center gap-3.75">
+                  <!-- Telegram -->
+                  <a class="text-hover-secondary" href="#">
+                    <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                        fill="currentColor" />
+                    </svg>
+                  </a>
+                  <!-- Instagram -->
+                  <a class="text-hover-secondary" href="#">
+                    <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                        fill="currentColor" />
+                      <path
+                        d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                        fill="currentColor" />
+                      <path
+                        d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                        fill="currentColor" />
+                    </svg>
+                  </a>
+                  <!-- FC -->
+                  <a class="text-hover-secondary" href="#">
+                    <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                        fill="currentColor" />
+                    </svg>
+                  </a>
+                  <!-- You tube -->
+                  <a class="text-hover-secondary" href="#">
+                    <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                        fill="currentColor" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right -->
+          <div
+            class="lg:col-span-3 bg-brand-gray-100 space-y-2.5 md:space-y-5 lg:space-y-10 px-2.5 md:px-5 pb-12 pt-9 lg:p-12.5 max-md:-mx-2.5 max-lg:-mx-5">
+            <div>
+              <ul class="text-primary text-xs md:text-base lg:text-lg list-disc list-inside mb-2.5">
+                <li>
+                  Консультация
+                </li>
+              </ul>
+              <h2 class="text-solo-28 md:text-4xl xl:text-6xl mb-2.5 md:mb-5 lg:mb-10">
+                Остались вопросы?
+              </h2>
+              <p class="max-w-151 text-lg leading-none">
+                Оставьте заявку — наш специалист свяжется с вами в течение минуты и ответит на все вопросы
+                о покупке,
+                аренде или инвестициях
+              </p>
+            </div>
+            <form action="#" class="space-y-2.5 lg:space-y-5">
+              <input type="text" placeholder="Имя"
+                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7">
+
+              <input type="number" placeholder="Телефон"
+                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7">
+
+              <textarea placeholder="Сообщение"
+                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7 resize-none h-20 md:h-37"></textarea>
+
+              <button
+                class="w-full lg:w-fit lg:hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary max-lg:bg-hover-primary py-2 lg:py-4 px-7 lg:px-20 xxl:px-35 lg:mt-5">
+                Получить консультацию
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div x-data x-init="initMap()"
+          class="max-md:-mx-2.5 max-lg:-mx-5 overflow-hidden h-100 md:h-145 xl:h-172.5 relative">
+          <div id="map" class="custom-map w-full h-full rounded-lg shadow-lg"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-brand-gray-100 pt-10 md:pt-14 lg:pt-17.5 pb-3.75 md:pb-7">
+    <div class="container-base">
+      <div class="flex flex-col-reverse md:flex-row justify-between gap-10 lg:gap-15 !text-secondary">
+        <div class="max-w-90 xl:max-w-138.5 w-full flex justify-between gap-5">
+          <!-- Меню -->
+          <div>
+            <h4 class="text-xl xl:text-4xl !text-secondary">
+              Меню
+            </h4>
+
+            <div class="flex flex-col gap-1 md:gap-2.5 mt-3.75 lg:mt-7.5">
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Услуги
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                О нас
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Блог
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Контакты
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Избранное
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Продажа
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Аренда
+              </a>
+            </div>
+          </div>
+
+          <!-- Тип недвижимости -->
+          <div>
+            <h4 class="text-xl xl:text-4xl !text-secondary">
+              Тип недвижимости
+            </h4>
+
+            <div class="flex flex-col gap-1 md:gap-2.5 mt-3.75 lg:mt-7.5">
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Вилла
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Апартаменты
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Пентхаус
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Таунхаус
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Коммерческая
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Новостройки
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Участок
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="max-w-70 xl:max-w-118 flex flex-col md:items-end spacey-2.5 md:space-y-5">
+          <h4 class="text-xl xl:text-4xl md:text-right !text-secondary">
+            Pol. Ind. Nueva Campana, Nave, 80⁠ Nueva Andalucia 29660 Marbella Málaga, Spain
+          </h4>
+          <h4 class="text-xl xl:text-4xl md:text-right !text-secondary">
+            +34 951 777 100
+          </h4>
+          <h4 class="text-xl xl:text-4xl md:text-right !text-secondary">
+            re@sologroup.net
+          </h4>
+          <!-- link -->
+          <div class="inline-flex items-center gap-3.75 max-md:mt-5">
+            <!-- Telegram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                  fill="currentColor" />
+                <path
+                  d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                  fill="currentColor" />
+                <path
+                  d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- FC -->
+            <a class="text-hover-primary" href="#">
+              <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- You tube -->
+            <a class="text-hover-primary" href="#">
+              <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5 md:mb-10 mt-11 md:mt-17 lg:mt-25 lg:text-center">
+        <h2
+          class="text-4xl md:text-7xl lg:text-[100px] leading-normal uppercase font-bold tracking-[20px] md:tracking-[35px] lg:tracking-[50px]">
+          Solo Marbella
+        </h2>
+      </div>
+
+      <div
+        class="text-sm flex flex-col md:flex-row md:items-center justify-between gap-2.5 md:gap-5 lg:gap-10 text-secondary">
+        <a href="#" class="text-hover-primary">
+          © Solo Marbella
+        </a>
+        <a href="#" class="text-hover-primary">
+          Политика конфиденциальности
+        </a>
+        <a href="#" class="text-hover-primary">
+          Обработка данных
+        </a>
+      </div>
+    </div>
+  </footer>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- JS -->
+  <script>
+    function initMap() {
+      ymaps.ready(function () {
+        let map = new ymaps.Map("map", {
+          center: [36.5133, -4.8858],
+          zoom: 14,
+          controls: []
+        });
+
+        let customSVG = `
+          <svg width="45" height="50" viewBox="0 0 52 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.252 0.463867C40.2662 0.463867 51.627 11.9556 51.627 26.1309C51.6269 46.0516 29.8604 57.3793 26.6465 58.9434C26.3877 59.0693 26.1162 59.0693 25.8574 58.9434C22.6427 57.3789 0.876959 46.0511 0.876953 26.1309C0.876953 11.9556 12.2378 0.463948 26.252 0.463867ZM26.252 15.1309C20.2459 15.1309 15.377 20.0558 15.377 26.1309C15.377 32.2059 20.2459 37.1308 26.252 37.1309C32.258 37.1309 37.1269 32.206 37.127 26.1309C37.127 20.0557 32.258 15.1309 26.252 15.1309Z" fill="#333130"/>
+          </svg>
+        `;
+
+        // Custom layout
+        let MyIconLayout = ymaps.templateLayoutFactory.createClass(customSVG);
+
+        let placemark = new ymaps.Placemark(
+          [36.5133, -4.8858], // Marker joyi
+          { hintContent: 'Solo Marbella - Real Estates' },
+          { iconLayout: MyIconLayout, iconShape: { type: 'Circle', coordinates: [26, 30], radius: 30 } }
+        );
+
+        map.geoObjects.add(placemark);
+      });
+    }
+  </script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
