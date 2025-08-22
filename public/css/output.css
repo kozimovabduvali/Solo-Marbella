@@ -550,6 +550,9 @@
   .max-w-125 {
     max-width: calc(var(--spacing) * 125);
   }
+  .max-w-125\.25 {
+    max-width: calc(var(--spacing) * 125.25);
+  }
   .max-w-131 {
     max-width: calc(var(--spacing) * 131);
   }
@@ -600,6 +603,12 @@
   }
   .max-w-175 {
     max-width: calc(var(--spacing) * 175);
+  }
+  .max-w-180 {
+    max-width: calc(var(--spacing) * 180);
+  }
+  .max-w-185 {
+    max-width: calc(var(--spacing) * 185);
   }
   .max-w-190 {
     max-width: calc(var(--spacing) * 190);
@@ -2200,6 +2209,16 @@
       aspect-ratio: 342/454;
     }
   }
+  .lg\:aspect-\[415\/366\] {
+    @media (width >= 64rem) {
+      aspect-ratio: 415/366;
+    }
+  }
+  .lg\:aspect-\[415\/590\] {
+    @media (width >= 64rem) {
+      aspect-ratio: 415/590;
+    }
+  }
   .lg\:aspect-\[463\/730\] {
     @media (width >= 64rem) {
       aspect-ratio: 463/730;
@@ -2282,6 +2301,11 @@
       max-width: calc(var(--spacing) * 57.5);
     }
   }
+  .lg\:max-w-125\.25 {
+    @media (width >= 64rem) {
+      max-width: calc(var(--spacing) * 125.25);
+    }
+  }
   .lg\:max-w-208\.75 {
     @media (width >= 64rem) {
       max-width: calc(var(--spacing) * 208.75);
@@ -2330,6 +2354,11 @@
   .lg\:grid-rows-8 {
     @media (width >= 64rem) {
       grid-template-rows: repeat(8, minmax(0, 1fr));
+    }
+  }
+  .lg\:items-center {
+    @media (width >= 64rem) {
+      align-items: center;
     }
   }
   .lg\:items-end {
@@ -2768,6 +2797,16 @@
       column-gap: calc(var(--spacing) * 7);
     }
   }
+  .xl\:gap-x-12 {
+    @media (width >= 80rem) {
+      column-gap: calc(var(--spacing) * 12);
+    }
+  }
+  .xl\:gap-x-20 {
+    @media (width >= 80rem) {
+      column-gap: calc(var(--spacing) * 20);
+    }
+  }
   .xl\:gap-x-30 {
     @media (width >= 80rem) {
       column-gap: calc(var(--spacing) * 30);
@@ -2883,6 +2922,11 @@
   .xxl\:gap-x-16 {
     @media (width >= 90rem) {
       column-gap: calc(var(--spacing) * 16);
+    }
+  }
+  .xxl\:gap-x-20 {
+    @media (width >= 90rem) {
+      column-gap: calc(var(--spacing) * 20);
     }
   }
   .xxl\:p-7\.5 {
