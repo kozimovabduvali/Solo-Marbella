@@ -3361,6 +3361,11 @@
       align-items: center;
     }
   }
+  .xxl\:items-end {
+    @media (width >= 90rem) {
+      align-items: flex-end;
+    }
+  }
   .xxl\:gap-7\.5 {
     @media (width >= 90rem) {
       gap: calc(var(--spacing) * 7.5);
