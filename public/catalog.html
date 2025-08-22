@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solo Marbella</title>
+  <link rel="stylesheet" href="./css/output.css">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script defer src="https://api-maps.yandex.ru/2.1/?lang=en"></script>
+  <style>
+    .custom-map {
+      filter: grayscale(100%) brightness(95%);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header x-data="{ openMenu: false }" class="pt-3">
+    <nav class="container-base">
+      <!-- Top -->
+      <div class="flex items-center justify-between gap-6 mb-2.5">
+        <a class="max-md:hidden" href="#">
+          <img class="h-13 xl:h-16.5" src="./assets/svgs/logo.svg" alt="Logo">
+        </a>
+        <div class="max-md:w-full flex gap-x-15">
+          <!-- link -->
+          <div class="max-lg:hidden inline-flex items-center gap-3.75">
+            <!-- Telegram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                  fill="currentColor" />
+                <path
+                  d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                  fill="currentColor" />
+                <path
+                  d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- FC -->
+            <a class="text-hover-primary" href="#">
+              <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- You tube -->
+            <a class="text-hover-primary" href="#">
+              <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Tel -->
+          <a class="max-xl:hidden text-solo-28 text-hover-secondary" href="+34951777100">
+            +34 951 777 100
+          </a>
+
+          <div class="max-md:w-full flex items-center max-md:justify-between gap-9">
+            <div class="inline-flex items-center gap-6">
+              <!-- Love -->
+              <a class="text-hover-secondary" href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.5 0.916992C16.3739 0.934507 15.2724 1.24885 14.3067 1.82826C13.341 2.40768 12.5453 3.23166 12 4.21699C11.4546 3.23166 10.6589 2.40768 9.6932 1.82826C8.7275 1.24885 7.62601 0.934507 6.49996 0.916992C4.7049 0.994983 3.01366 1.78025 1.79574 3.10122C0.577818 4.4222 -0.0677923 6.17152 -4.17088e-05 7.96699C-4.17088e-05 14.742 10.956 22.567 11.422 22.899L12 23.308L12.578 22.899C13.044 22.569 24 14.742 24 7.96699C24.0677 6.17152 23.4221 4.4222 22.2042 3.10122C20.9863 1.78025 19.295 0.994983 17.5 0.916992ZM12 20.846C8.74696 18.416 1.99996 12.446 1.99996 7.96699C1.9316 6.70171 2.36632 5.46072 3.20932 4.51469C4.05232 3.56866 5.23519 2.99434 6.49996 2.91699C7.76473 2.99434 8.9476 3.56866 9.7906 4.51469C10.6336 5.46072 11.0683 6.70171 11 7.96699H13C12.9316 6.70171 13.3663 5.46072 14.2093 4.51469C15.0523 3.56866 16.2352 2.99434 17.5 2.91699C18.7647 2.99434 19.9476 3.56866 20.7906 4.51469C21.6336 5.46072 22.0683 6.70171 22 7.96699C22 12.448 15.253 18.416 12 20.846Z"
+                    fill="currentColor" />
+                </svg>
+              </a>
+
+              <!-- Lang -->
+              <div class="relative group">
+                <button class="text-hover-secondary inline-flex items-center gap-1.5">
+                  <span class="font-medium text-sm md:text-xl">
+                    RU
+                  </span>
+                  <svg class="transition duration-300 group-hover:rotate-180" width="8" height="5" viewBox="0 0 8 5"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4.5L7.89711 0H0.102886L4 4.5Z" fill="currentColor" />
+                  </svg>
+                </button>
+
+                <!-- DrobDown -->
+                <div class="absolute z-20 hidden group-hover:block bg-brand-gray-100 rounded w-20 p-2.5 space-y-1.5">
+                  <button class="w-full text-hover-primary block text-left">
+                    RU
+                  </button>
+                  <button class="w-full text-hover-primary block text-left">
+                    EN
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Logo Mobile -->
+            <a class="min-md:hidden" href="#">
+              <img src="./assets/svgs/logo-mobile.svg" alt="Logo Mobile">
+            </a>
+
+            <!-- Menu -->
+            <div class="max-md:w-20">
+              <button @click="openMenu = !openMenu; document.body.classList.toggle('overflow-hidden', openMenu)"
+                class="text-hover-secondary max-md:block max-md:ml-auto">
+                <svg width="35" height="10" viewBox="0 0 35 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="35" y1="0.750004" x2="-6.55671e-08" y2="0.750001" stroke="currentColor"
+                    stroke-width="1.5" />
+                  <line x1="35" y1="8.75001" x2="15" y2="8.75001" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom -->
+      <div class="max-xl:hidden flex items-center justify-between gap-6">
+        <div class="inline-flex items-center gap-x-8 2xl:gap-x-16.5">
+          <a class="text-xl text-hover-underline" href="#">
+            Продажа
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Аренда
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Коммерческая
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Пентхаус
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Таунхаус
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Участок
+          </a>
+        </div>
+        <a class="inline-flex items-center gap-x-2.5 text-xl text-hover-secondary" href="#">
+          Продать с Нами
+          <svg width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M23.3536 4.35355C23.5488 4.15829 23.5488 3.84171 23.3536 3.64645L20.1716 0.464466C19.9763 0.269204 19.6597 0.269204 19.4645 0.464466C19.2692 0.659728 19.2692 0.976311 19.4645 1.17157L22.2929 4L19.4645 6.82843C19.2692 7.02369 19.2692 7.34027 19.4645 7.53553C19.6597 7.7308 19.9763 7.7308 20.1716 7.53553L23.3536 4.35355ZM0 4V4.5H23V4V3.5H0V4Z"
+              fill="currentColor" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div
+      class="translate-x-full transition duration-300 ease-in-out fixed top-0 right-0 z-50 max-w-70 w-full xl:hidden bg-brand-gray-100 px-5 lg:px-7 pb-10 pt-5"
+      :class="openMenu ? '!translate-x-0' : 'translate-x-full'">
+      <!-- Close BTN -->
+      <button @click="openMenu = false; document.body.classList.remove('overflow-hidden')"
+        class="w-fit block ml-auto mb-5">
+        <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line y1="-0.75" x2="28.1425" y2="-0.75" transform="matrix(0.710669 -0.703526 0.710669 0.703526 2 22)"
+            stroke="#333130" stroke-width="1.5" />
+          <line y1="-0.75" x2="28.1425" y2="-0.75" transform="matrix(0.710669 0.703526 -0.710669 0.703526 2 2)"
+            stroke="#333130" stroke-width="1.5" />
+        </svg>
+      </button>
+      <div class="text-primary">
+        <div class="flex flex-col gap-y-2.5 pb-3.75 border-b border-brand-gray-200 mb-3.75">
+          <a class="text-lg text-hover-underline" href="#">
+            Продажа
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Аренда
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Коммерческая
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Пентхаус
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Таунхаус
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Участок
+          </a>
+        </div>
+        <div class="inline-flex flex-col gap-y-2.5 mb-9">
+          <a class="text-lg text-hover-underline" href="#">
+            Услуги
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            О компании
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Контакты
+          </a>
+        </div>
+
+        <div>
+          <a class="text-solo-28 text-hover-primary" href="+34951777100">
+            +34 951 777 100
+          </a>
+
+          <!-- link -->
+          <div class="inline-flex items-center gap-3.75 mt-2.5 mb-9">
+            <!-- Telegram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="31" height="31" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="31" height="31" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                  fill="currentColor" />
+                <path
+                  d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                  fill="currentColor" />
+                <path
+                  d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- FC -->
+            <a class="text-hover-primary" href="#">
+              <svg width="20" height="31" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- You tube -->
+            <a class="text-hover-primary" href="#">
+              <svg width="40" height="28" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+          <a href="#" class="bg-hover-primary block text-center leading-none w-full py-3 px-4">
+            Продать с Нами
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Hero -->
+    <section class="overflow-x-hidden pt-13.75 md:pt-20 xl:pt-37.5 mb-7.5 lg:mb-13.75">
+      <div class="container-base flex max-lg:flex-col items-center gap-3.75 lg:gap-7 mb-5.5 lg:mb-10">
+        <h1 class="min-lg:max-w-190 font-oswald text-solo-32 lg:text-5xl xl:text-solo-70">
+          Недвижимость премиум-класса на Коста-дель-Соль
+        </h1>
+
+        <div class="max-w-147.5 w-full">
+          <p class="text-solo-13/[110%] lg:text-lg mb-3.75 lg:mb-5">
+            Покупка, аренда, инвестиции и сопровождение — под ключ. Только проверенные объекты в лучших локациях
+            Коста-дель-Соль
+          </p>
+          <button
+            class="w-full lg:hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary max-lg:bg-hover-primary py-2 lg:py-4 px-7">
+            Подобрать объект
+          </button>
+        </div>
+      </div>
+      <!-- Slide Images -->
+      <div class="swiper swiper-main__hero">
+        <div class="swiper-wrapper">
+          <!-- 1 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-1.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-2.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-1.png" alt="Slide Img">
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="swiper-slide">
+            <div class="overflow-hidden h-37 md:h-64 lg:h-96 xl:h-120">
+              <img class="size-full object-cover" src="./assets/images/hero-slide-2.png" alt="Slide Img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real Impressions -->
+    <section class="reviews-slider-section mb-12.5 lg:mb-17.5">
+      <div class="container-base">
+        <!-- Filter -->
+        <div class="flex max-sm:flex-col flex-wrap justify-between gap-5 xl:gap-x-7 mb-12.5 md:mb-16 xl:mb-22.5">
+          <!-- Продажа -->
+          <div class="relative group max-sm:w-full">
+            <button
+              class="max-sm:w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
+              <span class="text-lg xl:text-solo-26">
+                Продажа
+              </span>
+              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <!-- Тип недвижимости -->
+          <div class="relative group max-sm:w-full">
+            <button
+              class="max-sm:w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
+              <span class="text-lg xl:text-solo-26">
+                Тип недвижимости
+              </span>
+              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <!-- Город -->
+          <div class="relative group w-full lg:max-w-57.5 flex-1">
+            <button
+              class="w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
+              <span class="text-lg xl:text-solo-26">
+                Город
+              </span>
+              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <!-- Район -->
+          <div class="relative group w-full lg:max-w-57.5 flex-1">
+            <button
+              class="w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
+              <span class="text-lg xl:text-solo-26">
+                Район
+              </span>
+              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <!-- Цена -->
+          <div class="relative group w-full lg:max-w-57.5 flex-1">
+            <button
+              class="w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
+              <span class="text-lg xl:text-solo-26">
+                Цена
+              </span>
+              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <!-- Показать -->
+          <button class="bg-hover-primary w-full sm:max-w-61.5 h-max font-semibold text-lg xl:text-solo-26 py-2 px-7">
+            Показать
+          </button>
+        </div>
+        <div>
+          <!-- Taps & Slider -->
+          <div x-data="{ activeTab: 'discounts' }">
+            <!-- Top -->
+            <div class="flex justify-between gap-5">
+              <div class="flex gap-2.5">
+                <!-- Grid -->
+                <button @click="activeTab = 'discounts'"
+                  :class="activeTab === 'discounts' ? 'text-primary cursor-default bg-white' : 'hover-opacity-75 text-brand-gray-200 bg-transparent'"
+                  class="size-7.5 lg:size-12.5 flex items-center justify-center">
+                  <svg class="size-4.5 lg:size-6.5" viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="1.5" width="12" height="12" fill="currentColor" />
+                    <rect x="13.5" y="1.5" width="12" height="12" fill="currentColor" />
+                    <rect x="0.5" y="14.5" width="12" height="12" fill="currentColor" />
+                    <rect x="13.5" y="14.5" width="12" height="12" fill="currentColor" />
+                  </svg>
+                </button>
+
+                <!-- List -->
+                <button @click="activeTab = 'new'"
+                  :class="activeTab === 'new' ? 'text-primary cursor-default bg-white' : 'hover-opacity-75 text-brand-gray-200 bg-transparent'"
+                  class="size-7.5 lg:size-12.5 flex items-center justify-center">
+                  <svg class="size-4.5 lg:size-6.5" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.696777" y="0.5" width="6.9" height="6.9" fill="currentColor" />
+                    <rect x="0.696777" y="8.55005" width="6.9" height="6.9" fill="currentColor" />
+                    <rect x="0.696777" y="16.6" width="6.9" height="6.9" fill="currentColor" />
+                    <rect x="8.60303" y="2.80005" width="20.7" height="2.3" fill="currentColor" />
+                    <rect x="8.60303" y="10.85" width="20.7" height="2.3" fill="currentColor" />
+                    <rect x="8.60303" y="18.9" width="20.7" height="2.3" fill="currentColor" />
+                  </svg>
+
+                </button>
+              </div>
+
+              <div class="flex items-center gap-7 lg:gap-10">
+                <button
+                  class="bg-brand-gray-100 hover-opacity-75 max-lg:h-9.5 flex items-center gap-2.5 px-5 py-2.5 lg:py-4 mb-4">
+                  <span class="text-xl leading-none max-xl:hidden">
+                    Сначала дороже
+                  </span>
+                  <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.1792 6L6.1792 1L1.1792 6" stroke="#333130" stroke-linecap="round" />
+                  </svg>
+
+                </button>
+                <button
+                  class="bg-brand-gray-100 hover-opacity-75 max-lg:h-9.5 flex items-center gap-2.5 px-5 py-2.5 lg:py-4 mb-4">
+                  <svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M13.1778 3.96454L11.3383 2.125V17H9.92163V2.125L8.10192 3.94471L7.10033 2.94313L9.62838 0.415083C10.1802 -0.136708 11.0798 -0.136708 11.6315 0.415083L14.1794 2.96296L13.1778 3.96454ZM4.25496 14.875V0H2.83829V14.875L1.00158 13.0383L0 14.0399L2.54504 16.5849C2.82129 16.8612 3.18396 16.9993 3.54663 16.9993C3.90929 16.9993 4.27196 16.8612 4.54821 16.5849L7.07979 14.054L6.07821 13.0525L4.25496 14.875Z"
+                      fill="#333130" />
+                  </svg>
+                  <span class="text-xl leading-none max-xl:hidden">
+                    Сначала дороже
+                  </span>
+                  <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.1792 6L6.1792 1L1.1792 6" stroke="#333130" stroke-linecap="round" />
+                  </svg>
+
+                </button>
+              </div>
+            </div>
+
+            <!-- Tap Content -->
+            <div class="current-slider pt-5 md:pt-7.5 xl:pt-10 mb-7.5 lg:mb-10">
+              <!-- Скидки и спецпредложения -->
+              <div x-show="activeTab === 'discounts'">
+                <!-- Slider -->
+                <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
+                  <!-- 1 -->
+                  <div>
+                    <!-- Desktop -->
+                    <div class="max-lg:hidden relative group overflow-hidden">
+                      <div class="absolute top-0 left-0 z-0 size-full">
+                        <img class="hover-scale-105" src="./assets/images/current-main-1.jpg" alt="Img">
+                      </div>
+                      <!-- Tittle & Desc -->
+                      <div
+                        class="relative bg-gradient-to-t to-primary/0 from-primary/80 to-90% from-10% z-10 w-full p-2.5 md:py-5 lg:p-7.5">
+                        <div class="flex justify-end gap-2.5 mb-68.75">
+                          <button
+                            class="border-hover-secondary shrink-0 size-11.25 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                            <svg width="19" height="17" viewBox="0 0 19 17" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M0.253906 5.34277C0.205068 4.04584 0.671093 2.78237 1.55078 1.82812C2.42907 0.875516 3.64817 0.308119 4.94238 0.25C5.75067 0.263901 6.54109 0.490298 7.23438 0.90625C7.92984 1.32353 8.50276 1.91735 8.89551 2.62695L9.11426 3.02148L9.33301 2.62695C9.72571 1.91743 10.2988 1.32352 10.9941 0.90625C11.687 0.490513 12.4773 0.264142 13.2852 0.25C14.5799 0.307769 15.7991 0.875168 16.6777 1.82812C17.5576 2.78239 18.0244 4.04574 17.9756 5.34277V5.35254C17.9756 6.5736 17.4803 7.86313 16.707 9.12793C15.9352 10.3902 14.8981 11.6084 13.8438 12.6807C11.7363 14.824 9.5833 16.362 9.40918 16.4854L9.11426 16.6934L8.81934 16.4854C8.63836 16.3564 6.48873 14.8193 4.38477 12.6797C3.33058 11.6076 2.29423 10.39 1.52246 9.12793C0.749006 7.86312 0.253906 6.57373 0.253906 5.35254V5.34277Z"
+                                stroke="#333130" stroke-width="0.5" />
+                            </svg>
+                          </button>
+                          <button
+                            class="border-hover-secondary shrink-0 size-11.25 bg-primary text-white rounded-full overflow-hidden flex items-center justify-center">
+                            5%
+                          </button>
+                        </div>
+
+                        <div class="space-y-5">
+                          <div class="flex items-center justify-between gap-5">
+                            <h5 class="text-3xl leading-none text-white">
+                              €10.165.000
+                              <span class="opacity-70 text-xl line-through">
+                                €10.700.000
+                              </span>
+                            </h5>
+                            <button
+                              class="border-hover-secondary shrink-0 size-11.25 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                              <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.5842 6L7.58423 11" stroke="#333130" stroke-linecap="round" />
+                                <path d="M12.5881 6L1.41166 6" stroke="#333130" stroke-linecap="round" />
+                                <path d="M12.5842 6L7.58423 1" stroke="#333130" stroke-linecap="round" />
+                              </svg>
+                            </button>
+                          </div>
+                          <h4 class="text-white text-xl lg:text-2xl leading-none">
+                            Квартира в ЭстепонеКвартира в ЭстепонеКвартира в Эстепоне
+                          </h4>
+                          <div class="flex items-center gap-5 text-white">
+                            <!-- 1 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_6106_1993)">
+                                    <path
+                                      d="M13 2.66667H4V1.66667C4 0.748 3.25267 0 2.33333 0H2C0.897333 0 0 0.897333 0 2V14.0513C0 15.1793 0.884667 16 2.09533 16H13C14.654 16 16 14.654 16 13V5.66667C16 4.01267 14.654 2.66667 13 2.66667ZM0.666667 2C0.666667 1.26467 1.26467 0.666667 2 0.666667H2.33333C2.88467 0.666667 3.33333 1.11533 3.33333 1.66667V11C3.33333 11.5513 2.88467 12 2.33333 12H2C1.50667 12 1.03133 12.1833 0.666667 12.5093V2ZM15.3333 13C15.3333 14.2887 14.2887 15.3333 13 15.3333H2C1.26333 15.3333 0.666667 14.7367 0.666667 14C0.666667 13.2633 1.26333 12.6667 2 12.6667H2.33333C3.254 12.6667 4 11.9207 4 11V3.33333H13C14.2887 3.33333 15.3333 4.378 15.3333 5.66667V13Z"
+                                      fill="currentColor" />
+                                    <path
+                                      d="M14.0007 5.66699V13.0003C14.0007 13.5517 13.552 14.0003 13.0007 14.0003H6.33398C5.78265 14.0003 5.33398 13.5517 5.33398 13.0003V5.66699C5.33398 5.11566 5.78265 4.66699 6.33398 4.66699H7.00065C7.18465 4.66699 7.33398 4.81633 7.33398 5.00033C7.33398 5.18433 7.18465 5.33366 7.00065 5.33366H6.33398C6.15065 5.33366 6.00065 5.48299 6.00065 5.66699V7.33366H7.00065C7.18465 7.33366 7.33398 7.48299 7.33398 7.66699C7.33398 7.85099 7.18465 8.00033 7.00065 8.00033H6.00065V13.0003C6.00065 13.1843 6.15065 13.3337 6.33398 13.3337H9.33398V10.0003H8.33398C8.14998 10.0003 8.00065 9.85099 8.00065 9.66699C8.00065 9.48299 8.14998 9.33366 8.33398 9.33366H11.0007C11.1847 9.33366 11.334 9.48299 11.334 9.66699C11.334 9.85099 11.1847 10.0003 11.0007 10.0003H10.0007V13.3337H13.0007C13.184 13.3337 13.334 13.1843 13.334 13.0003V5.66699C13.334 5.48299 13.184 5.33366 13.0007 5.33366H10.334C10.1507 5.33366 10.0007 5.48299 10.0007 5.66699V7.00033C10.0007 7.18433 9.85132 7.33366 9.66732 7.33366C9.48332 7.33366 9.33398 7.18433 9.33398 7.00033V5.66699C9.33398 5.11566 9.78265 4.66699 10.334 4.66699H13.0007C13.552 4.66699 14.0007 5.11566 14.0007 5.66699Z"
+                                      fill="currentColor" />
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_6106_1993">
+                                      <rect width="16" height="16" fill="currentColor" />
+                                    </clipPath>
+                                  </defs>
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                141 m²
+                              </span>
+                            </div>
+                            <!-- 2 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M13 1.33301H3C1.346 1.33301 0 2.67901 0 4.33301V14.333C0 14.517 0.149333 14.6663 0.333333 14.6663C0.517333 14.6663 0.666667 14.517 0.666667 14.333V12.6663H15.3333V14.333C15.3333 14.517 15.4827 14.6663 15.6667 14.6663C15.8507 14.6663 16 14.517 16 14.333V4.33301C16 2.67901 14.654 1.33301 13 1.33301ZM3 1.99967H13C14.2867 1.99967 15.3333 3.04634 15.3333 4.33301V9.33301H14V8.33301C14 7.04634 12.9533 5.99967 11.6667 5.99967H10C9.152 5.99967 8.40867 6.45434 8 7.13234C7.59133 6.45434 6.848 5.99967 6 5.99967H4.33333C3.04667 5.99967 2 7.04634 2 8.33301V9.33301H0.666667V4.33301C0.666667 3.04634 1.71333 1.99967 3 1.99967ZM8.33333 9.33301V8.33301C8.33333 7.41434 9.08067 6.66634 10 6.66634H11.6667C12.586 6.66634 13.3333 7.41434 13.3333 8.33301V9.33301H8.33333ZM2.66667 9.33301V8.33301C2.66667 7.41434 3.41467 6.66634 4.33333 6.66634H6C6.91867 6.66634 7.66667 7.41434 7.66667 8.33301V9.33301H2.66667ZM0.666667 11.9997V9.99967H15.3333V11.9997H0.666667Z"
+                                    fill="currentColor" />
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                2 комнаты
+                              </span>
+                            </div>
+                            <!-- 3 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_6106_2004)">
+                                    <path
+                                      d="M0.666667 7.99969V2.55502C0.666667 1.51369 1.514 0.666357 2.55533 0.666357C3.07667 0.666357 3.578 0.886357 3.93267 1.26302L3.32467 4.38702L4.234 5.62702L8.60933 2.34569L7.77067 1.10969L4.556 0.966357C4.07333 0.35969 3.33067 -0.000976562 2.554 -0.000976562C1.14667 -0.000309896 0 1.14636 0 2.55502V7.99969L0.301333 10.411C0.494 11.951 1.30267 13.2824 2.46067 14.171L1.96067 15.9997H2.64733L3.04333 14.5637C3.87933 15.0537 4.84933 15.333 5.87667 15.333H10.128C11.1527 15.333 12.1213 15.055 12.956 14.567L13.3507 15.9997H14.0373L13.5387 14.175C14.6993 13.2864 15.5107 11.953 15.7033 10.411L16.0047 7.99969H0.666667ZM4.54 1.63302L7.40867 1.76102L7.70133 2.19302L4.374 4.68902L4.03467 4.22769L4.54 1.63236V1.63302ZM15.0433 10.3277C14.734 12.801 12.6213 14.6664 10.1293 14.6664H5.878C3.386 14.6664 1.27333 12.801 0.964 10.3277L0.756 8.66636H15.2507L15.0427 10.3277H15.0433Z"
+                                      fill="currentColor" />
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_6106_2004">
+                                      <rect width="16" height="16" fill="currentColor" />
+                                    </clipPath>
+                                  </defs>
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                2 ванны
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Mobile -->
+                    <div class="border border-brand-gray-200 lg:hidden relative overflow-hidden">
+                      <div class="w-full absolute left-0 top-0 z-10 flex justify-end gap-2.5 p-2.5 md:p-4">
+                        <button
+                          class="border-hover-secondary shrink-0 size-7 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                          <svg width="12" height="11" viewBox="0 0 19 17" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M0.253906 5.34277C0.205068 4.04584 0.671093 2.78237 1.55078 1.82812C2.42907 0.875516 3.64817 0.308119 4.94238 0.25C5.75067 0.263901 6.54109 0.490298 7.23438 0.90625C7.92984 1.32353 8.50276 1.91735 8.89551 2.62695L9.11426 3.02148L9.33301 2.62695C9.72571 1.91743 10.2988 1.32352 10.9941 0.90625C11.687 0.490513 12.4773 0.264142 13.2852 0.25C14.5799 0.307769 15.7991 0.875168 16.6777 1.82812C17.5576 2.78239 18.0244 4.04574 17.9756 5.34277V5.35254C17.9756 6.5736 17.4803 7.86313 16.707 9.12793C15.9352 10.3902 14.8981 11.6084 13.8438 12.6807C11.7363 14.824 9.5833 16.362 9.40918 16.4854L9.11426 16.6934L8.81934 16.4854C8.63836 16.3564 6.48873 14.8193 4.38477 12.6797C3.33058 11.6076 2.29423 10.39 1.52246 9.12793C0.749006 7.86312 0.253906 6.57373 0.253906 5.35254V5.34277Z"
+                              stroke="#333130" stroke-width="0.5" />
+                          </svg>
+                        </button>
+                        <button
+                          class="border-hover-secondary text-xs leading-none shrink-0 size-7 bg-primary text-white rounded-full overflow-hidden flex items-center justify-center">
+                          5%
+                        </button>
+                      </div>
+                      <!-- Swiper Images -->
+                      <div class="current-img-slider !overflow-hidden relative z-0">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-2.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-1.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-3.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-2.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-1.jpg" alt="Img">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="!absolute w-fit z-10 swiper-pagination-current-image flex !justify-center mb-1">
+                        </div>
+                      </div>
+
+                      <!-- Tittle & Desc -->
+                      <div class="space-y-2.5 md:space-y-4 p-2.5 md:p-4">
+                        <h4 class="text-xl leading-none">
+                          Квартира в Эстепоне Квартира в Эстепон...
+                        </h4>
+
+                        <h3 class="text-solo-22">
+                          <span class="block line-through text-xs leading-none">
+                            €10.700.000
+                          </span>
+                          €10.165.000
+                        </h3>
+
+                        <button class="bg-hover-primary w-full h-max font-semibold text-lg xl:text-solo-26 py-2 px-7">
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 2 -->
+                  <div>
+                    <!-- Desktop -->
+                    <div class="max-lg:hidden relative group overflow-hidden">
+                      <div class="absolute top-0 left-0 z-0 size-full">
+                        <img class="hover-scale-105" src="./assets/images/current-main-3.jpg" alt="Img">
+                      </div>
+                      <!-- Tittle & Desc -->
+                      <div
+                        class="relative bg-gradient-to-t to-primary/0 from-primary/80 to-90% from-10% z-10 w-full p-2.5 md:py-5 lg:p-7.5">
+                        <div class="flex justify-end gap-2.5 mb-68.75">
+                          <button
+                            class="border-hover-secondary shrink-0 size-11.25 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                            <svg width="19" height="17" viewBox="0 0 19 17" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M0.253906 5.34277C0.205068 4.04584 0.671093 2.78237 1.55078 1.82812C2.42907 0.875516 3.64817 0.308119 4.94238 0.25C5.75067 0.263901 6.54109 0.490298 7.23438 0.90625C7.92984 1.32353 8.50276 1.91735 8.89551 2.62695L9.11426 3.02148L9.33301 2.62695C9.72571 1.91743 10.2988 1.32352 10.9941 0.90625C11.687 0.490513 12.4773 0.264142 13.2852 0.25C14.5799 0.307769 15.7991 0.875168 16.6777 1.82812C17.5576 2.78239 18.0244 4.04574 17.9756 5.34277V5.35254C17.9756 6.5736 17.4803 7.86313 16.707 9.12793C15.9352 10.3902 14.8981 11.6084 13.8438 12.6807C11.7363 14.824 9.5833 16.362 9.40918 16.4854L9.11426 16.6934L8.81934 16.4854C8.63836 16.3564 6.48873 14.8193 4.38477 12.6797C3.33058 11.6076 2.29423 10.39 1.52246 9.12793C0.749006 7.86312 0.253906 6.57373 0.253906 5.35254V5.34277Z"
+                                stroke="#333130" stroke-width="0.5" />
+                            </svg>
+                          </button>
+                          <button
+                            class="border-hover-secondary shrink-0 size-11.25 bg-primary text-white rounded-full overflow-hidden flex items-center justify-center">
+                            5%
+                          </button>
+                        </div>
+
+                        <div class="space-y-5">
+                          <div class="flex items-center justify-between gap-5">
+                            <h5 class="text-3xl leading-none text-white">
+                              €10.165.000
+                              <span class="opacity-70 text-xl line-through">
+                                €10.700.000
+                              </span>
+                            </h5>
+                            <button
+                              class="border-hover-secondary shrink-0 size-11.25 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                              <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.5842 6L7.58423 11" stroke="#333130" stroke-linecap="round" />
+                                <path d="M12.5881 6L1.41166 6" stroke="#333130" stroke-linecap="round" />
+                                <path d="M12.5842 6L7.58423 1" stroke="#333130" stroke-linecap="round" />
+                              </svg>
+                            </button>
+                          </div>
+                          <h4 class="text-white text-xl lg:text-2xl leading-none">
+                            Квартира в ЭстепонеКвартира в ЭстепонеКвартира в Эстепоне
+                          </h4>
+                          <div class="flex items-center gap-5 text-white">
+                            <!-- 1 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_6106_1993)">
+                                    <path
+                                      d="M13 2.66667H4V1.66667C4 0.748 3.25267 0 2.33333 0H2C0.897333 0 0 0.897333 0 2V14.0513C0 15.1793 0.884667 16 2.09533 16H13C14.654 16 16 14.654 16 13V5.66667C16 4.01267 14.654 2.66667 13 2.66667ZM0.666667 2C0.666667 1.26467 1.26467 0.666667 2 0.666667H2.33333C2.88467 0.666667 3.33333 1.11533 3.33333 1.66667V11C3.33333 11.5513 2.88467 12 2.33333 12H2C1.50667 12 1.03133 12.1833 0.666667 12.5093V2ZM15.3333 13C15.3333 14.2887 14.2887 15.3333 13 15.3333H2C1.26333 15.3333 0.666667 14.7367 0.666667 14C0.666667 13.2633 1.26333 12.6667 2 12.6667H2.33333C3.254 12.6667 4 11.9207 4 11V3.33333H13C14.2887 3.33333 15.3333 4.378 15.3333 5.66667V13Z"
+                                      fill="currentColor" />
+                                    <path
+                                      d="M14.0007 5.66699V13.0003C14.0007 13.5517 13.552 14.0003 13.0007 14.0003H6.33398C5.78265 14.0003 5.33398 13.5517 5.33398 13.0003V5.66699C5.33398 5.11566 5.78265 4.66699 6.33398 4.66699H7.00065C7.18465 4.66699 7.33398 4.81633 7.33398 5.00033C7.33398 5.18433 7.18465 5.33366 7.00065 5.33366H6.33398C6.15065 5.33366 6.00065 5.48299 6.00065 5.66699V7.33366H7.00065C7.18465 7.33366 7.33398 7.48299 7.33398 7.66699C7.33398 7.85099 7.18465 8.00033 7.00065 8.00033H6.00065V13.0003C6.00065 13.1843 6.15065 13.3337 6.33398 13.3337H9.33398V10.0003H8.33398C8.14998 10.0003 8.00065 9.85099 8.00065 9.66699C8.00065 9.48299 8.14998 9.33366 8.33398 9.33366H11.0007C11.1847 9.33366 11.334 9.48299 11.334 9.66699C11.334 9.85099 11.1847 10.0003 11.0007 10.0003H10.0007V13.3337H13.0007C13.184 13.3337 13.334 13.1843 13.334 13.0003V5.66699C13.334 5.48299 13.184 5.33366 13.0007 5.33366H10.334C10.1507 5.33366 10.0007 5.48299 10.0007 5.66699V7.00033C10.0007 7.18433 9.85132 7.33366 9.66732 7.33366C9.48332 7.33366 9.33398 7.18433 9.33398 7.00033V5.66699C9.33398 5.11566 9.78265 4.66699 10.334 4.66699H13.0007C13.552 4.66699 14.0007 5.11566 14.0007 5.66699Z"
+                                      fill="currentColor" />
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_6106_1993">
+                                      <rect width="16" height="16" fill="currentColor" />
+                                    </clipPath>
+                                  </defs>
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                141 m²
+                              </span>
+                            </div>
+                            <!-- 2 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M13 1.33301H3C1.346 1.33301 0 2.67901 0 4.33301V14.333C0 14.517 0.149333 14.6663 0.333333 14.6663C0.517333 14.6663 0.666667 14.517 0.666667 14.333V12.6663H15.3333V14.333C15.3333 14.517 15.4827 14.6663 15.6667 14.6663C15.8507 14.6663 16 14.517 16 14.333V4.33301C16 2.67901 14.654 1.33301 13 1.33301ZM3 1.99967H13C14.2867 1.99967 15.3333 3.04634 15.3333 4.33301V9.33301H14V8.33301C14 7.04634 12.9533 5.99967 11.6667 5.99967H10C9.152 5.99967 8.40867 6.45434 8 7.13234C7.59133 6.45434 6.848 5.99967 6 5.99967H4.33333C3.04667 5.99967 2 7.04634 2 8.33301V9.33301H0.666667V4.33301C0.666667 3.04634 1.71333 1.99967 3 1.99967ZM8.33333 9.33301V8.33301C8.33333 7.41434 9.08067 6.66634 10 6.66634H11.6667C12.586 6.66634 13.3333 7.41434 13.3333 8.33301V9.33301H8.33333ZM2.66667 9.33301V8.33301C2.66667 7.41434 3.41467 6.66634 4.33333 6.66634H6C6.91867 6.66634 7.66667 7.41434 7.66667 8.33301V9.33301H2.66667ZM0.666667 11.9997V9.99967H15.3333V11.9997H0.666667Z"
+                                    fill="currentColor" />
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                2 комнаты
+                              </span>
+                            </div>
+                            <!-- 3 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_6106_2004)">
+                                    <path
+                                      d="M0.666667 7.99969V2.55502C0.666667 1.51369 1.514 0.666357 2.55533 0.666357C3.07667 0.666357 3.578 0.886357 3.93267 1.26302L3.32467 4.38702L4.234 5.62702L8.60933 2.34569L7.77067 1.10969L4.556 0.966357C4.07333 0.35969 3.33067 -0.000976562 2.554 -0.000976562C1.14667 -0.000309896 0 1.14636 0 2.55502V7.99969L0.301333 10.411C0.494 11.951 1.30267 13.2824 2.46067 14.171L1.96067 15.9997H2.64733L3.04333 14.5637C3.87933 15.0537 4.84933 15.333 5.87667 15.333H10.128C11.1527 15.333 12.1213 15.055 12.956 14.567L13.3507 15.9997H14.0373L13.5387 14.175C14.6993 13.2864 15.5107 11.953 15.7033 10.411L16.0047 7.99969H0.666667ZM4.54 1.63302L7.40867 1.76102L7.70133 2.19302L4.374 4.68902L4.03467 4.22769L4.54 1.63236V1.63302ZM15.0433 10.3277C14.734 12.801 12.6213 14.6664 10.1293 14.6664H5.878C3.386 14.6664 1.27333 12.801 0.964 10.3277L0.756 8.66636H15.2507L15.0427 10.3277H15.0433Z"
+                                      fill="currentColor" />
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_6106_2004">
+                                      <rect width="16" height="16" fill="currentColor" />
+                                    </clipPath>
+                                  </defs>
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                2 ванны
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div class="border border-brand-gray-200 lg:hidden relative overflow-hidden">
+                      <div class="w-full absolute left-0 top-0 z-10 flex justify-end gap-2.5 p-2.5 md:p-4">
+                        <button
+                          class="border-hover-secondary shrink-0 size-7 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                          <svg width="12" height="11" viewBox="0 0 19 17" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M0.253906 5.34277C0.205068 4.04584 0.671093 2.78237 1.55078 1.82812C2.42907 0.875516 3.64817 0.308119 4.94238 0.25C5.75067 0.263901 6.54109 0.490298 7.23438 0.90625C7.92984 1.32353 8.50276 1.91735 8.89551 2.62695L9.11426 3.02148L9.33301 2.62695C9.72571 1.91743 10.2988 1.32352 10.9941 0.90625C11.687 0.490513 12.4773 0.264142 13.2852 0.25C14.5799 0.307769 15.7991 0.875168 16.6777 1.82812C17.5576 2.78239 18.0244 4.04574 17.9756 5.34277V5.35254C17.9756 6.5736 17.4803 7.86313 16.707 9.12793C15.9352 10.3902 14.8981 11.6084 13.8438 12.6807C11.7363 14.824 9.5833 16.362 9.40918 16.4854L9.11426 16.6934L8.81934 16.4854C8.63836 16.3564 6.48873 14.8193 4.38477 12.6797C3.33058 11.6076 2.29423 10.39 1.52246 9.12793C0.749006 7.86312 0.253906 6.57373 0.253906 5.35254V5.34277Z"
+                              stroke="#333130" stroke-width="0.5" />
+                          </svg>
+                        </button>
+                        <button
+                          class="border-hover-secondary text-xs leading-none shrink-0 size-7 bg-primary text-white rounded-full overflow-hidden flex items-center justify-center">
+                          5%
+                        </button>
+                      </div>
+                      <!-- Swiper Images -->
+                      <div class="current-img-slider !overflow-hidden relative z-0">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-2.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-1.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-3.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-2.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-1.jpg" alt="Img">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="!absolute w-fit z-10 swiper-pagination-current-image flex !justify-center mb-1">
+                        </div>
+                      </div>
+
+                      <!-- Tittle & Desc -->
+                      <div class="space-y-2.5 md:space-y-4 p-2.5 md:p-4">
+                        <h4 class="text-xl leading-none">
+                          Квартира в Эстепоне Квартира в Эстепон...
+                        </h4>
+
+                        <h3 class="text-solo-22">
+                          <span class="block line-through text-xs leading-none">
+                            €10.700.000
+                          </span>
+                          €10.165.000
+                        </h3>
+
+                        <button class="bg-hover-primary w-full h-max font-semibold text-lg xl:text-solo-26 py-2 px-7">
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 3 -->
+                  <div>
+                    <!-- Desktop -->
+                    <div class="max-lg:hidden relative group overflow-hidden">
+                      <div class="absolute top-0 left-0 z-0 size-full">
+                        <img class="hover-scale-105" src="./assets/images/current-main-4.jpg" alt="Img">
+                      </div>
+                      <!-- Tittle & Desc -->
+                      <div
+                        class="relative bg-gradient-to-t to-primary/0 from-primary/80 to-90% from-10% z-10 w-full p-2.5 md:py-5 lg:p-7.5">
+                        <div class="flex justify-end gap-2.5 mb-68.75">
+                          <button
+                            class="border-hover-secondary shrink-0 size-11.25 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                            <svg width="19" height="17" viewBox="0 0 19 17" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M0.253906 5.34277C0.205068 4.04584 0.671093 2.78237 1.55078 1.82812C2.42907 0.875516 3.64817 0.308119 4.94238 0.25C5.75067 0.263901 6.54109 0.490298 7.23438 0.90625C7.92984 1.32353 8.50276 1.91735 8.89551 2.62695L9.11426 3.02148L9.33301 2.62695C9.72571 1.91743 10.2988 1.32352 10.9941 0.90625C11.687 0.490513 12.4773 0.264142 13.2852 0.25C14.5799 0.307769 15.7991 0.875168 16.6777 1.82812C17.5576 2.78239 18.0244 4.04574 17.9756 5.34277V5.35254C17.9756 6.5736 17.4803 7.86313 16.707 9.12793C15.9352 10.3902 14.8981 11.6084 13.8438 12.6807C11.7363 14.824 9.5833 16.362 9.40918 16.4854L9.11426 16.6934L8.81934 16.4854C8.63836 16.3564 6.48873 14.8193 4.38477 12.6797C3.33058 11.6076 2.29423 10.39 1.52246 9.12793C0.749006 7.86312 0.253906 6.57373 0.253906 5.35254V5.34277Z"
+                                stroke="#333130" stroke-width="0.5" />
+                            </svg>
+                          </button>
+                          <button
+                            class="border-hover-secondary shrink-0 size-11.25 bg-primary text-white rounded-full overflow-hidden flex items-center justify-center">
+                            5%
+                          </button>
+                        </div>
+
+                        <div class="space-y-5">
+                          <div class="flex items-center justify-between gap-5">
+                            <h5 class="text-3xl leading-none text-white">
+                              €10.165.000
+                              <span class="opacity-70 text-xl line-through">
+                                €10.700.000
+                              </span>
+                            </h5>
+                            <button
+                              class="border-hover-secondary shrink-0 size-11.25 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                              <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.5842 6L7.58423 11" stroke="#333130" stroke-linecap="round" />
+                                <path d="M12.5881 6L1.41166 6" stroke="#333130" stroke-linecap="round" />
+                                <path d="M12.5842 6L7.58423 1" stroke="#333130" stroke-linecap="round" />
+                              </svg>
+                            </button>
+                          </div>
+                          <h4 class="text-white text-xl lg:text-2xl leading-none">
+                            Квартира в ЭстепонеКвартира в ЭстепонеКвартира в Эстепоне
+                          </h4>
+                          <div class="flex items-center gap-5 text-white">
+                            <!-- 1 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_6106_1993)">
+                                    <path
+                                      d="M13 2.66667H4V1.66667C4 0.748 3.25267 0 2.33333 0H2C0.897333 0 0 0.897333 0 2V14.0513C0 15.1793 0.884667 16 2.09533 16H13C14.654 16 16 14.654 16 13V5.66667C16 4.01267 14.654 2.66667 13 2.66667ZM0.666667 2C0.666667 1.26467 1.26467 0.666667 2 0.666667H2.33333C2.88467 0.666667 3.33333 1.11533 3.33333 1.66667V11C3.33333 11.5513 2.88467 12 2.33333 12H2C1.50667 12 1.03133 12.1833 0.666667 12.5093V2ZM15.3333 13C15.3333 14.2887 14.2887 15.3333 13 15.3333H2C1.26333 15.3333 0.666667 14.7367 0.666667 14C0.666667 13.2633 1.26333 12.6667 2 12.6667H2.33333C3.254 12.6667 4 11.9207 4 11V3.33333H13C14.2887 3.33333 15.3333 4.378 15.3333 5.66667V13Z"
+                                      fill="currentColor" />
+                                    <path
+                                      d="M14.0007 5.66699V13.0003C14.0007 13.5517 13.552 14.0003 13.0007 14.0003H6.33398C5.78265 14.0003 5.33398 13.5517 5.33398 13.0003V5.66699C5.33398 5.11566 5.78265 4.66699 6.33398 4.66699H7.00065C7.18465 4.66699 7.33398 4.81633 7.33398 5.00033C7.33398 5.18433 7.18465 5.33366 7.00065 5.33366H6.33398C6.15065 5.33366 6.00065 5.48299 6.00065 5.66699V7.33366H7.00065C7.18465 7.33366 7.33398 7.48299 7.33398 7.66699C7.33398 7.85099 7.18465 8.00033 7.00065 8.00033H6.00065V13.0003C6.00065 13.1843 6.15065 13.3337 6.33398 13.3337H9.33398V10.0003H8.33398C8.14998 10.0003 8.00065 9.85099 8.00065 9.66699C8.00065 9.48299 8.14998 9.33366 8.33398 9.33366H11.0007C11.1847 9.33366 11.334 9.48299 11.334 9.66699C11.334 9.85099 11.1847 10.0003 11.0007 10.0003H10.0007V13.3337H13.0007C13.184 13.3337 13.334 13.1843 13.334 13.0003V5.66699C13.334 5.48299 13.184 5.33366 13.0007 5.33366H10.334C10.1507 5.33366 10.0007 5.48299 10.0007 5.66699V7.00033C10.0007 7.18433 9.85132 7.33366 9.66732 7.33366C9.48332 7.33366 9.33398 7.18433 9.33398 7.00033V5.66699C9.33398 5.11566 9.78265 4.66699 10.334 4.66699H13.0007C13.552 4.66699 14.0007 5.11566 14.0007 5.66699Z"
+                                      fill="currentColor" />
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_6106_1993">
+                                      <rect width="16" height="16" fill="currentColor" />
+                                    </clipPath>
+                                  </defs>
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                141 m²
+                              </span>
+                            </div>
+                            <!-- 2 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M13 1.33301H3C1.346 1.33301 0 2.67901 0 4.33301V14.333C0 14.517 0.149333 14.6663 0.333333 14.6663C0.517333 14.6663 0.666667 14.517 0.666667 14.333V12.6663H15.3333V14.333C15.3333 14.517 15.4827 14.6663 15.6667 14.6663C15.8507 14.6663 16 14.517 16 14.333V4.33301C16 2.67901 14.654 1.33301 13 1.33301ZM3 1.99967H13C14.2867 1.99967 15.3333 3.04634 15.3333 4.33301V9.33301H14V8.33301C14 7.04634 12.9533 5.99967 11.6667 5.99967H10C9.152 5.99967 8.40867 6.45434 8 7.13234C7.59133 6.45434 6.848 5.99967 6 5.99967H4.33333C3.04667 5.99967 2 7.04634 2 8.33301V9.33301H0.666667V4.33301C0.666667 3.04634 1.71333 1.99967 3 1.99967ZM8.33333 9.33301V8.33301C8.33333 7.41434 9.08067 6.66634 10 6.66634H11.6667C12.586 6.66634 13.3333 7.41434 13.3333 8.33301V9.33301H8.33333ZM2.66667 9.33301V8.33301C2.66667 7.41434 3.41467 6.66634 4.33333 6.66634H6C6.91867 6.66634 7.66667 7.41434 7.66667 8.33301V9.33301H2.66667ZM0.666667 11.9997V9.99967H15.3333V11.9997H0.666667Z"
+                                    fill="currentColor" />
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                2 комнаты
+                              </span>
+                            </div>
+                            <!-- 3 -->
+                            <div class="flex items-center gap-1">
+                              <div class="size-9 flex items-center justify-center border border-white rounded-full">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_6106_2004)">
+                                    <path
+                                      d="M0.666667 7.99969V2.55502C0.666667 1.51369 1.514 0.666357 2.55533 0.666357C3.07667 0.666357 3.578 0.886357 3.93267 1.26302L3.32467 4.38702L4.234 5.62702L8.60933 2.34569L7.77067 1.10969L4.556 0.966357C4.07333 0.35969 3.33067 -0.000976562 2.554 -0.000976562C1.14667 -0.000309896 0 1.14636 0 2.55502V7.99969L0.301333 10.411C0.494 11.951 1.30267 13.2824 2.46067 14.171L1.96067 15.9997H2.64733L3.04333 14.5637C3.87933 15.0537 4.84933 15.333 5.87667 15.333H10.128C11.1527 15.333 12.1213 15.055 12.956 14.567L13.3507 15.9997H14.0373L13.5387 14.175C14.6993 13.2864 15.5107 11.953 15.7033 10.411L16.0047 7.99969H0.666667ZM4.54 1.63302L7.40867 1.76102L7.70133 2.19302L4.374 4.68902L4.03467 4.22769L4.54 1.63236V1.63302ZM15.0433 10.3277C14.734 12.801 12.6213 14.6664 10.1293 14.6664H5.878C3.386 14.6664 1.27333 12.801 0.964 10.3277L0.756 8.66636H15.2507L15.0427 10.3277H15.0433Z"
+                                      fill="currentColor" />
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_6106_2004">
+                                      <rect width="16" height="16" fill="currentColor" />
+                                    </clipPath>
+                                  </defs>
+                                </svg>
+                              </div>
+                              <span class="text-sm leading-none">
+                                2 ванны
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div class="border border-brand-gray-200 lg:hidden relative overflow-hidden">
+                      <div class="w-full absolute left-0 top-0 z-10 flex justify-end gap-2.5 p-2.5 md:p-4">
+                        <button
+                          class="border-hover-secondary shrink-0 size-7 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                          <svg width="12" height="11" viewBox="0 0 19 17" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M0.253906 5.34277C0.205068 4.04584 0.671093 2.78237 1.55078 1.82812C2.42907 0.875516 3.64817 0.308119 4.94238 0.25C5.75067 0.263901 6.54109 0.490298 7.23438 0.90625C7.92984 1.32353 8.50276 1.91735 8.89551 2.62695L9.11426 3.02148L9.33301 2.62695C9.72571 1.91743 10.2988 1.32352 10.9941 0.90625C11.687 0.490513 12.4773 0.264142 13.2852 0.25C14.5799 0.307769 15.7991 0.875168 16.6777 1.82812C17.5576 2.78239 18.0244 4.04574 17.9756 5.34277V5.35254C17.9756 6.5736 17.4803 7.86313 16.707 9.12793C15.9352 10.3902 14.8981 11.6084 13.8438 12.6807C11.7363 14.824 9.5833 16.362 9.40918 16.4854L9.11426 16.6934L8.81934 16.4854C8.63836 16.3564 6.48873 14.8193 4.38477 12.6797C3.33058 11.6076 2.29423 10.39 1.52246 9.12793C0.749006 7.86312 0.253906 6.57373 0.253906 5.35254V5.34277Z"
+                              stroke="#333130" stroke-width="0.5" />
+                          </svg>
+                        </button>
+                        <button
+                          class="border-hover-secondary text-xs leading-none shrink-0 size-7 bg-primary text-white rounded-full overflow-hidden flex items-center justify-center">
+                          5%
+                        </button>
+                      </div>
+                      <!-- Swiper Images -->
+                      <div class="current-img-slider !overflow-hidden relative z-0">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-2.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-1.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-3.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-2.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-50.25 xs:h-65 md:h-75 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-1.jpg" alt="Img">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="!absolute w-fit z-10 swiper-pagination-current-image flex !justify-center mb-1">
+                        </div>
+                      </div>
+
+                      <!-- Tittle & Desc -->
+                      <div class="space-y-2.5 md:space-y-4 p-2.5 md:p-4">
+                        <h4 class="text-xl leading-none">
+                          Квартира в Эстепоне Квартира в Эстепон...
+                        </h4>
+
+                        <h3 class="text-solo-22">
+                          <span class="block line-through text-xs leading-none">
+                            €10.700.000
+                          </span>
+                          €10.165.000
+                        </h3>
+
+                        <button class="bg-hover-primary w-full h-max font-semibold text-lg xl:text-solo-26 py-2 px-7">
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- list -->
+              <div x-show="activeTab === 'new'">
+                <div class="space-y-7.5 lg:space-y-10">
+                  <!-- 1 -->
+                  <div
+                    class="relative overflow-hidden flex  md:gap-5 lg:gap-7.5">
+                    <div class="relative max-lg:max-w-1/2 w-full max-w-179">
+                      <div class="w-full absolute left-0 top-0 z-10 flex md:justify-end gap-2.5 p-2.5 md:p-4">
+                        <button
+                          class="border-hover-secondary shrink-0 size-7 bg-white rounded-full overflow-hidden flex items-center justify-center">
+                          <svg width="12" height="11" viewBox="0 0 19 17" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M0.253906 5.34277C0.205068 4.04584 0.671093 2.78237 1.55078 1.82812C2.42907 0.875516 3.64817 0.308119 4.94238 0.25C5.75067 0.263901 6.54109 0.490298 7.23438 0.90625C7.92984 1.32353 8.50276 1.91735 8.89551 2.62695L9.11426 3.02148L9.33301 2.62695C9.72571 1.91743 10.2988 1.32352 10.9941 0.90625C11.687 0.490513 12.4773 0.264142 13.2852 0.25C14.5799 0.307769 15.7991 0.875168 16.6777 1.82812C17.5576 2.78239 18.0244 4.04574 17.9756 5.34277V5.35254C17.9756 6.5736 17.4803 7.86313 16.707 9.12793C15.9352 10.3902 14.8981 11.6084 13.8438 12.6807C11.7363 14.824 9.5833 16.362 9.40918 16.4854L9.11426 16.6934L8.81934 16.4854C8.63836 16.3564 6.48873 14.8193 4.38477 12.6797C3.33058 11.6076 2.29423 10.39 1.52246 9.12793C0.749006 7.86312 0.253906 6.57373 0.253906 5.35254V5.34277Z"
+                              stroke="#333130" stroke-width="0.5" />
+                          </svg>
+                        </button>
+                        <button
+                          class="border-hover-secondary text-xs leading-none shrink-0 size-7 bg-primary text-white rounded-full overflow-hidden flex items-center justify-center">
+                          5%
+                        </button>
+                      </div>
+                      <!-- Swiper Images -->
+                      <div class="swiper object-img-list !relative z-0">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="h-36 sm:h-65 md:h-75 lg:h-86 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-2.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-36 sm:h-65 md:h-75 lg:h-86 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-1.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-36 sm:h-65 md:h-75 lg:h-86 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-3.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-36 sm:h-65 md:h-75 lg:h-86 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-2.jpg" alt="Img">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="h-36 sm:h-65 md:h-75 lg:h-86 overflow-hidden">
+                              <img class="size-full object-cover" src="./assets/images/current-main-1.jpg" alt="Img">
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          class="swiper-button-prev-object-list max-lg:!hidden !absolute !z-10 top-1/2 -translate-y-1/2 translate-x-5 left-0 !bg-white !size-9 !rounded-full flex items-center justify-center">
+                          <svg width="9" height="13" viewBox="0 0 9 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 6.5L8 12.5" stroke="#5C5C5C" stroke-width="0.7" stroke-linecap="round" />
+                            <path d="M1 6.5L8 0.5" stroke="#5C5C5C" stroke-width="0.7" stroke-linecap="round" />
+                          </svg>
+                        </button>
+
+                        <button
+                          class="swiper-button-next-object-list max-lg:!hidden !absolute !z-10 top-1/2 -translate-y-1/2 -translate-x-5 right-0 !bg-white !size-9 !rounded-full flex items-center justify-center">
+                          <svg width="9" height="13" viewBox="0 0 9 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 6.5L1 0.5" stroke="#5C5C5C" stroke-width="0.7" stroke-linecap="round" />
+                            <path d="M8 6.5L1 12.5" stroke="#5C5C5C" stroke-width="0.7" stroke-linecap="round" />
+                          </svg>
+                        </button>
+
+                        <div
+                          class="relative !z-10 w-fit swiper-pagination-object-list flex !justify-center -translate-y-1.5 md:-translate-y-2.5 lg:-translate-y-5">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Tittle & Desc -->
+                    <div class="lg:hidden space-y-2.5 md:space-y-4 p-2.5 md:p-4">
+                      <h4 class="text-xl leading-none line-clamp-2">
+                        Квартира в Эстепоне Квартира в Эстепон...
+                      </h4>
+
+                      <h3 class="text-solo-22">
+                        <span class="block line-through text-xs leading-none">
+                          €10.700.000
+                        </span>
+                        €10.165.000
+                      </h3>
+
+                      <button
+                        class="bg-hover-primary w-full h-max font-semibold text-sm md:text-base lg:text-lg py-2 px-7">
+                        Подробнее
+                      </button>
+                    </div>
+
+                    <!-- Tittle & Desc Desktop -->
+                    <div class="max-lg:hidden max-w-253.5 w-full border-l border-brand-gray-200 p-5 lg:p-7.5">
+                      <div class="space-y-5 xl:space-y-7.5">
+                        <h3 class="text-solo-22 xl:text-3xl leading-none mb-5 lg:mb-7.5">
+                          €10.165.000
+                          <span class="text-xl opacity-50">
+                            €10.700.000
+                          </span>
+                        </h3>
+
+                        <h4 class="text-xl xl:text-2xl">
+                          Продажа квартиры в Марбелье
+                        </h4>
+                        <div class="flex max-xxl:flex-col xxl:items-center gap-x-5 gap-y-2.5 md:mb-5 lg:mb-7.5">
+                          <!-- 1 -->
+                          <div class="flex items-center gap-1">
+                            <div class="size-9 flex items-center justify-center border border-secondary rounded-full">
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_6106_1993)">
+                                  <path
+                                    d="M13 2.66667H4V1.66667C4 0.748 3.25267 0 2.33333 0H2C0.897333 0 0 0.897333 0 2V14.0513C0 15.1793 0.884667 16 2.09533 16H13C14.654 16 16 14.654 16 13V5.66667C16 4.01267 14.654 2.66667 13 2.66667ZM0.666667 2C0.666667 1.26467 1.26467 0.666667 2 0.666667H2.33333C2.88467 0.666667 3.33333 1.11533 3.33333 1.66667V11C3.33333 11.5513 2.88467 12 2.33333 12H2C1.50667 12 1.03133 12.1833 0.666667 12.5093V2ZM15.3333 13C15.3333 14.2887 14.2887 15.3333 13 15.3333H2C1.26333 15.3333 0.666667 14.7367 0.666667 14C0.666667 13.2633 1.26333 12.6667 2 12.6667H2.33333C3.254 12.6667 4 11.9207 4 11V3.33333H13C14.2887 3.33333 15.3333 4.378 15.3333 5.66667V13Z"
+                                    fill="currentColor" />
+                                  <path
+                                    d="M14.0007 5.66699V13.0003C14.0007 13.5517 13.552 14.0003 13.0007 14.0003H6.33398C5.78265 14.0003 5.33398 13.5517 5.33398 13.0003V5.66699C5.33398 5.11566 5.78265 4.66699 6.33398 4.66699H7.00065C7.18465 4.66699 7.33398 4.81633 7.33398 5.00033C7.33398 5.18433 7.18465 5.33366 7.00065 5.33366H6.33398C6.15065 5.33366 6.00065 5.48299 6.00065 5.66699V7.33366H7.00065C7.18465 7.33366 7.33398 7.48299 7.33398 7.66699C7.33398 7.85099 7.18465 8.00033 7.00065 8.00033H6.00065V13.0003C6.00065 13.1843 6.15065 13.3337 6.33398 13.3337H9.33398V10.0003H8.33398C8.14998 10.0003 8.00065 9.85099 8.00065 9.66699C8.00065 9.48299 8.14998 9.33366 8.33398 9.33366H11.0007C11.1847 9.33366 11.334 9.48299 11.334 9.66699C11.334 9.85099 11.1847 10.0003 11.0007 10.0003H10.0007V13.3337H13.0007C13.184 13.3337 13.334 13.1843 13.334 13.0003V5.66699C13.334 5.48299 13.184 5.33366 13.0007 5.33366H10.334C10.1507 5.33366 10.0007 5.48299 10.0007 5.66699V7.00033C10.0007 7.18433 9.85132 7.33366 9.66732 7.33366C9.48332 7.33366 9.33398 7.18433 9.33398 7.00033V5.66699C9.33398 5.11566 9.78265 4.66699 10.334 4.66699H13.0007C13.552 4.66699 14.0007 5.11566 14.0007 5.66699Z"
+                                    fill="currentColor" />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_6106_1993">
+                                    <rect width="16" height="16" fill="currentColor" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </div>
+                            <span class="text-sm leading-none">
+                              141 m²
+                            </span>
+                          </div>
+                          <!-- 2 -->
+                          <div class="flex items-center gap-1">
+                            <div class="size-9 flex items-center justify-center border border-secondary rounded-full">
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M13 1.33301H3C1.346 1.33301 0 2.67901 0 4.33301V14.333C0 14.517 0.149333 14.6663 0.333333 14.6663C0.517333 14.6663 0.666667 14.517 0.666667 14.333V12.6663H15.3333V14.333C15.3333 14.517 15.4827 14.6663 15.6667 14.6663C15.8507 14.6663 16 14.517 16 14.333V4.33301C16 2.67901 14.654 1.33301 13 1.33301ZM3 1.99967H13C14.2867 1.99967 15.3333 3.04634 15.3333 4.33301V9.33301H14V8.33301C14 7.04634 12.9533 5.99967 11.6667 5.99967H10C9.152 5.99967 8.40867 6.45434 8 7.13234C7.59133 6.45434 6.848 5.99967 6 5.99967H4.33333C3.04667 5.99967 2 7.04634 2 8.33301V9.33301H0.666667V4.33301C0.666667 3.04634 1.71333 1.99967 3 1.99967ZM8.33333 9.33301V8.33301C8.33333 7.41434 9.08067 6.66634 10 6.66634H11.6667C12.586 6.66634 13.3333 7.41434 13.3333 8.33301V9.33301H8.33333ZM2.66667 9.33301V8.33301C2.66667 7.41434 3.41467 6.66634 4.33333 6.66634H6C6.91867 6.66634 7.66667 7.41434 7.66667 8.33301V9.33301H2.66667ZM0.666667 11.9997V9.99967H15.3333V11.9997H0.666667Z"
+                                  fill="currentColor" />
+                              </svg>
+                            </div>
+                            <span class="text-sm leading-none">
+                              2 комнаты
+                            </span>
+                          </div>
+                          <!-- 3 -->
+                          <div class="flex items-center gap-1">
+                            <div class="size-9 flex items-center justify-center border border-secondary rounded-full">
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_6106_2004)">
+                                  <path
+                                    d="M0.666667 7.99969V2.55502C0.666667 1.51369 1.514 0.666357 2.55533 0.666357C3.07667 0.666357 3.578 0.886357 3.93267 1.26302L3.32467 4.38702L4.234 5.62702L8.60933 2.34569L7.77067 1.10969L4.556 0.966357C4.07333 0.35969 3.33067 -0.000976562 2.554 -0.000976562C1.14667 -0.000309896 0 1.14636 0 2.55502V7.99969L0.301333 10.411C0.494 11.951 1.30267 13.2824 2.46067 14.171L1.96067 15.9997H2.64733L3.04333 14.5637C3.87933 15.0537 4.84933 15.333 5.87667 15.333H10.128C11.1527 15.333 12.1213 15.055 12.956 14.567L13.3507 15.9997H14.0373L13.5387 14.175C14.6993 13.2864 15.5107 11.953 15.7033 10.411L16.0047 7.99969H0.666667ZM4.54 1.63302L7.40867 1.76102L7.70133 2.19302L4.374 4.68902L4.03467 4.22769L4.54 1.63236V1.63302ZM15.0433 10.3277C14.734 12.801 12.6213 14.6664 10.1293 14.6664H5.878C3.386 14.6664 1.27333 12.801 0.964 10.3277L0.756 8.66636H15.2507L15.0427 10.3277H15.0433Z"
+                                    fill="currentColor" />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_6106_2004">
+                                    <rect width="16" height="16" fill="currentColor" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </div>
+                            <span class="text-sm leading-none">
+                              2 ванны
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="flex max-xl:flex-col xl:items-end justify-between gap-5">
+                        <p class="max-w-135">
+                          Эта великолепная недвижимость, расположенная между Марбельей, Рондой и Сотогранде, всего в 15
+                          минутах езды от Гошена, сочетает в себе андалузский шарм с невероятным потенциалом для
+                          инвестиций. Идеально подходит в качестве необходимого дома или для создания B&B, бутика-отеля
+                          или ресторана, цена непревзойдена!
+                        </p>
+                        <button
+                          class="w-full md:max-w-83.75 hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary py-2 lg:py-4 px-7">
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Next & Prev & Pagination -->
+            <div class="flex items-center justify-center gap-2.5 lg:gap-5">
+              <!-- Prev -->
+              <button
+                class="size-9 lg:size-12.5 cursor-default border border-brand-gray-200 text-brand-gray-200 flex items-center justify-center rounded-full">
+                <svg class="size-3.25 lg:size-4.5" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.12402 9L8.62402 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                  <path d="M1.12402 9L17.876 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                  <path d="M1.12402 9L8.62402 16.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                </svg>
+              </button>
+
+              <!--  -->
+              <div class="flex items-center gap-1.5 lg:gap-x-2.5">
+                <a href="#" class="bg-primary block w-3.75 h-0.5 lg:w-5 lg:h-0.75">
+                </a>
+                <a href="#" class="bg-brand-gray-200 block w-3.75 h-0.5 lg:w-5 lg:h-0.75">
+                </a>
+                <a href="#" class="bg-brand-gray-200 block w-3.75 h-0.5 lg:w-5 lg:h-0.75">
+                </a>
+                <a href="#" class="bg-brand-gray-200 block w-3.75 h-0.5 lg:w-5 lg:h-0.75">
+                </a>
+                <a href="#" class="bg-brand-gray-200 block w-3.75 h-0.5 lg:w-5 lg:h-0.75">
+                </a>
+              </div>
+
+              <!-- Next -->
+              <button
+                class="size-9 lg:size-12.5 border border-brand-gray-200 text-primary flex items-center justify-center rounded-full">
+                <svg class="rotate-180 size-3.25 lg:size-4.5" viewBox="0 0 19 18" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.12402 9L8.62402 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                  <path d="M1.12402 9L17.876 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                  <path d="M1.12402 9L8.62402 16.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section class="mb-12.5 md:mb-20 lg:mb-25">
+      <div class="container-base">
+        <div class="grid lg:grid-cols-5 gap-2.5 md:gap-5 lg:gap-7.5 lg:mb-22.5">
+          <!-- Left -->
+          <div class="lg:col-span-2 text-primary lg:pr-7 lg:py-12.5">
+            <div class="mb-5 lg:mb-9.5">
+              <ul class="text-primary text-xs md:text-base lg:text-lg list-disc list-inside mb-2.5">
+                <li>
+                  Свяжитесь с нами
+                </li>
+              </ul>
+              <h2 class="text-solo-28 md:text-4xl xl:text-6xl">
+                Контакты
+              </h2>
+            </div>
+
+            <p class="font-semibold text-primary text-lg lg:text-solo-26 leading-none mb-2.5 md:mb-5 lg:mb-9.5">
+              Solo Marbella
+            </p>
+
+            <div class="space-y-2.5 md:space-y-5 lg:space-y-7 xxl:space-y-12.5">
+              <div
+                class="flex max-sm:flex-col justify-between gap-x-5 gap-y-2.5 border-t border-brand-gray-200 pt-2.5 lg:pt-5 pb-5">
+                <p class="text-lg leading-none">
+                  Телефон
+                </p>
+
+                <h4 class="text-xl xl:text-4xl leading-none sm:text-right">
+                  +34 951 777 100
+                </h4>
+              </div>
+
+              <div
+                class="flex max-sm:flex-col justify-between gap-x-5 gap-y-2.5 border-t border-brand-gray-200 pt-2.5 lg:pt-5 pb-5">
+                <p class="text-lg leading-none shrink-0">
+                  Наш офис
+                </p>
+
+                <h4 class="max-w-135 text-xl xl:text-4xl leading-none sm:text-right">
+                  Pol. Ind. Nueva Campana, Nave, 80⁠ Nueva Andalucia 29660 Marbella Málaga, Spain
+                </h4>
+              </div>
+
+              <div
+                class="flex max-sm:flex-col justify-between gap-x-5 gap-y-2.5 border-t border-brand-gray-200 pt-2.5 lg:pt-5 pb-5">
+                <p class="text-lg leading-none">
+                  Почта
+                </p>
+
+                <h4 class="text-xl xl:text-4xl leading-none sm:text-right">
+                  re@sologroup.net
+                </h4>
+              </div>
+
+              <div
+                class="flex max-sm:flex-col justify-between gap-x-5 gap-y-2.5 border-t border-brand-gray-200 pt-2.5 lg:pt-5 pb-5">
+                <p class="text-lg leading-none">
+                  Мессенджеры
+                </p>
+
+                <!-- link -->
+                <div class="inline-flex items-center gap-3.75">
+                  <!-- Telegram -->
+                  <a class="text-hover-secondary" href="#">
+                    <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                        fill="currentColor" />
+                    </svg>
+                  </a>
+                  <!-- Instagram -->
+                  <a class="text-hover-secondary" href="#">
+                    <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                        fill="currentColor" />
+                      <path
+                        d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                        fill="currentColor" />
+                      <path
+                        d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                        fill="currentColor" />
+                    </svg>
+                  </a>
+                  <!-- FC -->
+                  <a class="text-hover-secondary" href="#">
+                    <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                        fill="currentColor" />
+                    </svg>
+                  </a>
+                  <!-- You tube -->
+                  <a class="text-hover-secondary" href="#">
+                    <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                        fill="currentColor" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right -->
+          <div
+            class="lg:col-span-3 bg-brand-gray-100 space-y-2.5 md:space-y-5 lg:space-y-10 px-2.5 md:px-5 pb-12 pt-9 lg:p-12.5 max-md:-mx-2.5 max-lg:-mx-5">
+            <div>
+              <ul class="text-primary text-xs md:text-base lg:text-lg list-disc list-inside mb-2.5">
+                <li>
+                  Консультация
+                </li>
+              </ul>
+              <h2 class="text-solo-28 md:text-4xl xl:text-6xl mb-2.5 md:mb-5 lg:mb-10">
+                Остались вопросы?
+              </h2>
+              <p class="max-w-151 text-lg leading-none">
+                Оставьте заявку — наш специалист свяжется с вами в течение минуты и ответит на все вопросы о покупке,
+                аренде или инвестициях
+              </p>
+            </div>
+            <form action="#" class="space-y-2.5 lg:space-y-5">
+              <input type="text" placeholder="Имя"
+                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7">
+
+              <input type="number" placeholder="Телефон"
+                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7">
+
+              <textarea placeholder="Сообщение"
+                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7 resize-none h-20 md:h-37"></textarea>
+
+              <button
+                class="w-full lg:w-fit lg:hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary max-lg:bg-hover-primary py-2 lg:py-4 px-7 lg:px-20 xxl:px-35 lg:mt-5">
+                Получить консультацию
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div x-data x-init="initMap()"
+          class="max-md:-mx-2.5 max-lg:-mx-5 overflow-hidden h-100 md:h-145 xl:h-172.5 relative">
+          <div id="map" class="custom-map w-full h-full rounded-lg shadow-lg"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- JS -->
+  <script>
+    function initMap() {
+      ymaps.ready(function () {
+        let map = new ymaps.Map("map", {
+          center: [36.5133, -4.8858],
+          zoom: 14,
+          controls: []
+        });
+
+        let customSVG = `
+          <svg width="45" height="50" viewBox="0 0 52 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.252 0.463867C40.2662 0.463867 51.627 11.9556 51.627 26.1309C51.6269 46.0516 29.8604 57.3793 26.6465 58.9434C26.3877 59.0693 26.1162 59.0693 25.8574 58.9434C22.6427 57.3789 0.876959 46.0511 0.876953 26.1309C0.876953 11.9556 12.2378 0.463948 26.252 0.463867ZM26.252 15.1309C20.2459 15.1309 15.377 20.0558 15.377 26.1309C15.377 32.2059 20.2459 37.1308 26.252 37.1309C32.258 37.1309 37.1269 32.206 37.127 26.1309C37.127 20.0557 32.258 15.1309 26.252 15.1309Z" fill="#333130"/>
+          </svg>
+        `;
+
+        // Custom layout
+        let MyIconLayout = ymaps.templateLayoutFactory.createClass(customSVG);
+
+        let placemark = new ymaps.Placemark(
+          [36.5133, -4.8858], // Marker joyi
+          { hintContent: 'Solo Marbella - Real Estates' },
+          { iconLayout: MyIconLayout, iconShape: { type: 'Circle', coordinates: [26, 30], radius: 30 } }
+        );
+
+        map.geoObjects.add(placemark);
+      });
+    }
+  </script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>

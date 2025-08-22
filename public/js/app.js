@@ -203,6 +203,25 @@ let swiperCurrentImg = new Swiper(".current-img-slider", {
   },
 });
 
+
+
+let swiperobjectListImg = new Swiper(".object-img-list", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  grabCursor: false,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination-object-list",
+  },
+  navigation: {
+    nextEl: ".swiper-button-next-object-list",
+    prevEl: ".swiper-button-prev-object-list",
+  },
+});
+
 // swiper current-slider
 let swiperExclusive = new Swiper(".exclusive-slider-slider", {
   slidesPerView: 'auto',
