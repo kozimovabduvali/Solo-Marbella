@@ -8,6 +8,9 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-gray-300: oklch(87.2% 0.01 258.338);
+    --color-gray-400: oklch(70.7% 0.022 261.325);
+    --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-xs: 0.75rem;
@@ -579,8 +582,14 @@
   .w-20 {
     width: calc(var(--spacing) * 20);
   }
+  .w-28 {
+    width: calc(var(--spacing) * 28);
+  }
   .w-75 {
     width: calc(var(--spacing) * 75);
+  }
+  .w-105 {
+    width: calc(var(--spacing) * 105);
   }
   .w-fit {
     width: fit-content;
@@ -1109,6 +1118,9 @@
   .border-brand-gray-200 {
     border-color: var(--color-brand-gray-200);
   }
+  .border-gray-300 {
+    border-color: var(--color-gray-300);
+  }
   .border-primary {
     border-color: var(--color-primary);
   }
@@ -1394,6 +1406,10 @@
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -1487,6 +1503,9 @@
   }
   .text-brand-gray-200 {
     color: var(--color-brand-gray-200);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
   }
   .text-primary {
     color: var(--color-primary);
@@ -1616,6 +1635,16 @@
       }
     }
   }
+  .placeholder\:text-gray-400 {
+    &::placeholder {
+      color: var(--color-gray-400);
+    }
+  }
+  .placeholder\:text-primary {
+    &::placeholder {
+      color: var(--color-primary);
+    }
+  }
   .placeholder\:text-secondary {
     &::placeholder {
       color: var(--color-secondary);
@@ -1641,6 +1670,12 @@
   .focus\:border-brand-gray-200 {
     &:focus {
       border-color: var(--color-brand-gray-200);
+    }
+  }
+  .focus\:outline-none {
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
     }
   }
   .max-2xl\:mx-auto {
@@ -2112,6 +2147,11 @@
   .md\:min-h-176\.5 {
     @media (width >= 48rem) {
       min-height: calc(var(--spacing) * 176.5);
+    }
+  }
+  .md\:w-105 {
+    @media (width >= 48rem) {
+      width: calc(var(--spacing) * 105);
     }
   }
   .md\:max-w-83\.75 {

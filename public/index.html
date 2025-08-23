@@ -475,10 +475,9 @@
           <div class="relative group w-full lg:max-w-57.5 flex-1" x-data="{ open: false }"
             @click.outside="open = false">
             <button @click="open=!open" :class="{
-                'md:!border-b-secondary': !open,
-                'md:!border-secondary': open
-              }"
-              class="w-full border border-b-secondary border-transparent flex items-center justify-between gap-3 text-primary py-2 px-2 md:px-5 lg:px-7.5">
+              'md:!border-b-secondary': !open,
+              'md:!border-secondary': open
+            }" class="w-full border border-b-secondary border-transparent flex items-center justify-between gap-3 text-primary py-2 px-2 md:px-5 lg:px-7.5">
               <span class="text-lg xl:text-solo-26">Цена</span>
               <svg :class="{'rotate-180': open}" class="transition-transform duration-300" width="12" height="7"
                 viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -487,11 +486,28 @@
             </button>
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
-              <div class="bg-white w-full flex flex-col text-center gap-2.5 border border-brand-gray-200 p-5 lg:p-7.5">
-                <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Ташкент</button>
-                <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Самарканд</button>
-                <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Бухара</button>
+            <div x-show="open" x-collapse class="sm:absolute z-20 right-0 md:w-105 pt-5">
+              <div class="bg-white flex flex-col gap-2.5 border border-brand-gray-200 p-5">
+
+                <!-- Price Range -->
+                <div class="flex max-md:flex-col items-center justify-center gap-3">
+
+                  <!-- От -->
+                  <div class="flex items-center gap-2 border border-brand-gray-200 px-4 py-3">
+                    <span class="text-secondary text-base">от</span>
+                    <input type="number" placeholder="€ 350000"
+                      class="w-28 focus:outline-none text-lg font-semibold text-primary placeholder:text-primary">
+                  </div>
+
+                  <!-- До -->
+                  <div class="flex items-center gap-2 border border-brand-gray-200 px-4 py-3">
+                    <span class="text-secondary text-base">до</span>
+                    <input type="number" placeholder="€ 550000"
+                      class="w-28 focus:outline-none text-lg font-semibold text-primary placeholder:text-primary">
+                  </div>
+
+                </div>
+
               </div>
             </div>
           </div>
