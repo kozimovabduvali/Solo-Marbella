@@ -12,6 +12,259 @@
 </head>
 
 <body>
+
+  <!-- Header -->
+  <header x-data="{ openMenu: false }" class="pt-3">
+    <nav class="container-base">
+      <!-- Top -->
+      <div class="flex items-center justify-between gap-6 mb-2.5">
+        <a class="max-md:hidden" href="#">
+          <img class="h-13 xl:h-16.5" src="./assets/svgs/logo.svg" alt="Logo">
+        </a>
+        <div class="max-md:w-full flex gap-x-15">
+          <!-- link -->
+          <div class="max-lg:hidden inline-flex items-center gap-3.75">
+            <!-- Telegram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                  fill="currentColor" />
+                <path
+                  d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                  fill="currentColor" />
+                <path
+                  d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- FC -->
+            <a class="text-hover-primary" href="#">
+              <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- You tube -->
+            <a class="text-hover-primary" href="#">
+              <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Tel -->
+          <a class="max-xl:hidden text-solo-28 text-hover-secondary" href="+34951777100">
+            +34 951 777 100
+          </a>
+
+          <div class="max-md:w-full flex items-center max-md:justify-between gap-9">
+            <div class="inline-flex items-center gap-6">
+              <!-- Love -->
+              <a class="text-hover-secondary" href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.5 0.916992C16.3739 0.934507 15.2724 1.24885 14.3067 1.82826C13.341 2.40768 12.5453 3.23166 12 4.21699C11.4546 3.23166 10.6589 2.40768 9.6932 1.82826C8.7275 1.24885 7.62601 0.934507 6.49996 0.916992C4.7049 0.994983 3.01366 1.78025 1.79574 3.10122C0.577818 4.4222 -0.0677923 6.17152 -4.17088e-05 7.96699C-4.17088e-05 14.742 10.956 22.567 11.422 22.899L12 23.308L12.578 22.899C13.044 22.569 24 14.742 24 7.96699C24.0677 6.17152 23.4221 4.4222 22.2042 3.10122C20.9863 1.78025 19.295 0.994983 17.5 0.916992ZM12 20.846C8.74696 18.416 1.99996 12.446 1.99996 7.96699C1.9316 6.70171 2.36632 5.46072 3.20932 4.51469C4.05232 3.56866 5.23519 2.99434 6.49996 2.91699C7.76473 2.99434 8.9476 3.56866 9.7906 4.51469C10.6336 5.46072 11.0683 6.70171 11 7.96699H13C12.9316 6.70171 13.3663 5.46072 14.2093 4.51469C15.0523 3.56866 16.2352 2.99434 17.5 2.91699C18.7647 2.99434 19.9476 3.56866 20.7906 4.51469C21.6336 5.46072 22.0683 6.70171 22 7.96699C22 12.448 15.253 18.416 12 20.846Z"
+                    fill="currentColor" />
+                </svg>
+              </a>
+
+              <!-- Lang -->
+              <div class="relative group">
+                <button class="text-hover-secondary inline-flex items-center gap-1.5">
+                  <span class="font-medium text-sm md:text-xl">
+                    RU
+                  </span>
+                  <svg class="transition duration-300 group-hover:rotate-180" width="8" height="5" viewBox="0 0 8 5"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4.5L7.89711 0H0.102886L4 4.5Z" fill="currentColor" />
+                  </svg>
+                </button>
+
+                <!-- DrobDown -->
+                <div class="absolute z-20 hidden group-hover:block bg-brand-gray-100 rounded w-20 p-2.5 space-y-1.5">
+                  <button class="w-full text-hover-primary block text-left">
+                    RU
+                  </button>
+                  <button class="w-full text-hover-primary block text-left">
+                    EN
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Logo Mobile -->
+            <a class="min-md:hidden" href="#">
+              <img src="./assets/svgs/logo-mobile.svg" alt="Logo Mobile">
+            </a>
+
+            <!-- Menu -->
+            <div class="max-md:w-20">
+              <button @click="openMenu = !openMenu; document.body.classList.toggle('overflow-hidden', openMenu)"
+                class="text-hover-secondary max-md:block max-md:ml-auto">
+                <svg width="35" height="10" viewBox="0 0 35 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="35" y1="0.750004" x2="-6.55671e-08" y2="0.750001" stroke="currentColor"
+                    stroke-width="1.5" />
+                  <line x1="35" y1="8.75001" x2="15" y2="8.75001" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom -->
+      <div class="max-xl:hidden flex items-center justify-between gap-6">
+        <div class="inline-flex items-center gap-x-8 2xl:gap-x-16.5">
+          <a class="text-xl text-hover-underline" href="#">
+            Продажа
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Аренда
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Коммерческая
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Пентхаус
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Таунхаус
+          </a>
+          <a class="text-xl text-hover-underline" href="#">
+            Участок
+          </a>
+        </div>
+        <a class="inline-flex items-center gap-x-2.5 text-xl text-hover-secondary" href="#">
+          Продать с Нами
+          <svg width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M23.3536 4.35355C23.5488 4.15829 23.5488 3.84171 23.3536 3.64645L20.1716 0.464466C19.9763 0.269204 19.6597 0.269204 19.4645 0.464466C19.2692 0.659728 19.2692 0.976311 19.4645 1.17157L22.2929 4L19.4645 6.82843C19.2692 7.02369 19.2692 7.34027 19.4645 7.53553C19.6597 7.7308 19.9763 7.7308 20.1716 7.53553L23.3536 4.35355ZM0 4V4.5H23V4V3.5H0V4Z"
+              fill="currentColor" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div
+      class="translate-x-full transition duration-300 ease-in-out fixed top-0 right-0 z-50 max-w-70 w-full xl:hidden bg-brand-gray-100 px-5 lg:px-7 pb-10 pt-5"
+      :class="openMenu ? '!translate-x-0' : 'translate-x-full'">
+      <!-- Close BTN -->
+      <button @click="openMenu = false; document.body.classList.remove('overflow-hidden')"
+        class="w-fit block ml-auto mb-5">
+        <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line y1="-0.75" x2="28.1425" y2="-0.75" transform="matrix(0.710669 -0.703526 0.710669 0.703526 2 22)"
+            stroke="#333130" stroke-width="1.5" />
+          <line y1="-0.75" x2="28.1425" y2="-0.75" transform="matrix(0.710669 0.703526 -0.710669 0.703526 2 2)"
+            stroke="#333130" stroke-width="1.5" />
+        </svg>
+      </button>
+      <div class="text-primary">
+        <div class="flex flex-col gap-y-2.5 pb-3.75 border-b border-brand-gray-200 mb-3.75">
+          <a class="text-lg text-hover-underline" href="#">
+            Продажа
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Аренда
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Коммерческая
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Пентхаус
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Таунхаус
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Участок
+          </a>
+        </div>
+        <div class="inline-flex flex-col gap-y-2.5 mb-9">
+          <a class="text-lg text-hover-underline" href="#">
+            Услуги
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            О компании
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Только новые комплексы
+          </a>
+          <a class="text-lg text-hover-underline" href="#">
+            Контакты
+          </a>
+        </div>
+
+        <div>
+          <a class="text-solo-28 text-hover-primary" href="+34951777100">
+            +34 951 777 100
+          </a>
+
+          <!-- link -->
+          <div class="inline-flex items-center gap-3.75 mt-2.5 mb-9">
+            <!-- Telegram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="31" height="31" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="31" height="31" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                  fill="currentColor" />
+                <path
+                  d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                  fill="currentColor" />
+                <path
+                  d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- FC -->
+            <a class="text-hover-primary" href="#">
+              <svg width="20" height="31" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- You tube -->
+            <a class="text-hover-primary" href="#">
+              <svg width="40" height="28" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+          <a href="#" class="bg-hover-primary block text-center leading-none w-full py-3 px-4">
+            Продать с Нами
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
   <!-- Main -->
   <main>
     <!-- Hero -->
@@ -426,8 +679,7 @@
                   <path d="M1.02002 7L7.27002 0.749998" stroke="currentColor" stroke-width="1.2"
                     stroke-linecap="round" />
                   <path d="M1.02002 7L14.98 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                  <path d="M1.02002 7L7.27002 13.25" stroke="currentColor" stroke-width="1.2"
-                    stroke-linecap="round" />
+                  <path d="M1.02002 7L7.27002 13.25" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
                 </svg>
               </button>
               <div class="swiper-pagination-article !w-fit !inline-flex !items-center"></div>
@@ -438,8 +690,7 @@
                   <path d="M1.02002 7L7.27002 0.749998" stroke="currentColor" stroke-width="1.2"
                     stroke-linecap="round" />
                   <path d="M1.02002 7L14.98 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                  <path d="M1.02002 7L7.27002 13.25" stroke="currentColor" stroke-width="1.2"
-                    stroke-linecap="round" />
+                  <path d="M1.02002 7L7.27002 13.25" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
                 </svg>
               </button>
             </div>
@@ -448,6 +699,150 @@
       </div>
     </section>
   </main>
+
+  <!-- Footer -->
+  <footer class="bg-brand-gray-100 pt-10 md:pt-14 lg:pt-17.5 pb-3.75 md:pb-7">
+    <div class="container-base">
+      <div class="flex flex-col-reverse md:flex-row justify-between gap-10 lg:gap-15 !text-secondary">
+        <div class="max-w-90 xl:max-w-138.5 w-full flex justify-between gap-5">
+          <!-- Меню -->
+          <div>
+            <h4 class="text-xl xl:text-4xl !text-secondary">
+              Меню
+            </h4>
+
+            <div class="flex flex-col gap-1 md:gap-2.5 mt-3.75 lg:mt-7.5">
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Услуги
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                О нас
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Блог
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Контакты
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Избранное
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Продажа
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Аренда
+              </a>
+            </div>
+          </div>
+
+          <!-- Тип недвижимости -->
+          <div>
+            <h4 class="text-xl xl:text-4xl !text-secondary">
+              Тип недвижимости
+            </h4>
+
+            <div class="flex flex-col gap-1 md:gap-2.5 mt-3.75 lg:mt-7.5">
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Вилла
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Апартаменты
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Пентхаус
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Таунхаус
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Коммерческая
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Новостройки
+              </a>
+              <a href="#" class="text-sm md:text-base lg:text-lg text-primary hover:text-hover-secondary">
+                Участок
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="max-w-70 xl:max-w-118 flex flex-col md:items-end spacey-2.5 md:space-y-5">
+          <h4 class="text-xl xl:text-4xl md:text-right !text-secondary">
+            Pol. Ind. Nueva Campana, Nave, 80⁠ Nueva Andalucia 29660 Marbella Málaga, Spain
+          </h4>
+          <h4 class="text-xl xl:text-4xl md:text-right !text-secondary">
+            +34 951 777 100
+          </h4>
+          <h4 class="text-xl xl:text-4xl md:text-right !text-secondary">
+            re@sologroup.net
+          </h4>
+          <!-- link -->
+          <div class="inline-flex items-center gap-3.75 max-md:mt-5">
+            <!-- Telegram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0.602225L15.9946 16.2923C15.9946 16.2923 15.5741 17.3801 14.4189 16.8584L7.48458 11.3526L7.45242 11.3364C8.38909 10.4654 15.6524 3.70266 15.9698 3.39612C16.4613 2.92136 16.1562 2.63873 15.5856 2.99736L4.85679 10.053L0.717638 8.61077C0.717638 8.61077 0.0662573 8.37083 0.00359284 7.84911C-0.0598962 7.32653 0.739076 7.0439 0.739076 7.0439L17.6131 0.188948C17.6131 0.188948 19 -0.44207 19 0.602225Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a class="text-hover-primary" href="#">
+              <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2.30723C12.6506 2.30723 13.0121 2.30723 14.0964 2.30723C15.0602 2.30723 15.5422 2.54819 15.9036 2.66868C16.3855 2.90964 16.747 3.03012 17.1084 3.39157C17.4699 3.75301 17.7108 4.11446 17.8313 4.59639C17.9518 4.95783 18.0723 5.43976 18.1928 6.40362C18.1928 7.48795 18.1928 7.72892 18.1928 10.5C18.1928 13.2711 18.1928 13.5121 18.1928 14.5964C18.1928 15.5602 17.9518 16.0422 17.8313 16.4036C17.5904 16.8855 17.4699 17.247 17.1084 17.6084C16.747 17.9699 16.3855 18.2108 15.9036 18.3313C15.5422 18.4518 15.0602 18.5723 14.0964 18.6928C13.0121 18.6928 12.7711 18.6928 10 18.6928C7.22892 18.6928 6.98795 18.6928 5.90362 18.6928C4.93976 18.6928 4.45783 18.4518 4.09639 18.3313C3.61446 18.0904 3.25301 17.9699 2.89157 17.6084C2.53012 17.247 2.28916 16.8855 2.16868 16.4036C2.04819 16.0422 1.92771 15.5602 1.80723 14.5964C1.80723 13.5121 1.80723 13.2711 1.80723 10.5C1.80723 7.72892 1.80723 7.48795 1.80723 6.40362C1.80723 5.43976 2.04819 4.95783 2.16868 4.59639C2.40964 4.11446 2.53012 3.75301 2.89157 3.39157C3.25301 3.03012 3.61446 2.78916 4.09639 2.66868C4.45783 2.54819 4.93976 2.42771 5.90362 2.30723C6.98795 2.30723 7.3494 2.30723 10 2.30723ZM10 0.5C7.22892 0.5 6.98795 0.5 5.90362 0.5C4.81928 0.5 4.09639 0.740965 3.49398 0.981928C2.89157 1.22289 2.28916 1.58434 1.68675 2.18675C1.08434 2.78916 0.843374 3.27109 0.481928 3.99398C0.240965 4.59639 0.120482 5.31928 0 6.40362C0 7.48795 0 7.8494 0 10.5C0 13.2711 0 13.5121 0 14.5964C0 15.6807 0.240965 16.4036 0.481928 17.006C0.722892 17.6084 1.08434 18.2108 1.68675 18.8133C2.28916 19.4157 2.77109 19.6566 3.49398 20.0181C4.09639 20.259 4.81928 20.3795 5.90362 20.5C6.98795 20.5 7.3494 20.5 10 20.5C12.6506 20.5 13.0121 20.5 14.0964 20.5C15.1807 20.5 15.9036 20.259 16.506 20.0181C17.1084 19.7771 17.7108 19.4157 18.3133 18.8133C18.9157 18.2108 19.1566 17.7289 19.5181 17.006C19.759 16.4036 19.8795 15.6807 20 14.5964C20 13.5121 20 13.1506 20 10.5C20 7.8494 20 7.48795 20 6.40362C20 5.31928 19.759 4.59639 19.5181 3.99398C19.2771 3.39157 18.9157 2.78916 18.3133 2.18675C17.7108 1.58434 17.2289 1.34337 16.506 0.981928C15.9036 0.740965 15.1807 0.620482 14.0964 0.5C13.0121 0.5 12.7711 0.5 10 0.5Z"
+                  fill="currentColor" />
+                <path
+                  d="M10 5.31928C7.10843 5.31928 4.81928 7.60843 4.81928 10.5C4.81928 13.3916 7.10843 15.6807 10 15.6807C12.8916 15.6807 15.1807 13.3916 15.1807 10.5C15.1807 7.60843 12.8916 5.31928 10 5.31928ZM10 13.8735C8.19277 13.8735 6.62651 12.4277 6.62651 10.5C6.62651 8.69277 8.07229 7.12651 10 7.12651C11.8072 7.12651 13.3735 8.57229 13.3735 10.5C13.3735 12.3072 11.8072 13.8735 10 13.8735Z"
+                  fill="currentColor" />
+                <path
+                  d="M15.3012 6.40362C15.9666 6.40362 16.506 5.8642 16.506 5.1988C16.506 4.53339 15.9666 3.99398 15.3012 3.99398C14.6358 3.99398 14.0964 4.53339 14.0964 5.1988C14.0964 5.8642 14.6358 6.40362 15.3012 6.40362Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- FC -->
+            <a class="text-hover-primary" href="#">
+              <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.65708 12.3648H11.3793L11.9637 8.56055H7.65632V6.48134C7.65632 4.90099 8.16957 3.49962 9.63891 3.49962H12V0.179741C11.5852 0.123382 10.7078 0 9.04996 0C5.58819 0 3.55867 1.8393 3.55867 6.0297V8.56055H0V12.3648H3.55867V22.821C4.26344 22.9276 4.97729 23 5.71007 23C6.37245 23 7.01893 22.9391 7.65708 22.8522V12.3648Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+            <!-- You tube -->
+            <a class="text-hover-primary" href="#">
+              <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.26249 14.5568C1.87023 14.4408 1.51232 14.2343 1.21896 13.9549C0.925599 13.6754 0.705403 13.3312 0.576947 12.9512C-0.157079 10.9874 -0.374569 2.78693 1.03911 1.16807C1.50961 0.641449 2.17389 0.317218 2.88777 0.265759C6.68024 -0.13232 18.3975 -0.0792426 19.7432 0.398453C20.1217 0.518323 20.4675 0.720256 20.7547 0.989122C21.0419 1.25799 21.263 1.58681 21.4015 1.95096C22.2035 3.98117 22.2307 11.3589 21.2928 13.3095C21.044 13.8173 20.6275 14.2285 20.1102 14.4772C18.6965 15.1672 4.13833 15.1539 2.26249 14.5568ZM8.28422 10.7087L15.0808 7.25869L8.28422 3.78213V10.7087Z"
+                  fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5 md:mb-10 mt-11 md:mt-17 lg:mt-25 lg:text-center">
+        <a href="#">
+          <img src="./assets/svgs/logo-mobile__footer.svg" alt="Logo" class="h-20 lg:hidden">
+          <img src="./assets/svgs/logo-footer.svg" alt="Logo" class="max-h-35.25 max-lg:hidden">
+        </a>
+      </div>
+
+      <div
+        class="text-sm flex flex-col md:flex-row md:items-center justify-between gap-2.5 md:gap-5 lg:gap-10 text-secondary">
+        <a href="#" class="text-hover-primary">
+          © Solo Marbella
+        </a>
+        <a href="#" class="text-hover-primary">
+          Политика конфиденциальности
+        </a>
+        <a href="#" class="text-hover-primary">
+          Обработка данных
+        </a>
+      </div>
+    </div>
+  </footer>
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- Alpine.js -->
