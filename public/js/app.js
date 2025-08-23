@@ -312,27 +312,59 @@ let swiperObjectImagePagination = new Swiper(".object-image__slider", {
 // Map initialization
 function initMap() {
   ymaps.ready(function () {
-    let map = new ymaps.Map("map", {
-      center: [36.5133, -4.8858],
-      zoom: 14,
-      controls: []
-    });
-
+    // Custom SVG marker
     let customSVG = `
-          <svg width="45" height="50" viewBox="0 0 52 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M26.252 0.463867C40.2662 0.463867 51.627 11.9556 51.627 26.1309C51.6269 46.0516 29.8604 57.3793 26.6465 58.9434C26.3877 59.0693 26.1162 59.0693 25.8574 58.9434C22.6427 57.3789 0.876959 46.0511 0.876953 26.1309C0.876953 11.9556 12.2378 0.463948 26.252 0.463867ZM26.252 15.1309C20.2459 15.1309 15.377 20.0558 15.377 26.1309C15.377 32.2059 20.2459 37.1308 26.252 37.1309C32.258 37.1309 37.1269 32.206 37.127 26.1309C37.127 20.0557 32.258 15.1309 26.252 15.1309Z" fill="#333130"/>
-          </svg>
-        `;
-
-    // Custom layout
+      <svg width="45" height="50" viewBox="0 0 52 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26.252 0.463867C40.2662 0.463867 51.627 11.9556 51.627 26.1309C51.6269 46.0516 29.8604 57.3793 26.6465 58.9434C26.3877 59.0693 26.1162 59.0693 25.8574 58.9434C22.6427 57.3789 0.876959 46.0511 0.876953 26.1309C0.876953 11.9556 12.2378 0.463948 26.252 0.463867ZM26.252 15.1309C20.2459 15.1309 15.377 20.0558 15.377 26.1309C15.377 32.2059 20.2459 37.1308 26.252 37.1309C32.258 37.1309 37.1269 32.206 37.127 26.1309C37.127 20.0557 32.258 15.1309 26.252 15.1309Z" fill="#333130"/>
+      </svg>
+    `;
     let MyIconLayout = ymaps.templateLayoutFactory.createClass(customSVG);
 
-    let placemark = new ymaps.Placemark(
-      [36.5133, -4.8858], // Marker joyi
-      { hintContent: 'Solo Marbella - Real Estates' },
-      { iconLayout: MyIconLayout, iconShape: { type: 'Circle', coordinates: [26, 30], radius: 30 } }
-    );
+    // List of maps with their settings
+    let maps = [
+      { id: "map", center: [36.5133, -4.8858], hint: "Solo Marbella" },
+      { id: "map2", center: [36.5133, -4.8858], hint: "Solo Marbella" },
+      { id: "map3", center: [36.5133, -4.8858], hint: "Solo Marbella" },
+    ];
 
-    map.geoObjects.add(placemark);
+    // Loop through maps and create them
+    maps.forEach(m => {
+      let map = new ymaps.Map(m.id, {
+        center: m.center,
+        zoom: 14,
+        controls: [] // Remove all default controls
+      });
+
+      // Add custom marker
+      let placemark = new ymaps.Placemark(
+        m.center,
+        { hintContent: m.hint },
+        { iconLayout: MyIconLayout, iconShape: { type: 'Circle', coordinates: [26, 30], radius: 30 } }
+      );
+      map.geoObjects.add(placemark);
+
+      // Extra cleanup for map2 only
+      if (m.id === "map2") {
+        // Remove specific controls (just in case)
+        map.controls.remove("trafficControl");
+        map.controls.remove("typeSelector");
+        map.controls.remove("searchControl");
+        map.controls.remove("fullscreenControl");
+        map.controls.remove("geolocationControl");
+        map.controls.remove("routeButtonControl");
+
+        // Hide Yandex logo and copyright (not officially allowed)
+        const style = document.createElement("style");
+        style.innerHTML = `
+          #map2 .ymaps-2-1-79-copyright__link,
+          #map2 .ymaps-2-1-79-gotoymaps,
+          #map2 .ymaps-2-1-79-gototech,
+          #map2 .ymaps-2-1-79-logo {
+            display: none !important;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    });
   });
 }
