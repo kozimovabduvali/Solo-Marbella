@@ -115,7 +115,8 @@
 
             <!-- Menu -->
             <div class="max-md:w-20">
-              <button @click="openMenu = !openMenu; document.body.classList.toggle('overflow-hidden', openMenu)" class="text-hover-secondary max-md:block max-md:ml-auto">
+              <button @click="openMenu = !openMenu; document.body.classList.toggle('overflow-hidden', openMenu)"
+                class="text-hover-secondary max-md:block max-md:ml-auto">
                 <svg width="35" height="10" viewBox="0 0 35 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <line x1="35" y1="0.750004" x2="-6.55671e-08" y2="0.750001" stroke="currentColor"
                     stroke-width="1.5" />
@@ -166,7 +167,8 @@
       class="translate-x-full transition duration-300 ease-in-out fixed top-0 right-0 z-50 max-w-70 w-full xl:hidden bg-brand-gray-100 px-5 lg:px-7 pb-10 pt-5"
       :class="openMenu ? '!translate-x-0' : 'translate-x-full'">
       <!-- Close BTN -->
-      <button @click="openMenu = false; document.body.classList.remove('overflow-hidden')" class="w-fit block ml-auto mb-5">
+      <button @click="openMenu = false; document.body.classList.remove('overflow-hidden')"
+        class="w-fit block ml-auto mb-5">
         <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line y1="-0.75" x2="28.1425" y2="-0.75" transform="matrix(0.710669 -0.703526 0.710669 0.703526 2 22)"
             stroke="#333130" stroke-width="1.5" />
@@ -325,71 +327,89 @@
         <!-- Filter -->
         <div class="flex max-sm:flex-col flex-wrap justify-between gap-5 xl:gap-x-7 mb-12.5 md:mb-16 xl:mb-22.5">
           <!-- Продажа -->
-          <div class="relative group max-sm:w-full">
-            <button
+          <div class="relative group max-sm:w-full" x-data="{ open: false }">
+            <button @click="open = !open"
               class="max-sm:w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
-              <span class="text-lg xl:text-solo-26">
-                Продажа
-              </span>
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <span class="text-lg xl:text-solo-26">Продажа</span>
+              <svg :class="{'rotate-180': open}" class="transition-transform duration-300 sm:rotate-0" width="12"
+                height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
               </svg>
             </button>
           </div>
+
           <!-- Тип недвижимости -->
-          <div class="relative group max-sm:w-full">
-            <button
+          <div class="relative group max-sm:w-full" x-data="{ open: false }">
+            <button @click="open = !open"
               class="max-sm:w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
-              <span class="text-lg xl:text-solo-26">
-                Тип недвижимости
-              </span>
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <span class="text-lg xl:text-solo-26">Тип недвижимости</span>
+              <svg :class="{'rotate-180': open}" class="transition-transform duration-300 sm:rotate-0" width="12"
+                height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
               </svg>
             </button>
           </div>
+
           <!-- Город -->
-          <div class="relative group w-full lg:max-w-57.5 flex-1">
-            <button
-              class="w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
-              <span class="text-lg xl:text-solo-26">
-                Город
-              </span>
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="relative group w-full lg:max-w-57.5 flex-1" x-data="{ open: false }">
+            <button @click="open = !open"
+              class="w-full flex items-center justify-between gap-3 border-b text-primary py-2 px-2 md:px-5 lg:px-7.5">
+              <span class="text-lg xl:text-solo-26">Город</span>
+              <svg :class="{'rotate-180': open}" class="transition-transform duration-300" width="12"
+                height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
               </svg>
             </button>
+
+            <!-- Accourdion Content -->
+            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+              <div class="bg-white w-full flex flex-col text-center gap-2.5 border border-brand-gray-200 p-5 lg:p-7.5">
+                <a href="#" class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Ташкент</a>
+                <a href="#" class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Самарканд</a>
+                <a href="#" class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Бухара</a>
+              </div>
+            </div>
           </div>
+
           <!-- Район -->
-          <div class="relative group w-full lg:max-w-57.5 flex-1">
-            <button
+          <div class="relative group w-full lg:max-w-57.5 flex-1" x-data="{ open: false }">
+            <button @click="open = !open"
               class="w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
-              <span class="text-lg xl:text-solo-26">
-                Район
-              </span>
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <span class="text-lg xl:text-solo-26">Район</span>
+              <svg :class="{'rotate-180': open}" class="transition-transform duration-300 sm:rotate-0" width="12"
+                height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
               </svg>
             </button>
           </div>
+
           <!-- Цена -->
-          <div class="relative group w-full lg:max-w-57.5 flex-1">
-            <button
+          <div class="relative group w-full lg:max-w-57.5 flex-1" x-data="{ open: false }">
+            <button @click="open = !open"
               class="w-full flex items-center justify-between gap-3 border-b text-primary text-hover-secondary py-2 px-2 md:px-5 lg:px-7.5">
-              <span class="text-lg xl:text-solo-26">
-                Цена
-              </span>
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <span class="text-lg xl:text-solo-26">Цена</span>
+              <svg :class="{'rotate-180': open}" class="transition-transform duration-300 sm:rotate-0" width="12"
+                height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 0.5L6 5.5L11 0.5" stroke="currentColor" stroke-linecap="round" />
               </svg>
             </button>
           </div>
+
           <!-- Показать -->
           <button class="bg-hover-primary w-full sm:max-w-61.5 h-max font-semibold text-lg xl:text-solo-26 py-2 px-7">
             Показать
           </button>
         </div>
 
+
+
+        <!-- Custom checkbox -->
+        <div class="cursor-pointer flex items-center space-x-2 select-none">
+                  <input type="checkbox" id="select-all" class="cursor-pointer checkbox-custom">
+                  <label for="select-all" class="cursor-pointer custom-label text-lg lg:text-solo-26 text-primary">
+                    Квартира
+                  </label>
+                </div>
         <!-- Tittle, Desc, List -->
         <div class="mb-8 lg:mb-10">
           <ul class="text-primary text-xs md:text-base lg:text-lg list-disc list-inside mb-2.5">
@@ -3534,10 +3554,10 @@
       </div>
 
       <div class="mb-5 md:mb-10 mt-11 md:mt-17 lg:mt-25 lg:text-center">
-        <h2
-          class="text-4xl md:text-7xl lg:text-[100px] leading-normal uppercase font-bold tracking-[20px] md:tracking-[35px] lg:tracking-[50px]">
-          Solo Marbella
-        </h2>
+        <a href="#">
+          <img src="./assets/svgs/logo-mobile__footer.svg" alt="Logo" class="h-20 lg:hidden">
+          <img src="./assets/svgs/logo-footer.svg" alt="Logo" class="max-h-35.25 max-lg:hidden">
+        </a>
       </div>
 
       <div

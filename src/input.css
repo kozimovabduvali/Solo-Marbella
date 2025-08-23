@@ -137,3 +137,21 @@
 .custom-map {
   filter: grayscale(100%) brightness(95%);
 }
+
+
+
+
+.checkbox-custom {
+  @apply inline-block relative appearance-none min-w-5 size-5 rounded bg-white border border-brand-gray-200
+}
+
+.checkbox-custom:checked {
+  @apply bg-primary border-transparent
+}
+
+.checkbox-custom:checked::after {
+  content: '';
+  transform: translate(-50%, -50%);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M20.285 6.708l-11.145 11.145-5.145-5.145 1.415-1.414 3.729 3.728 9.732-9.732z"/></svg>');
+  @apply bg-contain bg-no-repeat absolute top-1/2 left-1/2 size-3
+}
