@@ -325,10 +325,9 @@
     <section class="reviews-slider-section mb-12.5 lg:mb-17.5">
       <div class="container-base">
         <!-- Filter -->
-        <div
-          class="flex max-sm:flex-col flex-wrap justify-between gap-5 xl:gap-x-7 mb-12.5 md:mb-16 xl:mb-22.5">
+        <div class="flex max-md:flex-col flex-wrap justify-between gap-5 xl:gap-x-7 mb-12.5 md:mb-16 xl:mb-22.5">
           <!-- Продажа -->
-          <div class="relative group max-sm:w-full" x-data="{ open: false }" @click.outside="open = false">
+          <div class="relative group max-md:w-full" x-data="{ open: false }" @click.outside="open = false">
             <button @click="open=!open" :class="{
                 'md:!border-b-secondary': !open,
                 'md:!border-secondary': open
@@ -343,7 +342,7 @@
 
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+            <div x-show="open" x-collapse class="sm:absolute z-20 w-full md:w-57.5 pt-5">
               <div class="bg-white w-full flex flex-col text-center gap-2.5 border border-brand-gray-200 p-5 lg:p-7.5">
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Продажа</button>
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Аренда</button>
@@ -352,7 +351,7 @@
           </div>
 
           <!-- Тип недвижимости -->
-          <div class="relative group max-sm:w-full" x-data="{ open: false }" @click.outside="open = false">
+          <div class="relative group max-md:w-full" x-data="{ open: false }" @click.outside="open = false">
             <button @click="open=!open" :class="{
                 'md:!border-b-secondary': !open,
                 'md:!border-secondary': open
@@ -366,7 +365,7 @@
             </button>
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+            <div x-show="open" x-collapse class="sm:absolute z-20 w-full md:w-57.5 pt-5">
               <!-- <div class="bg-white w-full flex flex-col gap-2.5 border border-brand-gray-200 p-5">
                 <button class="text-hover-secondary text-lg text-left lg:text-xl leading-none">Найдено 388 объявлений</button>
                 <button class="w-max bg-hover-primary border border-brand-gray-100 text-lg lg:text-xl px-3.5 py-2.5 leading-none">Применить</button>
@@ -437,7 +436,7 @@
             </button>
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+            <div x-show="open" x-collapse class="sm:absolute z-20 w-full md:w-57.5 pt-5">
               <div class="bg-white w-full flex flex-col text-center gap-2.5 border border-brand-gray-200 p-5 lg:p-7.5">
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Ташкент</button>
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Самарканд</button>
@@ -462,7 +461,7 @@
             </button>
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+            <div x-show="open" x-collapse class="sm:absolute z-20 right-0 w-full md:w-57.5 pt-5">
               <div class="bg-white w-full flex flex-col text-center gap-2.5 border border-brand-gray-200 p-5 lg:p-7.5">
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Ташкент</button>
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Самарканд</button>
@@ -477,7 +476,8 @@
             <button @click="open=!open" :class="{
               'md:!border-b-secondary': !open,
               'md:!border-secondary': open
-            }" class="w-full border border-b-secondary border-transparent flex items-center justify-between gap-3 text-primary py-2 px-2 md:px-5 lg:px-7.5">
+            }"
+              class="w-full border border-b-secondary border-transparent flex items-center justify-between gap-3 text-primary py-2 px-2 md:px-5 lg:px-7.5">
               <span class="text-lg xl:text-solo-26">Цена</span>
               <svg :class="{'rotate-180': open}" class="transition-transform duration-300" width="12" height="7"
                 viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">

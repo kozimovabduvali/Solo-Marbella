@@ -273,17 +273,33 @@
   <!-- Main -->
   <main>
     <!-- Hero -->
-    <section class="overflow-x-hidden pt-13.75 md:pt-20 xl:pt-37.5 mb-7.5 lg:mb-13.75">
-      <div class="container-base flex max-lg:flex-col items-center gap-3.75 lg:gap-7">
-        <h1 class="min-lg:max-w-190 font-oswald text-solo-32 lg:text-5xl xl:text-solo-70">
-          Недвижимость премиум-класса на Коста-дель-Соль
-        </h1>
+    <section class="overflow-x-clip pt-13.75 md:pt-20 xl:pt-37.5 mb-7.5 lg:mb-13.75">
+      <div class="container-base">
+        <div>
+          <!-- Page List -->
+          <div class="flex items-center gap-2.5 mb-7.5 lg:mb-2.5">
+            <a class="text-xs md:text-sm text-hover-secondary" href="#">
+              Главная
+            </a>
+            <span class="shrink-0 block size-1 md:size-1.5 bg-primary rounded-full"></span>
 
-        <div class="max-w-147.5 w-full">
-          <p class="text-solo-13/[110%] lg:text-lg">
-            Покупка, аренда, инвестиции и сопровождение — под ключ. Только проверенные объекты в лучших локациях
-            Коста-дель-Соль
-          </p>
+            <p class="text-xs md:text-sm text-secondary">
+              Каталог
+            </p>
+          </div>
+        </div>
+
+        <div class="flex max-lg:flex-col items-center gap-3.75 lg:gap-7">
+          <h1 class="min-lg:max-w-190 font-oswald text-solo-32 lg:text-5xl xl:text-solo-70">
+            Недвижимость премиум-класса на Коста-дель-Соль
+          </h1>
+  
+          <div class="max-w-147.5 w-full">
+            <p class="text-solo-13/[110%] lg:text-lg">
+              Покупка, аренда, инвестиции и сопровождение — под ключ. Только проверенные объекты в лучших локациях
+              Коста-дель-Соль
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -292,9 +308,9 @@
     <section class="mb-12.5 lg:mb-17.5">
       <div class="container-base">
         <!-- Filter -->
-        <div class="flex max-sm:flex-col flex-wrap justify-between gap-5 xl:gap-x-7 mb-12.5 md:mb-16 xl:mb-22.5">
+        <div class="flex max-md:flex-col flex-wrap justify-between gap-5 xl:gap-x-7 mb-12.5 md:mb-16 xl:mb-22.5">
           <!-- Продажа -->
-          <div class="relative group max-sm:w-full" x-data="{ open: false }" @click.outside="open = false">
+          <div class="relative group max-md:w-full" x-data="{ open: false }" @click.outside="open = false">
             <button @click="open=!open" :class="{
                 'md:!border-b-secondary': !open,
                 'md:!border-secondary': open
@@ -309,7 +325,7 @@
 
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+            <div x-show="open" x-collapse class="sm:absolute z-20 w-full md:w-57.5 pt-5">
               <div class="bg-white w-full flex flex-col text-center gap-2.5 border border-brand-gray-200 p-5 lg:p-7.5">
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Продажа</button>
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Аренда</button>
@@ -318,7 +334,7 @@
           </div>
 
           <!-- Тип недвижимости -->
-          <div class="relative group max-sm:w-full" x-data="{ open: false }" @click.outside="open = false">
+          <div class="relative group max-md:w-full" x-data="{ open: false }" @click.outside="open = false">
             <button @click="open=!open" :class="{
                 'md:!border-b-secondary': !open,
                 'md:!border-secondary': open
@@ -332,7 +348,7 @@
             </button>
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+            <div x-show="open" x-collapse class="sm:absolute z-20 w-full md:w-57.5 pt-5">
               <!-- <div class="bg-white w-full flex flex-col gap-2.5 border border-brand-gray-200 p-5">
                 <button class="text-hover-secondary text-lg text-left lg:text-xl leading-none">Найдено 388 объявлений</button>
                 <button class="w-max bg-hover-primary border border-brand-gray-100 text-lg lg:text-xl px-3.5 py-2.5 leading-none">Применить</button>
@@ -403,7 +419,7 @@
             </button>
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+            <div x-show="open" x-collapse class="sm:absolute z-20 w-full md:w-57.5 pt-5">
               <div class="bg-white w-full flex flex-col text-center gap-2.5 border border-brand-gray-200 p-5 lg:p-7.5">
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Ташкент</button>
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Самарканд</button>
@@ -428,7 +444,7 @@
             </button>
 
             <!-- Accordion Content -->
-            <div x-show="open" x-collapse class="sm:absolute z-20 w-full pt-5">
+            <div x-show="open" x-collapse class="sm:absolute z-20 right-0 w-full md:w-57.5 pt-5">
               <div class="bg-white w-full flex flex-col text-center gap-2.5 border border-brand-gray-200 p-5 lg:p-7.5">
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Ташкент</button>
                 <button class="text-hover-secondary text-lg lg:text-solo-26 leading-none">Самарканд</button>
