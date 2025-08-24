@@ -141,7 +141,7 @@
 }
 
 .checkbox-custom {
-  @apply inline-block relative appearance-none min-w-5 size-5 rounded bg-white border border-brand-gray-200;
+  @apply inline-block relative appearance-none min-w-5 size-5 rounded bg-solo-body border border-brand-gray-200;
 }
 
 .checkbox-custom:checked {

@@ -3416,7 +3416,7 @@
   border-style: var(--tw-border-style);
   border-width: 1px;
   border-color: var(--color-brand-gray-200);
-  background-color: var(--color-white);
+  background-color: var(--color-solo-body);
 }
 .checkbox-custom:checked {
   border-color: transparent;
