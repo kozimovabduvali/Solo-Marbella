@@ -8,9 +8,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-gray-300: oklch(87.2% 0.01 258.338);
-    --color-gray-400: oklch(70.7% 0.022 261.325);
-    --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-xs: 0.75rem;
@@ -1329,12 +1326,6 @@
   .pt-15 {
     padding-top: calc(var(--spacing) * 15);
   }
-  .pt-88 {
-    padding-top: calc(var(--spacing) * 88);
-  }
-  .pt-88\.25 {
-    padding-top: calc(var(--spacing) * 88.25);
-  }
   .pb-1 {
     padding-bottom: calc(var(--spacing) * 1);
   }
@@ -1887,11 +1878,6 @@
       padding-top: calc(var(--spacing) * 30);
     }
   }
-  .max-md\:pt-40 {
-    @media (width < 48rem) {
-      padding-top: calc(var(--spacing) * 40);
-    }
-  }
   .max-md\:pl-3 {
     @media (width < 48rem) {
       padding-left: calc(var(--spacing) * 3);
@@ -2201,6 +2187,11 @@
   .md\:gap-6\.5 {
     @media (width >= 48rem) {
       gap: calc(var(--spacing) * 6.5);
+    }
+  }
+  .md\:gap-7 {
+    @media (width >= 48rem) {
+      gap: calc(var(--spacing) * 7);
     }
   }
   .md\:gap-10 {
@@ -2685,6 +2676,11 @@
   .lg\:h-165 {
     @media (width >= 64rem) {
       height: calc(var(--spacing) * 165);
+    }
+  }
+  .lg\:h-full {
+    @media (width >= 64rem) {
+      height: 100%;
     }
   }
   .lg\:max-h-91\.5 {
@@ -3246,6 +3242,11 @@
   .xl\:grid-cols-4 {
     @media (width >= 80rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .xl\:items-end {
+    @media (width >= 80rem) {
+      align-items: flex-end;
     }
   }
   .xl\:gap-7\.5 {
