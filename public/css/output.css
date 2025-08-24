@@ -2567,6 +2567,11 @@
       margin-bottom: calc(var(--spacing) * 18);
     }
   }
+  .lg\:mb-20 {
+    @media (width >= 64rem) {
+      margin-bottom: calc(var(--spacing) * 20);
+    }
+  }
   .lg\:mb-22\.5 {
     @media (width >= 64rem) {
       margin-bottom: calc(var(--spacing) * 22.5);
