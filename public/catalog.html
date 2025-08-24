@@ -495,15 +495,17 @@
                   <!-- От -->
                   <div class="flex items-center gap-2 border border-brand-gray-200 px-4 py-3">
                     <span class="text-secondary text-base">от</span>
-                    <input type="number" placeholder="€ 350000"
-                      class="w-full focus:outline-none text-lg font-semibold text-primary placeholder:text-primary">
-                  </div>
+                    <span class="text-primary font-semibold text-lg">€</span>
+                    <input type="number" value="350000"
+                      class="w-full focus:outline-none text-lg font-semibold text-primary">
+                    </div>
 
                   <!-- До -->
                   <div class="flex items-center gap-2 border border-brand-gray-200 px-4 py-3">
                     <span class="text-secondary text-base">до</span>
-                    <input type="number" placeholder="€ 550000"
-                      class="w-full focus:outline-none text-lg font-semibold text-primary placeholder:text-primary">
+                    <span class="text-primary font-semibold text-lg">€</span>
+                    <input type="number" value="550000"
+                      class="w-full focus:outline-none text-lg font-semibold text-primary">
                   </div>
 
                 </div>
@@ -517,6 +519,7 @@
             Показать
           </button>
         </div>
+
         <div>
           <!-- Taps & Slider -->
           <div x-data="{ activeTab: 'discounts' }">
