@@ -859,7 +859,7 @@
 
 
     <!-- Contact -->
-    <section class=" mb-12.5 md:mb-20 lg:mb-25">
+    <section class="mb-12.5 md:mb-20 lg:mb-25">
       <div class="container-base">
         <div class="grid lg:grid-cols-5 gap-2.5 md:gap-5 lg:gap-7.5 lg:mb-22.5">
           <!-- Left -->
@@ -973,23 +973,29 @@
                 </li>
               </ul>
               <h2 class="text-solo-28 md:text-4xl xl:text-6xl mb-2.5 md:mb-5 lg:mb-10">
-                Остались вопросы?
+                Выберите удобный способ связи
               </h2>
-              <p class="max-w-151 text-lg leading-none">
-                Оставьте заявку — наш специалист свяжется с вами в течение минуты и ответит на все вопросы
-                о покупке,
-                аренде или инвестициях
+              <p class="max-w-151 text-sm md:text-base lg:text-lg leading-none">
+                Укажите предпочтительный канал — мы свяжемся с вами так, как вам комфортнее: по телефону, email,
+                в WhatsApp или Telegram
               </p>
             </div>
             <form action="#" class="space-y-2.5 lg:space-y-5">
-              <input type="text" placeholder="Имя"
-                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7">
-
-              <input type="number" placeholder="Телефон"
-                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7">
-
-              <textarea placeholder="Сообщение"
-                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7 resize-none h-20 md:h-37"></textarea>
+              <input type="text" placeholder="Имя и Фамилия"
+                class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary/60 border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7">
+              <div>
+                <p class="text-sm md:text-base lg:text-lg mb-3 md:mb-5">
+                  Выберите один или несколько вариантов
+                </p>
+                <div class="relative flex items-center justify-between gap-3">
+                  <input type="text" placeholder="Предпочтительный способ связи"
+                    class="w-full bg-solo-body text-primary lg:text-lg placeholder:text-secondary/60 border border-transparent outline-none focus:border-brand-gray-200 px-5 py-3.75 lg:px-7.5 lg:py-7">
+                  <svg class="absolute top-1/2 -translate-y-1/2 right-5" width="12" height="7" viewBox="0 0 12 7"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L6 6L11 1" stroke="#333130" stroke-linecap="round" />
+                  </svg>
+                </div>
+              </div>
 
               <button
                 class="w-full lg:w-fit lg:hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary max-lg:bg-hover-primary py-2 lg:py-4 px-7 lg:px-20 xxl:px-35 lg:mt-5">
@@ -1006,6 +1012,55 @@
         </div>
       </div>
     </section>
+
+
+    <!-- Solo Car -->
+    <section class="mb-12.5 md:mb-20 lg:mb-25">
+      <div class="container-base">
+        <div class="grid md:grid-cols-2 gap-4 lg:gap-7.5">
+          <!-- Left -->
+          <div class="max-w-216.25 max-md:hidden">
+            <img src="./assets/images/solo-car.jpg" alt="Alt" class="size-full object-cover">
+          </div>
+
+          <!-- Right -->
+          <div>
+            <div
+              class="max-md:hidden md:mb-5 bg-primary w-full lg:w-43.25 h-23.25 flex items-center justify-center lg:mb-15 xxl:mb-25">
+              <img src="./assets/svgs/solo-rent.svg" alt="Svg" class="h-11">
+            </div>
+            <div class="mb-5 lg:mb-15 xxl:mb-25">
+              <ul class="text-primary text-xs md:text-base lg:text-lg list-disc list-inside mb-2.5">
+                <li>
+                  SOLO Rent a Car
+                </li>
+              </ul>
+              <h2 class="max-w-145 text-solo-28 md:text-4xl xl:text-6xl mb-2.5">
+                Нужен автомобиль от SOLO Rent a Car?
+              </h2>
+              <p class="max-w-110 text-sm md:text-base lg:text-lg text-primary">
+                Арендуйте его быстро и выгодно с SOLO Rent a Car — без посредников!
+              </p>
+            </div>
+            <div
+              class="md:hidden bg-primary w-full lg:w-43.25 h-23.25 flex items-center justify-center mb-2.5 md:mb-5 lg:mb-15 xxl:mb-25">
+              <img src="./assets/svgs/solo-rent.svg" alt="Svg" class="h-11">
+            </div>
+
+            <!-- Left -->
+            <div class="aspect-[300/208] md:hidden mb-2.5">
+              <img src="./assets/images/solo-car.jpg" alt="Alt" class="size-full object-cover">
+            </div>
+
+            <button
+              class="w-full lg:w-fit lg:hover-opacity-75 border-b font-semibold text-lg xl:text-2xl text-primary max-lg:bg-hover-primary py-3 lg:py-4 px-7 lg:px-20 lg:mt-5">
+              Перейти на сайт SOLO Rent a Car
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
   <!-- Footer -->
   <footer class="bg-brand-gray-100 pt-10 md:pt-14 lg:pt-17.5 pb-3.75 md:pb-7">
