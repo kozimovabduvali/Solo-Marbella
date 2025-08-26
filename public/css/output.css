@@ -3125,6 +3125,11 @@
       }
     }
   }
+  .xl\:mb-18 {
+    @media (width >= 80rem) {
+      margin-bottom: calc(var(--spacing) * 18);
+    }
+  }
   .xl\:mb-22\.5 {
     @media (width >= 80rem) {
       margin-bottom: calc(var(--spacing) * 22.5);
