@@ -1,5 +1,25 @@
 let swiperMainHero = new Swiper(".swiper-main__hero", {
   spaceBetween: 20,
+  // autoplay: {
+  //   delay: 2500,
+  //   disableOnInteraction: false,
+  // },
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+    },
+    768: {
+      slidesPerView: 1.5,
+      spaceBetween: 20,
+      slidesOffsetBefore: -((window.innerWidth / 2) / 2),
+    }
+  },
+});
+
+
+let swiperMainAbout = new Swiper(".swiper-main__about", {
+  spaceBetween: 20,
   autoplay: {
     delay: 2500,
     disableOnInteraction: false,
@@ -12,7 +32,7 @@ let swiperMainHero = new Swiper(".swiper-main__hero", {
     768: {
       slidesPerView: 1.5,
       spaceBetween: 20,
-      slidesOffsetBefore: -((window.innerWidth / 1.5) / 2),
+      slidesOffsetBefore: -((window.innerWidth / 1.9) / 2),
     }
   },
 });
@@ -31,7 +51,7 @@ let swiperArticleHero = new Swiper(".swiper-article__hero", {
     768: {
       slidesPerView: 1.5,
       spaceBetween: 20,
-      slidesOffsetBefore: -((window.innerWidth / 1.5) / 2),
+      slidesOffsetBefore: -((window.innerWidth / 2) / 2),
     }
   },
 });
@@ -48,13 +68,28 @@ let swiperAboutHero = new Swiper(".swiper-about__hero", {
       spaceBetween: 12,
     },
     768: {
-      slidesPerView: 1.5,
+      slidesPerView: 1.8,
       spaceBetween: 20,
       // slidesOffsetBefore: -((window.innerWidth / 1.5) / 2),
+    }
+  },
+});
+
+
+let swiperContactHero = new Swiper(".swiper-contact__hero", {
+  spaceBetween: 20,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 12,
     },
-    1024: {
+    768: {
       slidesPerView: 2,
-      spaceBetween: 20,
+      spaceBetween: 30,
       // slidesOffsetBefore: -((window.innerWidth / 1.5) / 2),
     }
   },
