@@ -309,6 +309,11 @@ let swiperObjectImagePagination = new Swiper(".object-image__slider", {
 });
 
 
+
+
+
+
+
 // Map initialization
 function initMap() {
   ymaps.ready(function () {
