@@ -630,6 +630,12 @@
   .max-w-76\.5 {
     max-width: calc(var(--spacing) * 76.5);
   }
+  .max-w-87 {
+    max-width: calc(var(--spacing) * 87);
+  }
+  .max-w-87\.5 {
+    max-width: calc(var(--spacing) * 87.5);
+  }
   .max-w-90 {
     max-width: calc(var(--spacing) * 90);
   }
@@ -1474,6 +1480,10 @@
   .leading-\[90\%\] {
     --tw-leading: 90%;
     line-height: 90%;
+  }
+  .leading-\[120\%\] {
+    --tw-leading: 120%;
+    line-height: 120%;
   }
   .leading-none {
     --tw-leading: 1;
@@ -3268,6 +3278,12 @@
     @media (width >= 64rem) {
       --tw-leading: 1.2;
       line-height: 1.2;
+    }
+  }
+  .lg\:leading-\[120\%\] {
+    @media (width >= 64rem) {
+      --tw-leading: 120%;
+      line-height: 120%;
     }
   }
   .lg\:leading-none {
