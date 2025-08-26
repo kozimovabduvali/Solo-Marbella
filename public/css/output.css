@@ -2462,6 +2462,12 @@
       line-height: var(--tw-leading, var(--text-base--line-height));
     }
   }
+  .md\:text-base\/\[1\] {
+    @media (width >= 48rem) {
+      font-size: var(--text-base);
+      line-height: 1;
+    }
+  }
   .md\:text-lg {
     @media (width >= 48rem) {
       font-size: var(--text-lg);
@@ -2528,6 +2534,11 @@
   .lg\:row-span-4 {
     @media (width >= 64rem) {
       grid-row: span 4 / span 4;
+    }
+  }
+  .lg\:mt-2\.5 {
+    @media (width >= 64rem) {
+      margin-top: calc(var(--spacing) * 2.5);
     }
   }
   .lg\:mt-5 {
