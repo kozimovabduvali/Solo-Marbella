@@ -1,4 +1,5 @@
 let swiperMainHero = new Swiper(".swiper-main__hero", {
+  loop: true,
   spaceBetween: 20,
   // autoplay: {
   //   delay: 2500,
@@ -19,6 +20,7 @@ let swiperMainHero = new Swiper(".swiper-main__hero", {
 
 
 let swiperMainAbout = new Swiper(".swiper-main__about", {
+  loop: true,
   spaceBetween: 20,
   autoplay: {
     delay: 2500,
@@ -38,6 +40,7 @@ let swiperMainAbout = new Swiper(".swiper-main__about", {
 });
 
 let swiperArticleHero = new Swiper(".swiper-article__hero", {
+  loop: true,
   spaceBetween: 20,
   autoplay: {
     delay: 2500,
@@ -57,6 +60,7 @@ let swiperArticleHero = new Swiper(".swiper-article__hero", {
 });
 
 let swiperAboutHero = new Swiper(".swiper-about__hero", {
+  loop: true,
   spaceBetween: 20,
   autoplay: {
     delay: 2500,
@@ -77,6 +81,7 @@ let swiperAboutHero = new Swiper(".swiper-about__hero", {
 
 
 let swiperContactHero = new Swiper(".swiper-contact__hero", {
+  loop: true,
   spaceBetween: 20,
   autoplay: {
     delay: 2500,

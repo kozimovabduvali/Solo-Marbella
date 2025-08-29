@@ -364,6 +364,9 @@
   .mb-18 {
     margin-bottom: calc(var(--spacing) * 18);
   }
+  .mb-34 {
+    margin-bottom: calc(var(--spacing) * 34);
+  }
   .mb-68 {
     margin-bottom: calc(var(--spacing) * 68);
   }
@@ -1788,6 +1791,11 @@
   .max-lg\:flex-col-reverse {
     @media (width < 64rem) {
       flex-direction: column-reverse;
+    }
+  }
+  .max-lg\:gap-y-12 {
+    @media (width < 64rem) {
+      row-gap: calc(var(--spacing) * 12);
     }
   }
   .max-lg\:bg-hover-primary {
