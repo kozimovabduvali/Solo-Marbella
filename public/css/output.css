@@ -3270,6 +3270,12 @@
       line-height: 1;
     }
   }
+  .xl\:text-lg\/\[110\%\] {
+    @media (width >= 80rem) {
+      font-size: var(--text-lg);
+      line-height: 110%;
+    }
+  }
   .xl\:text-lg\/\[120\%\] {
     @media (width >= 80rem) {
       font-size: var(--text-lg);
