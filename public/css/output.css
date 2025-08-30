@@ -3242,6 +3242,11 @@
       padding-bottom: calc(var(--spacing) * 10);
     }
   }
+  .lg\:pb-12\.5 {
+    @media (width >= 64rem) {
+      padding-bottom: calc(var(--spacing) * 12.5);
+    }
+  }
   .lg\:pb-15 {
     @media (width >= 64rem) {
       padding-bottom: calc(var(--spacing) * 15);
