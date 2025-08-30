@@ -3576,6 +3576,12 @@
       font-size: var(--text-solo-70);
     }
   }
+  .xl\:leading-normal {
+    @media (width >= 80rem) {
+      --tw-leading: var(--leading-normal);
+      line-height: var(--leading-normal);
+    }
+  }
   .xxl\:mb-7\.5 {
     @media (width >= 90rem) {
       margin-bottom: calc(var(--spacing) * 7.5);
